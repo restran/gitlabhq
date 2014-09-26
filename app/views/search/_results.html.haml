@@ -19,7 +19,7 @@
   .col-sm-9
     .search-results
       - if @search_results.empty?
-        = render partial: "search/results/empty", locals: { message: "We couldn't find any matching results" }
+        = render partial: "search/results/empty", locals: { message: "我们无法找到任何匹配结果" }
       - else
         = render partial: "search/results/#{@scope.singularize}", collection: @objects
         = paginate @objects, theme: 'gitlab'

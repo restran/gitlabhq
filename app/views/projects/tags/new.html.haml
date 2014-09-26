@@ -14,12 +14,12 @@
     = label_tag :ref, '来自分支', class: 'control-label'
     .col-sm-10
       = text_field_tag :ref, params[:ref], placeholder: 'master', required: true, tabindex: 2, class: 'form-control'
-      .light Branch name or commit SHA
+      .light 分支名称或提交 SHA
   .form-group
     = label_tag :message, '信息', class: 'control-label'
     .col-sm-10
       = text_field_tag :message, nil, placeholder: '输入信息。', required: false, tabindex: 3, class: 'form-control'
-      .light (Optional) Entering a message will create an annotated tag.
+      .light (可选) 输入创建标签的信息。
   .form-actions
     = submit_tag '创建标签', class: 'btn btn-create', tabindex: 3
     = link_to '取消', project_tags_path(@project), class: 'btn btn-cancel'

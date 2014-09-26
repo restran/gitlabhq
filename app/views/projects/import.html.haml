@@ -18,7 +18,7 @@
   - if can?(current_user, :admin_project, @project)
     = form_for @project, url: retry_import_project_path(@project), method: :put, html: { class: 'form-horizontal' } do |f|
       .form-group.import-url-data
-        = f.label :import_url, '导入 URL', class: 'control-label' do
+        = f.label :import_url, class: 'control-label' do
           %span 导入已存在的版本库
         .col-sm-10
           = f.text_field :import_url, class: 'form-control', placeholder: 'https://github.com/randx/six.git'
