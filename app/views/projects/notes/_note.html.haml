@@ -7,16 +7,16 @@
         .note-actions
           = link_to "##{dom_id(note)}", name: dom_id(note) do
             %i.icon-link
-            Link here
+            链接
           &nbsp;
           - if can?(current_user, :admin_note, note) && note.editable?
-            = link_to "#", title: "Edit comment", class: "js-note-edit" do
+            = link_to "#", title: "编辑评论", class: "js-note-edit" do
               %i.icon-edit
-              Edit
+              编辑
             &nbsp;
-            = link_to project_note_path(@project, note), title: "Remove comment", method: :delete, data: { confirm: 'Are you sure you want to remove this comment?' }, remote: true, class: "danger js-note-delete" do
+            = link_to project_note_path(@project, note), title: "删除评论", method: :delete, data: { confirm: '确定要删除评论么？' }, remote: true, class: "danger js-note-delete" do
               %i.icon-trash.cred
-              Remove
+              删除
         = link_to_member(@project, note.author, avatar: false)
         %span.note-last-update
           = note_timestamp(note)
@@ -41,17 +41,17 @@
             = f.text_area :note, class: 'note_text js-note-text js-gfm-input turn-on'
 
             .form-actions.clearfix
-              = f.submit 'Save changes', class: "btn btn-primary btn-save js-comment-button"
+              = f.submit '保存修改', class: "btn btn-primary btn-save js-comment-button"
 
               .note-form-option
                 %a.choose-btn.btn.js-choose-note-attachment-button
                   %i.icon-paper-clip
-                  %span Choose File ...
+                  %span 选择文件...
                 &nbsp;
-                %span.file_name.js-attachment-filename File name...
+                %span.file_name.js-attachment-filename 文件名...
                 = f.file_field :attachment, class: "js-note-attachment-input hidden"
 
-              = link_to  'Cancel', "#", class: "btn btn-cancel note-edit-cancel"
+              = link_to  '取消', "#", class: "btn btn-cancel note-edit-cancel"
 
 
       - if note.attachment.url

@@ -1,10 +1,10 @@
 %h4
-  #{@search_results.total_count} results found
+  找到 #{@search_results.total_count} 个结果
   - unless @show_snippets
     - if @project
-      for #{link_to @project.name_with_namespace, @project}
+      来自 #{link_to @project.name_with_namespace, @project}
     - elsif @group
-      for #{link_to @group.name, @group}
+      来自 #{link_to @group.name, @group}
 
 %hr
 

@@ -1,7 +1,7 @@
 .file-editor
   %ul.nav.nav-tabs.js-edit-mode
     %li.active
-      = link_to 'Edit', '#editor'
+      = link_to '编辑', '#editor'
     %li
       = link_to editing_preview_title(@blob.name), '#preview', 'data-preview-url' => preview_project_edit_tree_path(@project, @id)
 
@@ -14,7 +14,7 @@
           = @path
         %span.options
           .btn-group.tree-btn-group
-            = link_to "Cancel", @after_edit_path, class: "btn btn-tiny btn-cancel", data: { confirm: leave_edit_message }
+            = link_to "取消", @after_edit_path, class: "btn btn-tiny btn-cancel", data: { confirm: leave_edit_message }
       .file-content.code
         %pre.js-edit-mode-pane#editor
         .js-edit-mode-pane#preview.hide
@@ -24,20 +24,20 @@
 
     .form-group.commit_message-group
       = label_tag 'commit_message', class: "control-label" do
-        Commit message
+        提交信息
       .col-sm-10
         = render 'shared/commit_message_container', {textarea: text_area_tag('commit_message', '',
-            placeholder: "Update #{@blob.name}", required: true, rows: 3, class: 'form-control')}
+            placeholder: "更新 #{@blob.name}", required: true, rows: 3, class: 'form-control')}
     .form-actions
       = hidden_field_tag 'last_commit', @last_commit
       = hidden_field_tag 'content', '', id: "file-content"
       = hidden_field_tag 'from_merge_request_id', params[:from_merge_request_id]
       .commit-button-annotation
-        = button_tag "Commit changes", class: 'btn commit-btn js-commit-button btn-primary'
+        = button_tag "提交修改", class: 'btn commit-btn js-commit-button btn-primary'
         .message
-          to branch
+          到分支
           %strong= @ref
-      = link_to "Cancel", @after_edit_path, class: "btn btn-cancel", data: { confirm: leave_edit_message}
+      = link_to "取消", @after_edit_path, class: "btn btn-cancel", data: { confirm: leave_edit_message}
 
 :javascript
   ace.config.set("modePath", gon.relative_url_root + "#{Gitlab::Application.config.assets.prefix}/ace")

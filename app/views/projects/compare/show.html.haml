@@ -1,20 +1,20 @@
 = render "projects/commits/head"
 
 %h3.page-title
-  Compare View
+  比较视图
 
 = render "form"
 
 - if @commits.present?
   %div.panel.panel-default
     .panel-heading
-      Commits (#{@commits.count})
+      提交 (#{@commits.count})
     - if @commits.size > MergeRequestDiff::COMMITS_SAFE_SIZE
       %ul.well-list
         - Commit.decorate(@commits.first(MergeRequestDiff::COMMITS_SAFE_SIZE)).each do |commit|
           = render "projects/commits/inline_commit", commit: commit, project: @project
         %li.warning-row.unstyled
-          other #{@commits.size - MergeRequestDiff::COMMITS_SAFE_SIZE} commits hidden to prevent performance issues.
+          其他 #{@commits.size - MergeRequestDiff::COMMITS_SAFE_SIZE} 次提交因为性能问题而隐藏。
     - else
       %ul.well-list= render Commit.decorate(@commits), project: @project
 
@@ -24,12 +24,12 @@
   .light-well
     .center
       %h4
-        There isn't anything to compare.
+        没有内容需要比较。
       %p.slead
         - if params[:to] == params[:from]
           %span.label-branch #{params[:from]}
-          and
+          与
           %span.label-branch #{params[:to]}
-          are the same.
+          内容一致。
         - else
-          You'll need to use different branch names to get a valid comparison.
+          需要选择不同的分支用于比较。

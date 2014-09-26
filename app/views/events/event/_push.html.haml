@@ -6,7 +6,7 @@
   - else
     = link_to project_commits_path(event.project, event.ref_name) do
       %strong= event.ref_name
-  at
+  在
   = link_to_project event.project
 
 - if event.push_with_commits?
@@ -20,6 +20,6 @@
       - if event.commits_count > 1
         %li.commits-stat
           - if event.commits_count > 2
-            %span ... and #{event.commits_count - 2} more commits.
+            %span ... 和 #{event.commits_count - 2}  次更多提交。
           = link_to project_compare_path(event.project, from: event.commit_from, to: event.commit_to) do
-            %strong Compare &rarr; #{event.commit_from[0..7]}...#{event.commit_to[0..7]}
+            %strong 比较 &rarr; #{event.commit_from[0..7]}...#{event.commit_to[0..7]}

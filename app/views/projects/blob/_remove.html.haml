@@ -3,24 +3,24 @@
     .modal-content
       .modal-header
         %a.close{href: "#", "data-dismiss" => "modal"} ×
-        %h3.page-title Remove #{@blob.name}
+        %h3.page-title 删除 #{@blob.name}
         %p.light
-          From branch
+          来自分支
           %strong= @ref
 
       .modal-body
         = form_tag project_blob_path(@project, @id), method: :delete, class: 'form-horizontal' do
           .form-group.commit_message-group
             = label_tag 'commit_message', class: "control-label" do
-              Commit message
+              提交信息
             .col-sm-10
               = render 'shared/commit_message_container', {textarea: text_area_tag('commit_message',
-                  params[:commit_message], placeholder: "Removed this file because...", required: true, rows: 3, class: 'form-control')}
+                  params[:commit_message], placeholder: "删除文件原因...", required: true, rows: 3, class: 'form-control')}
           .form-group
             .col-sm-2
             .col-sm-10
-              = submit_tag 'Remove file', class: 'btn btn-remove btn-remove-file'
-              = link_to "Cancel", '#', class: "btn btn-cancel", "data-dismiss" => "modal"
+              = submit_tag '删除文件', class: 'btn btn-remove btn-remove-file'
+              = link_to "取消", '#', class: "btn btn-cancel", "data-dismiss" => "modal"
 
 :javascript
   disableButtonIfEmptyField('#commit_message', '.btn-remove-file')

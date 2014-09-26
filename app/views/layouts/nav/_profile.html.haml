@@ -1,26 +1,26 @@
 %ul
   = nav_link(path: 'profiles#show', html_options: {class: 'home'}) do
-    = link_to profile_path, title: "Profile" do
-      Profile
+    = link_to profile_path, title: "个人资料" do
+      个人资料
   = nav_link(controller: :accounts) do
-    = link_to "Account", profile_account_path
+    = link_to "账号", profile_account_path
   = nav_link(controller: :emails) do
     = link_to profile_emails_path do
-      Emails
+      电子邮箱
       %span.count= current_user.emails.count + 1
   - unless current_user.ldap_user?
     = nav_link(controller: :passwords) do
-      = link_to "Password", edit_profile_password_path
+      = link_to "密码", edit_profile_password_path
   = nav_link(controller: :notifications) do
-    = link_to "Notifications", profile_notifications_path
+    = link_to "通知", profile_notifications_path
   = nav_link(controller: :keys) do
     = link_to profile_keys_path do
-      SSH Keys
+      SSH 密钥
       %span.count= current_user.keys.count
   = nav_link(path: 'profiles#design') do
-    = link_to "Design", design_profile_path
+    = link_to "风格", design_profile_path
   = nav_link(controller: :groups) do
-    = link_to "Groups", profile_groups_path
+    = link_to "群组", profile_groups_path
   = nav_link(path: 'profiles#history') do
-    = link_to "History", history_profile_path
+    = link_to "历史", history_profile_path
 

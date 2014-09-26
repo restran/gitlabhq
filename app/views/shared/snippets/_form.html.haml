@@ -7,28 +7,28 @@
             %li= msg
 
     .form-group
-      = f.label :title, class: 'control-label'
-      .col-sm-10= f.text_field :title, placeholder: "Example Snippet", class: 'form-control', required: true
+      = f.label :title, "标题", class: 'control-label'
+      .col-sm-10= f.text_field :title, placeholder: "代码片段示例", class: 'form-control', required: true
 
     - unless @snippet.respond_to?(:project)
       .form-group
-        = f.label "Access", class: 'control-label'
+        = f.label "访问", class: 'control-label'
         .col-sm-10
           = f.label :private_true, class: 'radio-label' do
             = f.radio_button :private, true
             %span
-              %strong Private
-              (only you can see this snippet)
+              %strong 私有
+              (只有自己能看到该代码片段)
           %br
           = f.label :private_false, class: 'radio-label' do
             = f.radio_button :private, false
             %span
-              %strong Public
-              (GitLab users can see this snippet)
+              %strong 公开
+              (Git 版本库用户可以看到该代码片段)
 
     .form-group
       .file-editor
-        = f.label :file_name, "File", class: 'control-label'
+        = f.label :file_name, "文件", class: 'control-label'
         .col-sm-10
           .file-holder.snippet
             .file-title
@@ -39,14 +39,14 @@
 
     .form-actions
       - if @snippet.new_record?
-        = f.submit 'Create snippet', class: "btn-create btn"
+        = f.submit '创建代码片段', class: "btn-create btn"
       - else
-        = f.submit 'Save', class: "btn-save btn"
+        = f.submit '保存', class: "btn-save btn"
 
       - if @snippet.respond_to?(:project)
-        = link_to "Cancel", project_snippets_path(@project), class: "btn btn-cancel"
+        = link_to "取消", project_snippets_path(@project), class: "btn btn-cancel"
       - else
-        = link_to "Cancel", snippets_path(@project), class: "btn btn-cancel"
+        = link_to "取消", snippets_path(@project), class: "btn btn-cancel"
 
 :javascript
   var editor = ace.edit("editor");

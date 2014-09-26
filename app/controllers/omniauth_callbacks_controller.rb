@@ -1,3 +1,4 @@
+#encoding: utf-8
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   Gitlab.config.omniauth.providers.each do |provider|
     define_method provider['name'] do
@@ -61,7 +62,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
           error_message = errors.map{ |attribute, message| "#{attribute} #{message}" }.join(", ")
           redirect_to omniauth_error_path(oauth['provider'], error: error_message) and return
         else
-          flash[:notice] = "There's no such user!"
+          flash[:notice] = "没有这样的用户！"
         end
         redirect_to new_user_session_path
       end

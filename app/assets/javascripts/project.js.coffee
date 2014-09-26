@@ -50,4 +50,4 @@ $ ->
   $('.project-home-panel .star').on 'ajax:success', (e, data, status, xhr) ->
     $(@).toggleClass('on').find('.count').html(data.star_count)
   .on 'ajax:error', (e, xhr, status, error) ->
-    new Flash('Star toggle failed. Try again later.', 'alert')
+    new Flash('切换标记失败。请稍后重试。', 'alert')

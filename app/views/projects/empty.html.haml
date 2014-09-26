@@ -2,14 +2,14 @@
 
 %div.git-empty
   %fieldset
-    %legend Git global setup:
+    %legend Git 全局设置:
     %pre.dark
       :preserve
         git config --global user.name "#{git_user_name}"
         git config --global user.email "#{git_user_email}"
 
   %fieldset
-    %legend Create Repository
+    %legend 创建版本库
     %pre.dark
       :preserve
         mkdir #{@project.path}
@@ -22,7 +22,7 @@
         git push -u origin master
 
   %fieldset
-    %legend Existing Git Repo?
+    %legend Git 版本库已经存在？
     %pre.dark
       :preserve
         cd existing_git_repo
@@ -31,4 +31,4 @@
 
 - if can? current_user, :remove_project, @project
   .prepend-top-20
-    = link_to 'Remove project', @project, data: { confirm: remove_project_message(@project)}, method: :delete, class: "btn btn-remove pull-right"
+    = link_to '删除项目', @project, data: { confirm: remove_project_message(@project)}, method: :delete, class: "btn btn-remove pull-right"

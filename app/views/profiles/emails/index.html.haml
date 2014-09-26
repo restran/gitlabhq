@@ -1,33 +1,32 @@
 %h3.page-title
-  My email addresses
+  电子邮箱地址
 %p.light
-  Your
-  %b Primary Email
-  will be used for account notifications, avatar detection and web based operations, such as edits and merges.
+  %b 主要电子邮箱
+  将用于账号通知、头像显示和在网站操作，比如：编辑和合并操作。
   %br
-  All email addresses will be used to identify your commits.
+  所有电子邮箱地址都将用于识别提交作者。
 
 %hr
 
 .panel.panel-default
   .panel-heading
-    Emails (#{@emails.count + 1})
+    电子邮箱 (#{@emails.count + 1})
   %ul.well-list#emails-table
     %li
       %strong= @primary
-      %span.label.label-success Primary Email
+      %span.label.label-success 主要电子邮箱
     - @emails.each do |email|
       %li
         %strong= email.email
         %span.cgray
           added #{time_ago_with_tooltip(email.created_at)}
-        = link_to 'Remove', profile_email_path(email), data: { confirm: 'Are you sure?'}, method: :delete, class: 'btn btn-small btn-remove pull-right'
+        = link_to '删除', profile_email_path(email), data: { confirm: '确定要继续么？'}, method: :delete, class: 'btn btn-small btn-remove pull-right'
 
-%h4 Add email address
+%h4 增加电子邮箱地址
 = form_for 'email', url: profile_emails_path, html: { class: 'form-horizontal' } do |f|
   .form-group
     = f.label :email, class: 'control-label'
     .col-sm-10
       = f.text_field :email, class: 'form-control'
   .form-actions
-    = f.submit 'Add', class: 'btn btn-create'
+    = f.submit '增加', class: 'btn btn-create'

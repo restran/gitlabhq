@@ -1,25 +1,25 @@
 %ul
   = nav_link(path: 'groups#show', html_options: {class: 'home'}) do
-    = link_to group_path(@group), title: "Home" do
-      Activity
+    = link_to group_path(@group), title: "主页" do
+      活动
   = nav_link(controller: [:group, :milestones]) do
     = link_to group_milestones_path(@group) do
-      Milestones
+      里程碑
   = nav_link(path: 'groups#issues') do
     = link_to issues_group_path(@group) do
-      Issues
+      问题
       - if current_user
         %span.count= current_user.assigned_issues.opened.of_group(@group).count
   = nav_link(path: 'groups#merge_requests') do
     = link_to merge_requests_group_path(@group) do
-      Merge Requests
+      合并请求
       - if current_user
         %span.count= current_user.cared_merge_requests.opened.of_group(@group).count
   = nav_link(path: 'groups#members') do
-    = link_to "Members", members_group_path(@group)
+    = link_to "成员", members_group_path(@group)
 
   - if can?(current_user, :manage_group, @group)
     = nav_link(path: 'groups#edit') do
       = link_to edit_group_path(@group), class: "tab " do
-        Settings
+        设置
 

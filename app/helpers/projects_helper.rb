@@ -128,9 +128,9 @@ module ProjectsHelper
 
     toggle_html = content_tag('span', class: 'toggle') do
       toggle_text = if starred
-                      'Unstar'
+                      '取消标记'
                     else
-                      'Star'
+                      '标记'
                     end
 
       content_tag('i', ' ', class: 'icon-star') + toggle_text
@@ -202,36 +202,36 @@ module ProjectsHelper
     # In order to prevent 500 error
     # when application cannot allocate memory
     # to calculate repo size - just show 'Unknown'
-    'unknown'
+    '未知'
   end
 
   def project_head_title
     title = @project.name_with_namespace
 
     title = if current_controller?(:tree)
-              "#{@project.path}\/#{@path} at #{@ref} - " + title
+              "#{@project.path}\/#{@path} 在 #{@ref} - " + title
             elsif current_controller?(:issues)
               if current_action?(:show)
-                "Issue ##{@issue.iid} - #{@issue.title} - " + title
+                "问题 ##{@issue.iid} - #{@issue.title} - " + title
               else
-                "Issues - " + title
+                "问题 - " + title
               end
             elsif current_controller?(:blob)
-              "#{@project.path}\/#{@blob.path} at #{@ref} - " + title
+              "#{@project.path}\/#{@blob.path} 在 #{@ref} - " + title
             elsif current_controller?(:commits)
-              "Commits at #{@ref} - " + title
+              "提交到 #{@ref} - " + title
             elsif current_controller?(:merge_requests)
               if current_action?(:show)
-                "Merge request ##{@merge_request.iid} - " + title
+                "合并请求 ##{@merge_request.iid} - " + title
               else
-                "Merge requests - " + title
+                "合并请求 - " + title
               end
             elsif current_controller?(:wikis)
-              "Wiki - " + title
+              "维基 - " + title
             elsif current_controller?(:network)
-              "Network graph - " + title
+              "网络图 - " + title
             elsif current_controller?(:graphs)
-              "Graphs - " + title
+              "图表 - " + title
             else
               title
             end
@@ -252,7 +252,7 @@ module ProjectsHelper
     if project.last_activity_at
       time_ago_with_tooltip(project.last_activity_at, 'bottom', 'last_activity_time_ago')
     else
-      "Never"
+      "从未"
     end
   end
 

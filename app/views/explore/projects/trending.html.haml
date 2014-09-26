@@ -1,11 +1,11 @@
 .explore-trending-block
   %p.lead
     %i.icon-comments-alt
-    See most discussed projects for last month
+    查看上个月最多讨论的项目
   %hr
   .public-projects
     %ul.bordered-list
       = render @trending_projects
 
   .center
-    = link_to 'Show all projects', explore_projects_path, class: 'btn btn-primary'
+    = link_to '显示所有项目', explore_projects_path, class: 'btn btn-primary'

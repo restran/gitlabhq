@@ -1,14 +1,14 @@
-%h3.page-title Protected branches
-%p.light This ability allows to keep stable branches secured and force code review before merge to protected branches
+%h3.page-title 保护的分支
+%p.light 此功能用于保护稳定分支被覆盖以及合并保护分支前必须强制代码评审。
 %hr
 
 .bs-callout.bs-callout-info
-  %p Protected branches designed to
+  %p 保护的分支设计为：
   %ul
     %li prevent push for all except #{link_to "masters", help_page_path("permissions", "permissions"), class: "vlink"}
     %li prevent branch from force push
     %li prevent branch from removal
-  %p Read more about project permissions #{link_to "here", help_page_path("permissions", "permissions"), class: "underlined-link"}
+  %p 关于项目权限点击 #{link_to "这里", help_page_path("permissions", "permissions"), class: "underlined-link"} 了解更多
 
 - if can? current_user, :admin_project, @project
   = form_for [@project, @protected_branch], html: { class: 'form-horizontal' } do |f|
@@ -19,13 +19,13 @@
             %li= msg
 
     .form-group
-      = f.label :name, "Branch", class: 'control-label'
+      = f.label :name, "分支", class: 'control-label'
       .col-sm-10
-        = f.select(:name, @project.open_branches.map { |br| [br.name, br.name] } , {include_blank: "Select branch"}, {class: "select2"})
+        = f.select(:name, @project.open_branches.map { |br| [br.name, br.name] } , {include_blank: "选择分支"}, {class: "select2"})
     .form-actions
-      = f.submit 'Protect', class: "btn-create btn"
+      = f.submit '保护', class: "btn-create btn"
 - unless @branches.empty?
-  %h5 Already Protected:
+  %h5 已经保护的：
   %ul.bordered-list.protected-branches-list
     - @branches.each do |branch|
       %li
@@ -33,12 +33,12 @@
           = link_to project_commits_path(@project, branch.name) do
             %strong= branch.name
             - if @project.root_ref?(branch.name)
-              %span.label.label-info default
+              %span.label.label-info 默认
             %span.label.label-success
               %i.icon-lock
           .pull-right
             - if can? current_user, :admin_project, @project
-              = link_to 'Unprotect', [@project, branch], data: { confirm: 'Branch will be writable for developers. Are you sure?' }, method: :delete, class: "btn btn-remove btn-small"
+              = link_to '取消保护', [@project, branch], data: { confirm: '该分支将允许开发者修改。确定要继续么？' }, method: :delete, class: "btn btn-remove btn-small"
 
         - if commit = branch.commit
           = link_to project_commit_path(@project, commit.id), class: 'commit_short_id' do
@@ -47,4 +47,4 @@
             = gfm escape_once(truncate(commit.title, length: 40))
           #{time_ago_with_tooltip(commit.committed_date)}
         - else
-          (branch was removed from repository)
+          (分支已从仓库中删除)

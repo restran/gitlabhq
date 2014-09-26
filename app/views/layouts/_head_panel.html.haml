@@ -3,13 +3,13 @@
     .container
       %div.app_logo
         %span.separator
-        = link_to root_path, class: "home has_bottom_tooltip", title: "Dashboard" do
+        = link_to root_path, class: "home has_bottom_tooltip", title: "仪表盘" do
           %h1 GITLAB
         %span.separator
       %h1.title= title
 
       %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
-        %span.sr-only Toggle navigation
+        %span.sr-only 切换导航
         %i.icon-reorder
 
       .navbar-collapse.collapse
@@ -17,32 +17,32 @@
           %li.hidden-sm.hidden-xs
             = render "layouts/search"
           %li.visible-sm.visible-xs
-            = link_to search_path, title: "Search", class: 'has_bottom_tooltip', 'data-original-title' => 'Search area' do
+            = link_to search_path, title: "搜索", class: 'has_bottom_tooltip', 'data-original-title' => '搜索区域' do
               %i.icon-search
           %li
-            = link_to help_path, title: 'Help', class: 'has_bottom_tooltip',
-               'data-original-title' => 'Help'  do
+            = link_to help_path, title: '帮助', class: 'has_bottom_tooltip',
+               'data-original-title' => '帮助'  do
               %i.icon-question-sign
           %li
-            = link_to explore_root_path, title: "Explore", class: 'has_bottom_tooltip', 'data-original-title' => 'Public area' do
+            = link_to explore_root_path, title: "浏览", class: 'has_bottom_tooltip', 'data-original-title' => '公开区域' do
               %i.icon-globe
           %li
-            = link_to user_snippets_path(current_user), title: "My snippets", class: 'has_bottom_tooltip', 'data-original-title' => 'My snippets' do
+            = link_to user_snippets_path(current_user), title: "我的代码片段", class: 'has_bottom_tooltip', 'data-original-title' => '我的代码片段' do
               %i.icon-paste
           - if current_user.is_admin?
             %li
-              = link_to admin_root_path, title: "Admin area", class: 'has_bottom_tooltip', 'data-original-title' => 'Admin area' do
+              = link_to admin_root_path, title: "管理区域", class: 'has_bottom_tooltip', 'data-original-title' => '管理区域' do
                 %i.icon-cogs
           - if current_user.can_create_project?
             %li
-              = link_to new_project_path, title: "New project", class: 'has_bottom_tooltip', 'data-original-title' => 'New project'  do
+              = link_to new_project_path, title: "新项目", class: 'has_bottom_tooltip', 'data-original-title' => '新项目'  do
                 %i.icon-plus
           %li
-            = link_to profile_path, title: "Profile settings", class: 'has_bottom_tooltip', 'data-original-title' => 'Profile settings"'  do
+            = link_to profile_path, title: "资料设置", class: 'has_bottom_tooltip', 'data-original-title' => '资料设置"'  do
               %i.icon-user
           %li
-            = link_to destroy_user_session_path, class: "logout", method: :delete, title: "Logout", class: 'has_bottom_tooltip', 'data-original-title' => 'Logout'  do
+            = link_to destroy_user_session_path, class: "logout", method: :delete, title: "退出", class: 'has_bottom_tooltip', 'data-original-title' => 'Logout'  do
               %i.icon-signout
           %li.hidden-xs
             = link_to current_user, class: "profile-pic", id: 'profile-pic' do
-              = image_tag avatar_icon(current_user.email, 26), alt: 'User activity'
+              = image_tag avatar_icon(current_user.email, 26), alt: '用户'

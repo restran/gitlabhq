@@ -1,6 +1,6 @@
-%h3 #{@author.name} pushed to #{@branch} at #{@project.name_with_namespace}
+%h3 #{@author.name} 推送到 #{@project.name_with_namespace} 的分支 #{@branch}
 
-%h4 Commits:
+%h4 提交:
 
 %ul
   - @commits.each do |commit|
@@ -9,7 +9,7 @@
       %span by #{commit.author_name}
       %pre #{commit.safe_message}
 
-%h4 Changes:
+%h4 变更:
 - @diffs.each do |diff|
   %li
     %strong
@@ -25,4 +25,4 @@
     %br
 
 - if @compare.timeout
-  %h5 Huge diff. To prevent performance issues changes are hidden
+  %h5 巨大差异。因为性能原因隐藏问题变更

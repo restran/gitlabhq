@@ -1,12 +1,12 @@
 %div.issue-form-holder
-  %h3.page-title= @issue.new_record? ? "New Issue" : "Edit Issue ##{@issue.iid}"
+  %h3.page-title= @issue.new_record? ? "新问题" : "编辑问题 ##{@issue.iid}"
   %hr
   - if @repository.exists? && !@repository.empty? && @repository.contribution_guide && !@issue.persisted?
     - contribution_guide_url = project_blob_path(@project, tree_join(@repository.root_ref, @repository.contribution_guide.name))
     .row
       .col-sm-10.col-sm-offset-2
         .alert.alert-info
-          = "Please review the <strong>#{link_to "guidelines for contribution", contribution_guide_url}</strong> to this repository.".html_safe
+          = "请先阅读本版本仓库的 <strong>#{link_to "指导原则", contribution_guide_url}</strong>。".html_safe
 
   = form_for [@project, @issue], html: { class: 'form-horizontal issue-form' } do |f|
     -if @issue.errors.any?
@@ -20,18 +20,18 @@
     .form-group
       = f.label :label_ids, class: 'control-label' do
         %i.icon-tag
-        Labels
+        标签
       .col-sm-10
         = f.collection_select :label_ids, @project.labels.all, :id, :name, { selected: @issue.label_ids }, multiple: true, class: 'select2'
 
     .form-actions
       - if @issue.new_record?
-        = f.submit 'Submit new issue', class: "btn btn-create"
+        = f.submit '提交新问题', class: "btn btn-create"
       -else
-        = f.submit 'Save changes', class: "btn-save btn"
+        = f.submit '保存修改', class: "btn-save btn"
 
       - cancel_path = @issue.new_record? ? project_issues_path(@project) : project_issue_path(@project, @issue)
-      = link_to "Cancel", cancel_path, class: 'btn btn-cancel'
+      = link_to "取消", cancel_path, class: 'btn btn-cancel'
 
 :javascript
   $('.assign-to-me-link').on('click', function(e){

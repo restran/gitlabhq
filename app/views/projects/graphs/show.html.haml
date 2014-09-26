@@ -2,19 +2,19 @@
   .center
     %h3.page-title
       %i.icon-spinner.icon-spin
-      Building repository graph.
-    %p Please wait a moment, this page will automatically refresh when ready.
+      正在构建版本库图表。
+    %p 请稍候，成功后会自动刷新页面。
 
 .stat-graph
   .header.clearfix
     .pull-right
       %select
-        %option{:value => "commits"} Commits
-        %option{:value => "additions"} Additions
-        %option{:value => "deletions"} Deletions
+        %option{:value => "commits"} 提交
+        %option{:value => "additions"} 增加
+        %option{:value => "deletions"} 删除
     %h3#date_header.page-title
     %p.light
-      Commits to #{@project.default_branch}, excluding merge commits. Limited by 6,000 commits
+      提交到 #{@project.default_branch}，排除合并提交。限制为 6,000 次提交。
     %input#brush_change{:type => "hidden"}
   .graphs
     #contributors-master

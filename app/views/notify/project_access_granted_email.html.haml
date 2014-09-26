@@ -1,5 +1,5 @@
 %p
-  = "You have been granted #{@users_project.human_access} access to project"
+  = "你被授权为 #{@users_project.human_access} 身份访问项目"
 %p
   = link_to project_url(@project) do
     = @project.name_with_namespace

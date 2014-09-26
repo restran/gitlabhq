@@ -2,7 +2,7 @@
 .panel.panel-default
   .panel-heading
     %strong #{@group.name}
-    group members (#{group_users_count})
+    群组成员 (#{group_users_count})
     .pull-right
       = link_to members_group_path(@group), class: 'btn btn-small' do
         %i.icon-edit
@@ -11,4 +11,4 @@
       = render 'users_groups/users_group', member: member, show_controls: false
     - if group_users_count > 20
       %li
-        and #{group_users_count - 20} more. For full list visit #{link_to 'group members page', members_group_path(@group)}
+        和 #{group_users_count - 20} 个更多成员。查看全部列表请访问#{link_to '群组成员页', members_group_path(@group)}

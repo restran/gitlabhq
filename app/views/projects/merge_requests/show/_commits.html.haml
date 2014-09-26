@@ -2,16 +2,16 @@
   .panel.panel-default
     .panel-heading
       %i.icon-list
-      Commits (#{@commits.count})
+      提交 (#{@commits.count})
     .commits.mr-commits
       - if @commits.count > 8
         %ul.first-commits.well-list
           - @commits.first(8).each do |commit|
             = render "projects/commits/commit", commit: commit, project: @merge_request.source_project
           %li.bottom
-            8 of #{@commits.count} commits displayed.
+            已显示 8 / #{@commits.count} 提交
             %strong
-              %a.show-all-commits Click here to show all
+              %a.show-all-commits 显示所有
         - if @commits.size > MergeRequestDiff::COMMITS_SAFE_SIZE
           %ul.all-commits.hide.well-list
             - @commits.first(MergeRequestDiff::COMMITS_SAFE_SIZE).each do |commit|

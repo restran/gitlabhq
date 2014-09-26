@@ -6,7 +6,7 @@
 
     - if current_page?(starred_explore_projects_path)
       %strong.pull-right
-        = pluralize project.star_count, 'star'
+        = pluralize project.star_count, '个标记', '个标记'
 
   .project-info
     - if project.description.present?
@@ -15,11 +15,11 @@
 
     .repo-info
       - unless project.empty_repo?
-        = link_to pluralize(project.repository.round_commit_count, 'commit'), project_commits_path(project, project.default_branch)
+        = link_to pluralize(project.repository.round_commit_count, '次提交', '次提交'), project_commits_path(project, project.default_branch)
         &middot;
-        = link_to pluralize(project.repository.branch_names.count, 'branch'), project_branches_path(project)
+        = link_to pluralize(project.repository.branch_names.count, '个分支', '个分支'), project_branches_path(project)
         &middot;
-        = link_to pluralize(project.repository.tag_names.count, 'tag'), project_tags_path(project)
+        = link_to pluralize(project.repository.tag_names.count, '个标签', '个标签'), project_tags_path(project)
       - else
         %i.icon-warning-sign
-        Empty repository
+        空版本库

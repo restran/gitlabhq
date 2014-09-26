@@ -5,9 +5,9 @@
       - if @repository.contribution_guide && !@merge_request.persisted?
         - contribution_guide_url = project_blob_path(@project, tree_join(@repository.root_ref, @repository.contribution_guide.name))
         .alert.alert-info
-          Please review the
-          %strong #{link_to "guidelines for contribution", contribution_guide_url}
-          to this repository.
+          请先阅读本版本仓库的
+          %strong #{link_to "指导原则", contribution_guide_url}
+          。
 
       -if @merge_request.errors.any?
         .alert.alert-danger
@@ -19,21 +19,21 @@
     .form-group
       = f.label :label_ids, class: 'control-label' do
         %i.icon-tag
-        Labels
+        标签
       .col-sm-10
         = f.collection_select :label_ids, @merge_request.target_project.labels.all, :id, :name, { selected: @merge_request.label_ids }, multiple: true, class: 'select2'
 
   .form-actions
     - if @merge_request.new_record?
-      = f.submit 'Submit merge request', class: "btn btn-create"
+      = f.submit '提交合并请求', class: "btn btn-create"
     -else
-      = f.submit 'Save changes', class: "btn btn-save"
+      = f.submit '保存修改', class: "btn btn-save"
     - if @merge_request.new_record?
       = link_to project_merge_requests_path(@source_project), class: "btn btn-cancel" do
-        Cancel
+        取消
     - else
       = link_to project_merge_request_path(@target_project, @merge_request), class: "btn btn-cancel" do
-        Cancel
+        取消
 
 :javascript
   disableButtonIfEmptyField("#merge_request_title", ".btn-save");
