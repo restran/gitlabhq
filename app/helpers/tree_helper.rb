@@ -86,14 +86,14 @@ module TreeHelper
   end
 
   def leave_edit_message
-    "Leave edit mode?\nAll unsaved changes will be lost."
+    "要离开编辑模式么？\n所有未保存修改将会丢失。"
   end
 
   def editing_preview_title(filename)
     if gitlab_markdown?(filename) || markup?(filename)
-      'Preview'
+      '预览'
     else
-      'Diff'
+      '差异'
     end
   end
 end

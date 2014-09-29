@@ -105,7 +105,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        flash[:alert] = "Project deleted."
+        flash[:alert] = "项目已删除。"
 
         if request.referer.include?("/admin")
           redirect_to admin_projects_path

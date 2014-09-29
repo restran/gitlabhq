@@ -1,6 +1,6 @@
 module ProjectsHelper
   def remove_from_project_team_message(project, user)
-    "You are going to remove #{user.name} from #{project.name} project team. Are you sure?"
+    "将要从 #{project.name} 项目组删除 #{user.name} 。确定要继续么？"
   end
 
   def link_to_project project
@@ -53,7 +53,7 @@ module ProjectsHelper
   end
 
   def remove_project_message(project)
-    "You are going to remove #{project.name_with_namespace}.\n Removed project CANNOT be restored!\n Are you ABSOLUTELY sure?"
+    "将要删除 #{project.name_with_namespace} 。\n 删除项目后无法恢复！\n 百分之百确定要继续么？"
   end
 
   def project_nav_tabs
