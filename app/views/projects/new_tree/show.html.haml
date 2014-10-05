@@ -24,7 +24,7 @@
       = label_tag 'commit_message', class: "control-label" do
         提交信息
       .col-sm-10
-        = render 'shared/commit_message_container', {textarea: text_area_tag('commit_message form-control',
+        = render 'shared/commit_message_container', {textarea: text_area_tag('commit_message',
             params[:commit_message], placeholder: "增加新文件", required: true, rows: 3, class: 'form-control')}
 
     .file-holder
