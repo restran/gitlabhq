@@ -29,12 +29,12 @@
     &larr; 回到合并请求
 
   %span.prepend-left-20
-    %span From
+    %span 从
     - if @merge_request.for_fork?
       %strong.label-branch #{@merge_request.source_project_namespace}:#{@merge_request.source_branch}
-      %span into
+      %span 到
       %strong.label-branch #{@merge_request.target_project_namespace}:#{@merge_request.target_branch}
     - else
       %strong.label-branch #{@merge_request.source_branch}
-      %span into
+      %span 到
       %strong.label-branch #{@merge_request.target_branch}
