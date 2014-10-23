@@ -4,25 +4,25 @@
       %span= @group.errors.full_messages.first
   .form-group.group_name_holder
     = f.label :name, class: 'control-label' do
-      Group name
+      群组名称
     .col-sm-10
-      = f.text_field :name, placeholder: "Example Group", class: "form-control"
+      = f.text_field :name, placeholder: "示例群组", class: "form-control"
 
   .form-group.group-description-holder
-    = f.label :description, "Details", class: 'control-label'
+    = f.label :description, "详细", class: 'control-label'
     .col-sm-10
       = f.text_area :description, maxlength: 250, class: "form-control js-gfm-input", rows: 4
 
   .form-group.group-description-holder
-    = f.label :avatar, "Group avatar", class: 'control-label'
+    = f.label :avatar, "群组头像", class: 'control-label'
     .col-sm-10
       %a.choose-btn.btn.btn-small.js-choose-group-avatar-button
         %i.fa.fa-paperclip
-        %span Choose File ...
+        %span 选择文件...
       &nbsp;
-      %span.file_name.js-avatar-filename File name...
+      %span.file_name.js-avatar-filename 文件名...
       = f.file_field :avatar, class: "js-group-avatar-input hidden"
-      .light The maximum file size allowed is 100KB.
+      .light 允许的最大文件大小 100KB。
 
   - if @group.new_record?
     .form-group
@@ -30,28 +30,28 @@
       .col-sm-10
         .bs-callout.bs-callout-info
           %ul
-            %li A group is a collection of several projects
-            %li Groups are private by default
-            %li Members of a group may only view projects they have permission to access
-            %li Group project URLs are prefixed with the group namespace
-            %li Existing projects may be moved into a group
+            %li 群组是多个项目的集合。
+            %li 群组默认是私有的。
+            %li 只有群组的成员才有权查看项目。
+            %li 群组项目的 URL 都会带上群组的名字。
+            %li 现有项目可以转移到群组。
     .form-actions
-      = f.submit 'Create group', class: "btn btn-create"
-      = link_to  'Cancel', admin_groups_path, class: "btn btn-cancel"
+      = f.submit '创建群组', class: "btn btn-create"
+      = link_to  '取消', admin_groups_path, class: "btn btn-cancel"
 
   - else
     .form-group.group_name_holder
       = f.label :path, class: 'control-label' do
-        %span Group path
+        %span 群组路径
       .col-sm-10
         = f.text_field :path, placeholder: "example-group", class: "form-control danger"
         .bs-callout.bs-callout-danger
           %ul
-            %li Changing group path can have unintended side effects.
-            %li Renaming group path will rename directory for all related projects
-            %li It will change web url for access group and group projects.
-            %li It will change the git path to repositories under this group.
+            %li 修改群组路径会存在意想不到的副作用。
+            %li 重命名群组路径会重命名所有相关项目的路径
+            %li 包括改变群组和群组项目的网页访问链接。
+            %li 包括改变群组下版本库的 git 路径。
     .form-actions
-      = f.submit 'Save changes', class: "btn btn-primary"
-      = link_to  'Cancel', admin_group_path(@group), class: "btn btn-cancel"
+      = f.submit '保存修改', class: "btn btn-primary"
+      = link_to  '取消', admin_group_path(@group), class: "btn btn-cancel"
 

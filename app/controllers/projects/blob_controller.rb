@@ -1,3 +1,4 @@
+#encoding: utf-8
 # Controller for viewing a file's blame
 class Projects::BlobController < Projects::ApplicationController
   include ExtractsPath
@@ -17,7 +18,7 @@ class Projects::BlobController < Projects::ApplicationController
     result = Files::DeleteService.new(@project, current_user, params, @ref, @path).execute
 
     if result[:status] == :success
-      flash[:notice] = "Your changes have been successfully committed"
+      flash[:notice] = "你的更改已成功提交"
       redirect_to project_tree_path(@project, @ref)
     else
       flash[:alert] = result[:message]

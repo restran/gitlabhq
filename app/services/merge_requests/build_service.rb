@@ -1,3 +1,4 @@
+# encoding: utf-8
 module MergeRequests
   class BuildService < MergeRequests::BaseService
     def execute
@@ -13,7 +14,7 @@ module MergeRequests
       merge_request.target_branch ||= merge_request.target_project.default_branch
 
       unless merge_request.target_branch && merge_request.source_branch
-        return build_failed(merge_request, "You must select source and target branches")
+        return build_failed(merge_request, "必须选择来源和目标分支")
       end
 
       # Generate suggested MR title based on source branch name

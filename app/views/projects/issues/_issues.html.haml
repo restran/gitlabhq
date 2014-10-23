@@ -5,20 +5,20 @@
     .dropdown.inline
       %a.dropdown-toggle.btn{href: '#', "data-toggle" => "dropdown"}
         %i.fa.fa-user
-        %span.light assignee:
+        %span.light 指派：
         - if @assignee.present?
           %strong= @assignee.name
         - elsif params[:assignee_id] == "0"
-          Unassigned
+          未指派
         - else
-          Any
+          任何
         %b.caret
       %ul.dropdown-menu
         %li
           = link_to project_filter_path(assignee_id: nil) do
-            Any
+            任何
           = link_to project_filter_path(assignee_id: 0) do
-            Unassigned
+            未指派
         - @assignees.sort_by(&:name).each do |user|
           %li
             = link_to project_filter_path(assignee_id: user.id) do
@@ -28,20 +28,20 @@
     .dropdown.inline.prepend-left-10
       %a.dropdown-toggle.btn{href: '#', "data-toggle" => "dropdown"}
         %i.fa.fa-clock-o
-        %span.light milestone:
+        %span.light 里程碑：
         - if @milestone.present?
           %strong= @milestone.title
         - elsif params[:milestone_id] == "0"
-          None (backlog)
+          无 (积压)
         - else
-          Any
+          任何
         %b.caret
       %ul.dropdown-menu
         %li
           = link_to project_filter_path(milestone_id: nil) do
-            Any
+            任何
           = link_to project_filter_path(milestone_id: 0) do
-            None (backlog)
+            无 (积压)
         - project_active_milestones.each do |milestone|
           %li
             = link_to project_filter_path(milestone_id: milestone.id) do
@@ -54,23 +54,23 @@
   .clearfix
     .issues_bulk_update.hide
       = form_tag bulk_update_project_issues_path(@project), method: :post  do
-        = select_tag('update[status]', options_for_select([['Open', 'open'], ['Closed', 'closed']]), prompt: "Status")
-        = project_users_select_tag('update[assignee_id]', placeholder: 'Assignee')
-        = select_tag('update[milestone_id]', bulk_update_milestone_options, prompt: "Milestone")
+        = select_tag('update[status]', options_for_select([['未关闭', 'open'], ['已关闭', 'closed']]), prompt: "状态")
+        = project_users_select_tag('update[assignee_id]', placeholder: '指派')
+        = select_tag('update[milestone_id]', bulk_update_milestone_options, prompt: "里程碑")
         = hidden_field_tag 'update[issues_ids]', []
         = hidden_field_tag :status, params[:status]
-        = button_tag "Update issues", class: "btn update_selected_issues btn-save"
+        = button_tag "更新问题", class: "btn update_selected_issues btn-save"
 
 .panel.panel-default
   %ul.well-list.issues-list
     = render @issues
     - if @issues.blank?
       %li
-        .nothing-here-block No issues to show
+        .nothing-here-block 没有问题
 
 - if @issues.present?
   .pull-right
     %span.issue_counter #{@issues.total_count}
-    issues for this filter
+    个问题
 
   = paginate @issues, theme: "gitlab"

@@ -1,14 +1,14 @@
-#{@author.name} pushed to #{@branch} at #{link_to @project.name_with_namespace, project_url(@project)}
+#{@author.name} 推送到 #{link_to @project.name_with_namespace, project_url(@project)} 的 #{@branch} 分支
 
 \
-Commits:
+提交：
 - @commits.each do |commit|
-  #{link_to commit.short_id, project_commit_url(@project, commit)} by #{commit.author_name}
+  #{link_to commit.short_id, project_commit_url(@project, commit)} 由 #{commit.author_name}
   #{commit.safe_message}
   \- - - - -
 \
 \
-Changes:
+变更：
 - @diffs.each do |diff|
   \
   \=====================================
@@ -22,4 +22,4 @@ Changes:
   != diff.diff
 \
 - if @compare.timeout
-  Huge diff. To prevent performance issues it was hidden
+  巨大差异。因为性能原因隐藏问题变更

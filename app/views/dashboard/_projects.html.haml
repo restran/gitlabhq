@@ -1,10 +1,10 @@
 .panel.panel-default
   .panel-heading.clearfix
-    = search_field_tag :filter_projects, nil, placeholder: 'Filter by name', class: 'dash-filter form-control'
+    = search_field_tag :filter_projects, nil, placeholder: '名称过滤', class: 'dash-filter form-control'
     - if current_user.can_create_project?
       = link_to new_project_path, class: "btn btn-new pull-right" do
         %i.fa.fa-plus
-        New project
+        新项目
 
   %ul.well-list.dash-list
     - projects.each do |project|
@@ -13,12 +13,12 @@
 
     - if projects.blank?
       %li
-        .nothing-here-block There are no projects here.
+        .nothing-here-block 没有项目。
     - if @projects_count > @projects_limit
       %li.bottom
         %span.light
-          #{@projects_limit} of #{pluralize(@projects_count, 'project')} displayed.
+          显示 #{@projects_limit} / #{pluralize(@projects_count, '个项目', '个项目')}。
         .pull-right
           = link_to projects_dashboard_path do
-            Show all
+            显示所有
             %i.fa.fa-angle-right

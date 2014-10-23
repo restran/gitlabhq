@@ -4,7 +4,7 @@
       project_id = $(select).data('project-id') || $('body').data('project-id')
 
       $(select).select2
-        placeholder: $(select).data('placeholder') || "Search for a user"
+        placeholder: $(select).data('placeholder') || "搜索一个用户"
         multiple: $(select).hasClass('multiselect')
         minimumInputLength: 0
         query: (query) ->
@@ -12,7 +12,7 @@
             data = { results: users }
 
             nullUser = {
-              name: 'Unassigned',
+              name: '未指派',
               avatar: null,
               username: 'none',
               id: ''

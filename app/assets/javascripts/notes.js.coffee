@@ -198,9 +198,9 @@ class Notes
     preview = form.find(".js-note-preview")
     noteText = form.find(".js-note-text").val()
     if noteText.trim().length is 0
-      preview.text "Nothing to preview."
+      preview.text "没有内容预览。"
     else
-      preview.text "Loading..."
+      preview.text "正在载入..."
       $.post($(this).data("url"),
         note: noteText
       ).success (previewData) ->
@@ -502,18 +502,18 @@ class Notes
   updateCloseButton: (e) =>
     textarea = $(e.target)
     form = textarea.parents('form')
-    form.find('.js-note-target-close').text('Close')
+    form.find('.js-note-target-close').text('关闭')
 
   updateTargetButtons: (e) =>
     textarea = $(e.target)
     form = textarea.parents('form')
 
     if textarea.val().trim().length > 0
-      form.find('.js-note-target-reopen').text('Comment & reopen')
-      form.find('.js-note-target-close').text('Comment & close')
+      form.find('.js-note-target-reopen').text('评论 & 重新打开')
+      form.find('.js-note-target-close').text('评论 & 关闭')
     else
-      form.find('.js-note-target-reopen').text('Reopen')
-      form.find('.js-note-target-close').text('Close')
+      form.find('.js-note-target-reopen').text('重新打开')
+      form.find('.js-note-target-close').text('关闭')
 
 
 

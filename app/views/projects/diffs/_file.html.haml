@@ -19,16 +19,16 @@
           - unless params[:view] == 'parallel'
             %label
               = check_box_tag nil, 1, false, class: 'js-toggle-diff-line-wrap'
-              Wrap text
+              自动换行
           &nbsp;
           = link_to '#', class: 'js-toggle-diff-comments btn btn-small' do
             %i.fa.fa-chevron-down
-            Diff comments
+            差异注释
           &nbsp;
 
         - if @merge_request && @merge_request.source_project
           = link_to project_edit_tree_path(@merge_request.source_project, tree_join(@merge_request.source_branch, diff_file.new_path), from_merge_request_id: @merge_request.id), { class: 'btn btn-small' } do
-            Edit
+            编辑
           &nbsp;
 
         = view_file_btn(@commit.id, diff_file, project)
@@ -45,5 +45,5 @@
       - old_file = project.repository.prev_blob_for_diff(@commit, diff_file)
       = render "projects/diffs/image", diff_file: diff_file, old_file: old_file, file: blob, index: i
     - else
-      .nothing-here-block No preview for this file type
+      .nothing-here-block 不能预览此文件类型
 
