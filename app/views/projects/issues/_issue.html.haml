@@ -9,11 +9,11 @@
       = link_to_gfm issue.title, project_issue_path(issue.project, issue), class: "row_title"
     - if issue.closed?
       %small.pull-right
-        CLOSED
+        已关闭
 
   .issue-info
     - if issue.assignee
-      assigned to #{link_to_member(@project, issue.assignee)}
+      指派给 #{link_to_member(@project, issue.assignee)}
     - if issue.votes_count > 0
       = render 'votes/votes_inline', votable: issue
     - if issue.notes.any?
@@ -29,7 +29,7 @@
         = issue.task_status
 
     .pull-right
-      %small updated #{time_ago_with_tooltip(issue.updated_at, 'bottom', 'issue_update_ago')}
+      %small 更新时间 #{time_ago_with_tooltip(issue.updated_at, 'bottom', 'issue_update_ago')}
 
     .issue-labels
       - issue.labels.each do |label|
@@ -39,11 +39,11 @@
   .issue-actions
     - if can? current_user, :modify_issue, issue
       - if issue.closed?
-        = link_to 'Reopen', project_issue_path(issue.project, issue, issue: {state_event: :reopen }, status_only: true), method: :put,  class: "btn btn-small btn-grouped reopen_issue btn-reopen", remote: true
+        = link_to '重新打开', project_issue_path(issue.project, issue, issue: {state_event: :reopen }, status_only: true), method: :put,  class: "btn btn-small btn-grouped reopen_issue btn-reopen", remote: true
       - else
-        = link_to 'Close', project_issue_path(issue.project, issue, issue: {state_event: :close }, status_only: true), method: :put, class: "btn btn-small btn-grouped close_issue btn-close", remote: true
+        = link_to '关闭', project_issue_path(issue.project, issue, issue: {state_event: :close }, status_only: true), method: :put, class: "btn btn-small btn-grouped close_issue btn-close", remote: true
       = link_to edit_project_issue_path(issue.project, issue), class: "btn btn-small edit-issue-link btn-grouped" do
         %i.fa.fa-pencil-square-o
-        Edit
+        编辑
 
 

@@ -1,43 +1,43 @@
 %h3.page-title
-  Notifications settings
+  通知设置
 %p.light
-  GitLab uses the email specified in your profile for notifications
+  GitLab 使用个人资料中指定的电子邮箱接收通知
 %hr
 = form_tag profile_notifications_path, method: :put, remote: true, class: 'update-notifications form-horizontal global-notifications-form' do
   = hidden_field_tag :notification_type, 'global'
 
-  = label_tag :notification_level, 'Notification level', class: 'control-label'
+  = label_tag :notification_level, '通知等级', class: 'control-label'
   .col-sm-10
     .radio
       = label_tag nil, class: '' do
         = radio_button_tag :notification_level, Notification::N_DISABLED, @notification.disabled?, class: 'trigger-submit'
         .level-title
-          Disabled
-        %p You will not get any notifications via email
+          关闭
+        %p 将不会通过电子邮件收到任何通知
 
     .radio
       = label_tag nil, class: '' do
         = radio_button_tag :notification_level, Notification::N_PARTICIPATING, @notification.participating?, class: 'trigger-submit'
         .level-title
-          Participating
-        %p You will only receive notifications from related resources (e.g. from your commits or assigned issues)
+          参与
+        %p 只收到有关的通知 (比如：来自自己的提交或指派给自己的问题)
 
     .radio
       = label_tag nil, class: '' do
         = radio_button_tag :notification_level, Notification::N_WATCH, @notification.watch?, class: 'trigger-submit'
         .level-title
-          Watch
-        %p You will receive all notifications from projects in which you participate
+          关注
+        %p 将收到参与项目的所有通知
 
 .clearfix
   %hr
 .row.all-notifications
   .col-md-6
     %p
-      You can also specify notification level per group or per project.
+      也可以单独指定每个群组或项目的通知等级
       %br
-      By default all projects and groups uses notification level set above.
-    %h4 Groups:
+      所有项目和群组默认使用上面的全局设置
+    %h4 群组：
     %ul.bordered-list
       - @group_members.each do |users_group|
         - notification = Notification.new(users_group)
@@ -45,10 +45,10 @@
 
   .col-md-6
     %p
-      To specify notification level per project of a group you belong to,
+      给所属群组的项目指定通知等级。
       %br
-      you need to be a member of the project itself, not only its group.
-    %h4 Projects:
+      需要自己属于项目成员，而不仅仅是群组成员。
+    %h4 项目：
     %ul.bordered-list
       - @project_members.each do |project_member|
         - notification = Notification.new(project_member)

@@ -3,18 +3,18 @@
     - if current_user
       = render "events/event_last_push", event: @last_push
       = link_to dashboard_path, class: 'btn btn-tiny' do
-        &larr; To dashboard
+        &larr; 回到仪表盘
       &nbsp;
     %span.cgray
-      Currently you are only seeing events from the
+      只显示
       = @group.name
-      group
+      群组项目的事件
     %hr
     = render 'shared/event_filter'
     - if @events.any?
       .content_list
     - else
-      .nothing-here-block Project activity will be displayed here
+      .nothing-here-block 当前没有项目显示
     = spinner
   %aside.side.col-md-4
     .light-well.append-bottom-20
@@ -31,7 +31,7 @@
         = link_to group_path(@group, { format: :atom, private_token: current_user.private_token }), title: "Feed" do
           %strong
             %i.fa.fa-rss
-            News Feed
+            最新动态
 
     %hr
     = render 'shared/promo'

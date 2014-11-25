@@ -3,8 +3,8 @@
     .col-md-2
       %h4
         %i.fa.fa-calendar
-        %span= day.stamp("28 Aug, 2010")
-      %p= pluralize(commits.count, 'commit')
+        %span= day.stamp("2010-12-31")
+      %p= pluralize(commits.count, '次提交', '次提交')
     .col-md-10
       %ul.bordered-list
         = render commits, project: @project

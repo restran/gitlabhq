@@ -1,4 +1,4 @@
-- page_title = 'Explore'
+- page_title = '浏览'
 !!! 5
 %html{ lang: "en"}
   = render "layouts/head", title: page_title
@@ -12,19 +12,19 @@
       .content
         .explore-title
           %h3
-            Explore GitLab
+            浏览 GitLab
           %p.lead
-            Discover projects and groups. Share your projects with others
+            发现项目和群组。分享你的项目给他人。
 
 
         %ul.nav.nav-tabs
           = nav_link(path: 'projects#trending') do
-            = link_to 'Trending Projects', explore_root_path
+            = link_to '热门项目', explore_root_path
           = nav_link(path: 'projects#starred') do
-            = link_to 'Most Starred Projects', starred_explore_projects_path
+            = link_to '最多标记的项目', starred_explore_projects_path
           = nav_link(path: 'projects#index') do
-            = link_to 'All Projects', explore_projects_path
+            = link_to '所有项目', explore_projects_path
           = nav_link(controller: :groups) do
-            = link_to 'All Groups', explore_groups_path
+            = link_to '所有群组', explore_groups_path
 
         = yield

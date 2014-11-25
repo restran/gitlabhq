@@ -1,16 +1,16 @@
 = render 'nav'
 %h3.page-title
-  %span.light History for
+  %span.light 历史
   = link_to @page.title, project_wiki_path(@project, @page)
 
 %table.table
   %thead
     %tr
-      %th Page version
-      %th Author
-      %th Commit Message
-      %th Last updated
-      %th Format
+      %th 页面版本
+      %th 坐着
+      %th 提交信息
+      %th 最后更新
+      %th 格式
   %tbody
     - @page.versions.each do |version|
       - commit = version

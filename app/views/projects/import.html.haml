@@ -3,9 +3,9 @@
     .center
       %h2
         %i.fa.fa-spinner.fa-spin
-        Import in progress.
+        正在导入。
       %p.monospace git clone --bare #{hidden_pass_url(@project.import_url)}
-      %p Please wait while we import the repository for you. Refresh at will.
+      %p 请等待后台导入版本仓库。可以刷新或离开本页面。
       :javascript
         new ProjectImport();
 
@@ -13,19 +13,19 @@
   .save-project-loader
     .center
       %h2
-        Import failed. Retry?
+        导入失败。是否要重试？
   %hr
   - if can?(current_user, :admin_project, @project)
     = form_for @project, url: retry_import_project_path(@project), method: :put, html: { class: 'form-horizontal' } do |f|
       .form-group.import-url-data
-        = f.label :import_url, class: 'control-label' do
-          %span Import existing git repo
+        = f.label :import_url, '导入 URL', class: 'control-label' do
+          %span 导入已存在的版本库
         .col-sm-10
           = f.text_field :import_url, class: 'form-control', placeholder: 'https://github.com/randx/six.git'
           .bs-callout.bs-callout-info
-            This URL must be publicly accessible or you can add a username and password like this: https://username:password@gitlab.com/company/project.git.
+            版本仓库链接必须是公开访问的或者增加用户名和密码。示例： https://username:password@gitlab.com/company/project.git.
             %br
-            The import will time out after 4 minutes. For big repositories, use a clone/push combination.
-            For SVN repositories, check #{link_to "this migrating from SVN doc.", "http://doc.gitlab.com/ce/workflow/migrating_from_svn.html"}
+            超过 4 分钟的导入会超时。大的版本仓库可以先本地克隆再推送到仓库。
+            对于 SVN 仓库，请查看#{link_to "从 SVN 合并的文档。", "http://doc.gitlab.com/ce/workflow/migrating_from_svn.html"}
       .form-actions
-        = f.submit 'Retry import', class: "btn btn-create", tabindex: 4
+        = f.submit '重新导入', class: "btn btn-create", tabindex: 4

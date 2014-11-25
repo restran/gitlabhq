@@ -5,37 +5,37 @@
         %ul.nav.nav-pills.nav-stacked
           %li{class: ("active" if params[:scope] == 'all')}
             = link_to project_filter_path(scope: 'all') do
-              Everyone's
+              所有人
               %span.pull-right
                 = authorized_entities_count(current_user, entity, @project)
           %li{class: ("active" if params[:scope] == 'assigned-to-me')}
             = link_to project_filter_path(scope: 'assigned-to-me') do
-              Assigned to me
+              指派给我
               %span.pull-right
                 = assigned_entities_count(current_user, entity, @project)
           %li{class: ("active" if params[:scope] == 'created-by-me')}
             = link_to project_filter_path(scope: 'created-by-me') do
-              Created by me
+              由我创建
               %span.pull-right
                 = authored_entities_count(current_user, entity, @project)
 
     %fieldset
-      %legend State
+      %legend 状态
       %ul.nav.nav-pills
         %li{class: ("active" if params[:state] == 'opened')}
           = link_to project_filter_path(state: 'opened') do
-            Open
+            未关闭
         %li{class: ("active" if params[:state] == 'closed')}
           = link_to project_filter_path(state: 'closed') do
-            Closed
+            已关闭
         %li{class: ("active" if params[:state] == 'all')}
           = link_to project_filter_path(state: 'all') do
-            All
+            所有
 
     - if defined?(labels)
       %fieldset
         %legend
-          Labels
+          标签
           %small.pull-right
             = link_to project_labels_path(@project), class: 'light' do
               %i.fa.fa-pencil-square-o
@@ -50,15 +50,16 @@
 
         - if @project.labels.empty?
           .light-well
-            Create first label at
-            = link_to 'labels page', project_labels_path(@project)
+            在
+            = link_to '标签页面', project_labels_path(@project)
+            创建第一个标签
             %br
-            or #{link_to 'generate', generate_project_labels_path(@project, redirect: redirect), method: :post} default set of labels
+            或者#{link_to '生成', generate_project_labels_path(@project, redirect: redirect), method: :post} 默认标签组
 
     %fieldset
       - if %w(state scope milestone_id assignee_id label_name).select { |k| params[k].present? }.any?
         = link_to project_entities_path, class: 'cgray pull-right' do
           %i.fa.fa-times
-          %strong Clear filter
+          %strong 清除过滤器
 
 

@@ -1,20 +1,20 @@
 %h3.page-title
-  Issue ##{@issue.iid}
+  问题 ##{@issue.iid}
 
   %span.pull-right.issue-btn-group
     - if can?(current_user, :write_issue, @project)
-      = link_to new_project_issue_path(@project), class: "btn btn-grouped", title: "New Issue", id: "new_issue_link" do
+      = link_to new_project_issue_path(@project), class: "btn btn-grouped", title: "新问题", id: "new_issue_link" do
         %i.fa.fa-plus
-        New Issue
+        新问题
     - if can?(current_user, :modify_issue, @issue)
       - if @issue.closed?
-        = link_to 'Reopen', project_issue_path(@project, @issue, issue: {state_event: :reopen }, status_only: true), method: :put,  class: "btn btn-grouped btn-reopen"
+        = link_to '重新打开', project_issue_path(@project, @issue, issue: {state_event: :reopen }, status_only: true), method: :put,  class: "btn btn-grouped btn-reopen"
       - else
-        = link_to 'Close', project_issue_path(@project, @issue, issue: {state_event: :close }, status_only: true), method: :put, class: "btn btn-grouped btn-close", title: "Close Issue"
+        = link_to '关闭', project_issue_path(@project, @issue, issue: {state_event: :close }, status_only: true), method: :put, class: "btn btn-grouped btn-close", title: "关闭问题"
 
       = link_to edit_project_issue_path(@project, @issue), class: "btn btn-grouped" do
         %i.fa.fa-pencil-square-o
-        Edit
+        编辑
 
 .clearfix
   .votes-holder
@@ -22,11 +22,11 @@
 
   .back-link
     = link_to project_issues_path(@project) do
-      &larr; To issues list
+      &larr; 返回问题列表
     %span.milestone-nav-link
       - if @issue.milestone
         |
-        %span.light Milestone
+        %span.light 里程碑
         = link_to project_milestone_path(@project, @issue.milestone) do
           = @issue.milestone.title
 
@@ -34,12 +34,12 @@
   .state.clearfix
     .state-label
       - if @issue.closed?
-        Closed
+        已关闭
       - else
-        Open
+        未关闭
 
     .creator
-      Created by #{link_to_member(@project, @issue.author)} #{issue_timestamp(@issue)}
+      创建时间 #{link_to_member(@project, @issue.author)} #{issue_timestamp(@issue)}
 
   %h4.title
     = gfm escape_once(@issue.title)
@@ -57,13 +57,13 @@
 - content_for :note_actions do
   - if can?(current_user, :modify_issue, @issue)
     - if @issue.closed?
-      = link_to 'Reopen Issue', project_issue_path(@project, @issue, issue: {state_event: :reopen }, status_only: true), method: :put, class: "btn btn-grouped btn-reopen js-note-target-reopen", title: 'Reopen Issue'
+      = link_to '重新打开问题', project_issue_path(@project, @issue, issue: {state_event: :reopen }, status_only: true), method: :put, class: "btn btn-grouped btn-reopen js-note-target-reopen", title: '重新打开问题'
     - else
-      = link_to 'Close Issue', project_issue_path(@project, @issue, issue: {state_event: :close }, status_only: true), method: :put, class: "btn btn-grouped btn-close js-note-target-close", title: "Close Issue"
+      = link_to '关闭问题', project_issue_path(@project, @issue, issue: {state_event: :close }, status_only: true), method: :put, class: "btn btn-grouped btn-close js-note-target-close", title: "关闭问题"
 
 .participants
   %cite.cgray
-    = pluralize(@issue.participants.count, 'participant')
+    = pluralize(@issue.participants.count, '个参与者', '个参与者')
   - @issue.participants.each do |participant|
     = link_to_member(@project, participant, name: false, size: 24)
 

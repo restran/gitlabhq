@@ -5,35 +5,35 @@
         %ul.nav.nav-pills.nav-stacked
           %li{class: ("active" if params[:scope] == 'assigned-to-me')}
             = link_to filter_path(entity, scope: 'assigned-to-me') do
-              Assigned to me
+              指派给我
               %span.pull-right
                 = assigned_entities_count(current_user, entity, @group)
           %li{class: ("active" if params[:scope] == 'authored')}
             = link_to filter_path(entity, scope: 'authored') do
-              Created by me
+              由我创建
               %span.pull-right
                 = authored_entities_count(current_user, entity, @group)
           %li{class: ("active" if params[:scope] == 'all')}
             = link_to filter_path(entity, scope: 'all') do
-              Everyone's
+              所有人
               %span.pull-right
                 = authorized_entities_count(current_user, entity, @group)
 
     %fieldset.status-filter
-      %legend State
+      %legend 状态
       %ul.nav.nav-pills
         %li{class: ("active" if params[:state] == 'opened')}
           = link_to filter_path(entity, state: 'opened') do
-            Open
+            未关闭
         %li{class: ("active" if params[:state] == 'closed')}
           = link_to filter_path(entity, state: 'closed') do
-            Closed
+            已关闭
         %li{class: ("active" if params[:state] == 'all')}
           = link_to filter_path(entity, state: 'all') do
-            All
+            所有
 
     %fieldset
-      %legend Projects
+      %legend 项目
       %ul.nav.nav-pills.nav-stacked.nav-small
         - @projects.each do |project|
           - unless entities_per_project(project, entity).zero?
@@ -46,5 +46,5 @@
       - if params[:state].present? || params[:project_id].present?
         = link_to filter_path(entity, state: nil, project_id: nil), class: 'pull-right cgray' do
           %i.fa.fa-times
-          %strong Clear filter
+          %strong 清除过滤器
 

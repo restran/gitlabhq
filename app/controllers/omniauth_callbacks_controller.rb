@@ -1,3 +1,4 @@
+#encoding: utf-8
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   Gitlab.config.omniauth.providers.each do |provider|
     define_method provider['name'] do
@@ -68,7 +69,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       end
     end
   rescue StandardError
-    flash[:notice] = "There's no such user!"
+    flash[:notice] = "没有这样的用户！"
     redirect_to new_user_session_path
   end
 
