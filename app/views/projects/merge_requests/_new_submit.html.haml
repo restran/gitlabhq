@@ -1,13 +1,13 @@
 %h3.page-title
-  New merge request
+  新合并请求
 %p.slead
-  From
+  从
   %strong.label-branch #{@merge_request.source_project_namespace}:#{@merge_request.source_branch}
-  %span into
+  %span 合并到
   %strong.label-branch #{@merge_request.target_project_namespace}:#{@merge_request.target_branch}
 
   %span.pull-right
-    = link_to 'Change branches', new_project_merge_request_path(@project)
+    = link_to '改变分支', new_project_merge_request_path(@project)
 
 = form_for [@project, @merge_request], html: { class: "merge-request-form gfm-form" } do |f|
   .panel.panel-default
@@ -16,66 +16,66 @@
       .form-group
         .light
           = f.label :title do
-            Title *
+            标题 *
         = f.text_field :title, class: "form-control input-lg js-gfm-input", maxlength: 255, rows: 5, required: true
       .form-group
         .light
-          = f.label :description, "Description"
+          = f.label :description, "描述"
         = render layout: 'projects/md_preview' do
           = render 'projects/zen', f: f, attr: :description,
                                    classes: 'description form-control'
           .clearfix.hint
-            .pull-left Description is parsed with #{link_to "GitLab Flavored Markdown", help_page_path("markdown", "markdown"), target: '_blank'}.
-            .pull-right Attach images (JPG, PNG, GIF) by dragging & dropping or #{link_to "selecting them", '#', class: 'markdown-selector' }.
+            .pull-left 描述被解析为 #{link_to "GitLab 特色 Markdown", help_page_path("markdown", "markdown"), target: '_blank'} 格式。
+            .pull-right 可以拖放或#{link_to "选择文件", '#', class: 'markdown-selector' }来附加图片(JPG, PNG, GIF)。
           .error-alert
       .form-group
         .issue-assignee
           = f.label :assignee_id do
             %i.fa.fa-user
-            Assign to
+            指派给
           %div
-            = project_users_select_tag('merge_request[assignee_id]', placeholder: 'Select a user', class: 'custom-form-control', selected: @merge_request.assignee_id, project_id: @merge_request.target_project_id)
+            = project_users_select_tag('merge_request[assignee_id]', placeholder: '选择用户', class: 'custom-form-control', selected: @merge_request.assignee_id, project_id: @merge_request.target_project_id)
             &nbsp;
-            = link_to 'Assign to me', '#', class: 'btn assign-to-me-link'
+            = link_to '指派给自己', '#', class: 'btn assign-to-me-link'
       .form-group
         .issue-milestone
           = f.label :milestone_id do
             %i.fa.fa-clock-o
-            Milestone
-          %div= f.select(:milestone_id, milestone_options(@merge_request), { include_blank: "Select milestone" }, {class: 'select2'})
+            里程碑
+          %div= f.select(:milestone_id, milestone_options(@merge_request), { include_blank: "选择里程碑" }, {class: 'select2'})
       .form-group
         = f.label :label_ids do
           %i.fa.fa-tag
-          Labels
+          标签
         %div
           = f.collection_select :label_ids, @merge_request.target_project.labels.all, :id, :name, { selected: @merge_request.label_ids }, multiple: true, class: 'select2'
 
     .panel-footer
       - if contribution_guide_url(@target_project)
         %p
-          Please review the
-          %strong #{link_to "guidelines for contribution", contribution_guide_url(@target_project)}
-          to this repository.
+          请先阅读本版本仓库的
+          %strong #{link_to "指导原则", contribution_guide_url(@target_project)}
+          。
       = f.hidden_field :source_project_id
       = f.hidden_field :target_project_id
       = f.hidden_field :target_branch
       = f.hidden_field :source_branch
-      = f.submit 'Submit merge request', class: "btn btn-create"
+      = f.submit '提交合并请求', class: "btn btn-create"
 
 .mr-compare
   = render "projects/commits/commit_list"
 
-  %h4 Changes
+  %h4 变更
   - if @diffs.present?
     = render "projects/diffs/diffs", diffs: @diffs, project: @project
   - elsif @commits.size > MergeRequestDiff::COMMITS_SAFE_SIZE
     .bs-callout.bs-callout-danger
-      %h4 This comparison includes more than #{MergeRequestDiff::COMMITS_SAFE_SIZE} commits.
-      %p To preserve performance the line changes are not shown.
+      %h4 此比较包含超过 #{MergeRequestDiff::COMMITS_SAFE_SIZE} 次提交。
+      %p 为保证性能，行变更内容没有显示。
   - else
     .bs-callout.bs-callout-danger
-      %h4 This comparison includes huge diff.
-      %p To preserve performance the line changes are not shown.
+      %h4 此比较包含巨大的差异。
+      %p 为保证性能，行变更内容没有显示。
 
 
 :javascript

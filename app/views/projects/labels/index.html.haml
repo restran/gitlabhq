@@ -2,9 +2,9 @@
 
 - if can? current_user, :admin_label, @project
   = link_to new_project_label_path(@project), class: "pull-right btn btn-new" do
-    New label
+    新标签
 %h3.page-title
-  Labels
+  标签
 %hr
 
 .labels
@@ -14,4 +14,4 @@
     = paginate @labels, theme: 'gitlab'
   - else
     .light-well
-      .nothing-here-block Create first label or #{link_to 'generate', generate_project_labels_path(@project), method: :post} default set of labels
+      .nothing-here-block 创建第一个标签或者#{link_to '生成', generate_project_labels_path(@project), method: :post}默认标签组

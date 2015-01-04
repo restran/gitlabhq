@@ -1,3 +1,4 @@
+#encoding: utf-8
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   Gitlab.config.omniauth.providers.each do |provider|
     define_method provider['name'] do

@@ -6,10 +6,10 @@
       %li.pull-right{class: params[:view] == 'parallel' ? 'active' : ''}
         - params_copy = params.dup
         - params_copy[:view] = 'parallel'
-        = link_to "Side-by-side Diff", url_for(params_copy), {id: "commit-diff-viewtype"}
+        = link_to "并排对比比较", url_for(params_copy), {id: "commit-diff-viewtype"}
       %li.pull-right{class: params[:view] != 'parallel' ? 'active' : ''}
         - params_copy[:view] = 'inline'
-        = link_to "Inline Diff", url_for(params_copy), {id: "commit-diff-viewtype"}
+        = link_to "内嵌差异比较", url_for(params_copy), {id: "commit-diff-viewtype"}
 
 
 - if show_diff_size_warning?(diffs)
@@ -22,6 +22,6 @@
 - if @diff_timeout
   .alert.alert-danger
     %h4
-      Failed to collect changes
+      搜集修改失败
     %p
-      Maybe diff is really big and operation failed with timeout. Try to get diff locally
+      可能是差异非常大造成操作超时。请在本地重试

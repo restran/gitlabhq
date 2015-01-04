@@ -4,7 +4,7 @@
     - if merge_request.merged?
       %small.pull-right
         %i.fa.fa-check
-        MERGED
+        已合并
     - else
       %span.pull-right.hidden-xs
         - if merge_request.for_fork?
@@ -16,7 +16,7 @@
   .merge-request-info
     %span.light= "##{merge_request.iid}"
     - if merge_request.author
-      authored by #{link_to_member(merge_request.source_project, merge_request.author)}
+      创建者 #{link_to_member(merge_request.source_project, merge_request.author)}
     - if merge_request.votes_count > 0
       = render 'votes/votes_inline', votable: merge_request
     - if merge_request.notes.any?
@@ -32,7 +32,7 @@
         = merge_request.task_status
 
     .pull-right.hidden-xs
-      %small updated #{time_ago_with_tooltip(merge_request.updated_at, 'bottom', 'merge_request_updated_ago')}
+      %small 更新时间 #{time_ago_with_tooltip(merge_request.updated_at, 'bottom', 'merge_request_updated_ago')}
 
     .merge-request-labels
       - merge_request.labels.each do |label|

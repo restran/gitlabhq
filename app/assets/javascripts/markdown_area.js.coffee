@@ -45,9 +45,9 @@ $(document).ready ->
     preview = form.find(".js-md-preview")
     mdText = form.find(".markdown-area").val()
     if mdText.trim().length is 0
-      preview.text "Nothing to preview."
+      preview.text "没有内容预览。"
     else
-      preview.text "Loading..."
+      preview.text "正在载入..."
       $.get($(this).data("url"),
         md_text: mdText
       ).success (previewData) ->

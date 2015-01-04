@@ -2,24 +2,24 @@
   = nav_link(path: 'projects#edit') do
     = link_to edit_project_path(@project), class: "stat-tab tab " do
       %i.fa.fa-pencil-square-o
-      Project
+      项目
   = nav_link(controller: [:team_members, :teams]) do
     = link_to project_team_index_path(@project), class: "team-tab tab" do
       %i.fa.fa-users
-      Members
+      成员
   = nav_link(controller: :deploy_keys) do
     = link_to project_deploy_keys_path(@project) do
       %i.fa.fa-key
-      Deploy Keys
+      部署密钥
   = nav_link(controller: :hooks) do
     = link_to project_hooks_path(@project) do
       %i.fa.fa-link
-      Web Hooks
+      Web 钩子
   = nav_link(controller: :services) do
     = link_to project_services_path(@project) do
       %i.fa.fa-cogs
-      Services
+      服务
   = nav_link(controller: :protected_branches) do
     = link_to project_protected_branches_path(@project) do
       %i.fa.fa-lock
-      Protected branches
+      保护的分支

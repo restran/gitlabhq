@@ -2,7 +2,7 @@ class @UsersSelect
   constructor: ->
     $('.ajax-users-select').each (i, select) =>
       $(select).select2
-        placeholder: "Search for a user"
+        placeholder: "搜索一个用户"
         multiple: $(select).hasClass('multiselect')
         minimumInputLength: 0
         query: (query) ->

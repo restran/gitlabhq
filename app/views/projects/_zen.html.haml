@@ -2,6 +2,6 @@
   %input#zen-toggle-comment{ tabindex: '-1', type: 'checkbox' }
   .zen-backdrop
     - classes << ' js-gfm-input markdown-area'
-    = f.text_area attr, class: classes, placeholder: 'Leave a comment'
-    %label{ for: 'zen-toggle-comment', class: 'expand' } Edit in fullscreen
+    = f.text_area attr, class: classes, placeholder: '留下评论'
+    %label{ for: 'zen-toggle-comment', class: 'expand' } 全屏编辑
     %label{ for: 'zen-toggle-comment', class: 'collapse' }

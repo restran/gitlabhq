@@ -2,21 +2,21 @@
   .col-md-4
     .panel.panel-default
       .panel-heading
-        SSH Key
+        SSH 密钥
       %ul.well-list
         %li
-          %span.light Title:
+          %span.light 名称：
           %strong= @key.title
         %li
-          %span.light Created on:
-          %strong= @key.created_at.stamp("Aug 21, 2011")
+          %span.light 创建时间：
+          %strong= @key.created_at.stamp("2011-12-31")
 
   .col-md-8
     %p
-      %span.light Fingerprint:
+      %span.light 指纹：
       %strong= @key.fingerprint
     %pre.well-pre
       = @key.key
 
 .pull-right
-  = link_to 'Remove', profile_key_path(@key), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-remove delete-key"
+  = link_to '删除', profile_key_path(@key), data: {confirm: '确定要继续么？'}, method: :delete, class: "btn btn-remove delete-key"

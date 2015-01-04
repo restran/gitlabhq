@@ -1,10 +1,18 @@
 .dropdown.inline.prepend-left-10
   %a.dropdown-toggle.btn{href: '#', "data-toggle" => "dropdown"}
-    %span.light sort:
-    - if @sort.present?
-      = @sort
+    %span.light 排序：
+    - if params[:sort] == 'oldest'
+      最旧创建的
+    - elsif params[:sort] == 'recently_updated'
+      最近更新的
+    - elsif params[:sort] == 'last_updated'
+      最旧更新的
+    - elsif params[:sort] == 'milestone_due_soon'
+      最近快到的里程碑
+    - elsif params[:sort] == 'milestone_due_later'
+      最近过去的里程碑
     - else
-      Newest
+      最近创建的
     %b.caret
   %ul.dropdown-menu
     %li
@@ -17,6 +25,6 @@
       = link_to project_filter_path(sort: 'last_updated') do
         = sort_title_oldest_updated
       = link_to project_filter_path(sort: 'milestone_due_soon') do
-        Milestone due soon
+        最近快到的里程碑
       = link_to project_filter_path(sort: 'milestone_due_later') do
-        Milestone due later
+        最近过去的里程碑

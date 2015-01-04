@@ -4,56 +4,62 @@
       %ul.nav.nav-pills.nav-stacked
         %li{class: "#{'active' unless params[:filter]}"}
           = link_to admin_users_path do
-            Active
+            当前
             %small.pull-right= User.active.count
         %li{class: "#{'active' if params[:filter] == "admins"}"}
           = link_to admin_users_path(filter: "admins") do
-            Admins
+            管理
             %small.pull-right= User.admins.count
         %li{class: "#{'active' if params[:filter] == "blocked"}"}
           = link_to admin_users_path(filter: "blocked") do
-            Blocked
+            禁用
             %small.pull-right= User.blocked.count
         %li{class: "#{'active' if params[:filter] == "wop"}"}
           = link_to admin_users_path(filter: "wop") do
-            Without projects
+            无项目
             %small.pull-right= User.without_projects.count
       %hr
       = form_tag admin_users_path, method: :get, class: 'form-inline' do
         .form-group
-          = search_field_tag :name, params[:name], placeholder: 'Name, email or username', class: 'form-control'
+          = search_field_tag :name, params[:name], placeholder: '姓名、电子邮箱或用户名', class: 'form-control'
         = button_tag class: 'btn btn-primary' do
           %i.fa.fa-search
       %hr
-      = link_to 'Reset', admin_users_path, class: "btn btn-cancel"
+      = link_to '重置', admin_users_path, class: "btn btn-cancel"
 
   .col-md-9
     .panel.panel-default
       .panel-heading
-        Users (#{@users.total_count})
+        用户 (#{@users.total_count})
         .panel-head-actions
           .dropdown.inline
             %a.dropdown-toggle.btn{href: '#', "data-toggle" => "dropdown"}
-              %span.light sort:
-              - if @sort.present?
-                = @sort.humanize
+              %span.light 排序：
+              - if params[:sort] == 'recent_sign_in'
+                最近登录的
+              - elsif params[:sort] == 'oldest_sign_in'
+                最旧登录的
+              - elsif params[:sort] == 'recently_created'
+                最近创建的
+              - elsif params[:sort] == 'late_created'
+                最旧创建的
               - else
-                Name
+                名称
               %b.caret
             %ul.dropdown-menu
               %li
                 = link_to admin_users_path(sort: nil) do
-                  Name
+                  名称
                 = link_to admin_users_path(sort: 'recent_sign_in') do
-                  Recent sign in
+                  最近登录的
                 = link_to admin_users_path(sort: 'oldest_sign_in') do
-                  Oldest sign in
+                  最旧登录的
                 = link_to admin_users_path(sort: 'recently_created') do
                   = sort_title_recently_created
                 = link_to admin_users_path(sort: 'late_created') do
                   = sort_title_oldest_created
 
-          = link_to 'New User', new_admin_user_path, class: "btn btn-new"
+          = link_to '新用户', new_admin_user_path, class: "btn btn-new"
       %ul.well-list
         - @users.each do |user|
           %li
@@ -64,19 +70,19 @@
                 %i.fa.fa-user.cgreen
               = link_to user.name, [:admin, user]
               - if user.admin?
-                %strong.cred (Admin)
+                %strong.cred (管理)
               - if user == current_user
-                %span.cred It's you!
+                %span.cred 自己
             .pull-right
               %span.light
                 %i.fa.fa-envelope
                 = mail_to user.email, user.email, class: 'light'
               &nbsp;
-              = link_to 'Edit', edit_admin_user_path(user), id: "edit_#{dom_id(user)}", class: "btn btn-small"
+              = link_to '编辑', edit_admin_user_path(user), id: "edit_#{dom_id(user)}", class: "btn btn-small"
               - unless user == current_user
                 - if user.blocked?
-                  = link_to 'Unblock', unblock_admin_user_path(user), method: :put, class: "btn btn-small success"
+                  = link_to '启用', unblock_admin_user_path(user), method: :put, class: "btn btn-small success"
                 - else
-                  = link_to 'Block', block_admin_user_path(user), data: {confirm: 'USER WILL BE BLOCKED! Are you sure?'}, method: :put, class: "btn btn-small btn-remove"
-                = link_to 'Destroy', [:admin, user], data: { confirm: "USER #{user.name} WILL BE REMOVED! All tickets linked to this user will also be removed! Maybe block the user instead? Are you sure?" }, method: :delete, class: "btn btn-small btn-remove"
+                  = link_to '禁用', block_admin_user_path(user), data: {confirm: '用户将被禁用！确定要继续么？'}, method: :put, class: "btn btn-small btn-remove"
+                = link_to '销毁', [:admin, user], data: { confirm: "用户 #{user.name} 将被删除！所有该用户的相关内容也会被删除！要不要只禁用用户？确定要继续么？" }, method: :delete, class: "btn btn-small btn-remove"
     = paginate @users, theme: "gitlab"

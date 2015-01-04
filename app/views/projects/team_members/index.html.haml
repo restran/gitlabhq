@@ -1,16 +1,17 @@
 %h3.page-title
-  Users with access to this project
+  可访问本项目的用户
 
   - if can? current_user, :admin_team_member, @project
     %span.pull-right
-      = link_to new_project_team_member_path(@project), class: "btn btn-new btn-grouped", title: "New project member" do
-        New project member
-      = link_to import_project_team_members_path(@project), class: "btn btn-grouped", title: "Import members from another project" do
-        Import members
+      = link_to new_project_team_member_path(@project), class: "btn btn-new btn-grouped", title: "新项目成员" do
+        新项目成员
+      = link_to import_project_team_members_path(@project), class: "btn btn-grouped", title: "从另一个项目导入成员" do
+        导入成员
 
 %p.light
-  Read more about project permissions
-  %strong= link_to "here", help_page_path("permissions", "permissions"), class: "vlink"
+  关于项目权限点击
+  %strong= link_to "这里", help_page_path("permissions", "permissions"), class: "vlink"
+  了解更多
 = render "team", members: @project_members
 - if @group
   = render "group_members"
