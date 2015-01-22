@@ -1,15 +1,15 @@
 %ul.project-navigation.nav.nav-sidebar
   = nav_link(path: 'projects#show', html_options: {class: "home"}) do
-    = link_to project_path(@project), title: 'Project', class: 'shortcuts-project' do
+    = link_to project_path(@project), title: '项目', class: 'shortcuts-project' do
       %i.fa.fa-dashboard
       %span
-        Project
+        项目
   - if project_nav_tab? :files
     = nav_link(controller: %w(tree blob blame edit_tree new_tree)) do
       = link_to project_tree_path(@project, @ref || @repository.root_ref), class: 'shortcuts-tree' do
         %i.fa.fa-files-o
         %span
-          Files
+          文件
 
 
   - if project_nav_tab? :commits
@@ -17,28 +17,28 @@
       = link_to project_commits_path(@project, @ref || @repository.root_ref), class: 'shortcuts-commits' do
         %i.fa.fa-history
         %span
-          Commits
+          提交
 
   - if project_nav_tab? :network
     = nav_link(controller: %w(network)) do
       = link_to project_network_path(@project, @ref || @repository.root_ref), class: 'shortcuts-network' do
         %i.fa.fa-code-fork
         %span
-          Network
+          网络
 
   - if project_nav_tab? :graphs
     = nav_link(controller: %w(graphs)) do
       = link_to project_graph_path(@project, @ref || @repository.root_ref), class: 'shortcuts-graphs' do
         %i.fa.fa-area-chart
         %span
-          Graphs
+          图表
 
   - if project_nav_tab? :issues
     = nav_link(controller: %w(issues milestones labels)) do
       = link_to url_for_project_issues, class: 'shortcuts-issues' do
         %i.fa.fa-exclamation-circle
         %span
-          Issues
+          问题
           - if @project.used_default_issues_tracker?
             %span.count.issue_counter= @project.issues.opened.count
 
@@ -47,7 +47,7 @@
       = link_to project_merge_requests_path(@project), class: 'shortcuts-merge_requests'  do
         %i.fa.fa-tasks
         %span
-          Merge Requests
+          合并请求
           %span.count.merge_counter= @project.merge_requests.opened.count
 
   - if project_nav_tab? :wiki
@@ -55,21 +55,21 @@
       = link_to project_wiki_path(@project, :home), class: 'shortcuts-wiki' do
         %i.fa.fa-book
         %span
-          Wiki
+          维基
 
   - if project_nav_tab? :snippets
     = nav_link(controller: :snippets) do
       = link_to project_snippets_path(@project), class: 'shortcuts-snippets' do
         %i.fa.fa-file-text-o
         %span
-          Snippets
+          代码片段
 
   - if project_nav_tab? :settings
     = nav_link(html_options: {class: "#{project_tab_class} separate-item"}) do
       = link_to edit_project_path(@project), class: "stat-tab tab no-highlight" do
         %i.fa.fa-cogs
         %span
-          Settings
+          设置
           %i.fa.fa-angle-down
 
   - if @project_settings_nav

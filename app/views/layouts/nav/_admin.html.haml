@@ -1,53 +1,53 @@
 %ul.nav.nav-sidebar
   = nav_link(controller: :dashboard, html_options: {class: 'home'}) do
-    = link_to admin_root_path, title: "Stats" do
+    = link_to admin_root_path, title: "状态" do
       %i.fa.fa-dashboard
       %span
-        Overview
+        概览
   = nav_link(controller: :projects) do
     = link_to admin_projects_path do
       %i.fa.fa-cube
       %span
-        Projects
+        项目
   = nav_link(controller: :users) do
     = link_to admin_users_path do
       %i.fa.fa-user
       %span
-        Users
+        用户
   = nav_link(controller: :groups) do
     = link_to admin_groups_path do
       %i.fa.fa-group
       %span
-        Groups
+        群组
   = nav_link(controller: :logs) do
     = link_to admin_logs_path do
       %i.fa.fa-file-text
       %span
-        Logs
+        日志
   = nav_link(controller: :broadcast_messages) do
     = link_to admin_broadcast_messages_path do
       %i.fa.fa-bullhorn
       %span
-        Messages
+        信息
   = nav_link(controller: :hooks) do
     = link_to admin_hooks_path do
       %i.fa.fa-external-link
       %span
-        Hooks
+        钩子
   = nav_link(controller: :background_jobs) do
     = link_to admin_background_jobs_path do
       %i.fa.fa-cog
       %span
-        Background Jobs
+        后台作业
 
   = nav_link(controller: :application_settings) do
     = link_to admin_application_settings_path do
       %i.fa.fa-cogs
       %span
-        Settings
+        设置
 
   = nav_link(controller: :applications) do
     = link_to admin_applications_path do
       %i.fa.fa-cloud
       %span
-        Applications
+        应用
