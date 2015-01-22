@@ -19,13 +19,13 @@ module GroupsHelper
     title = @group.name
 
     title = if current_action?(:issues)
-              "Issues - " + title
+              "问题 - " + title
             elsif current_action?(:merge_requests)
-              "Merge requests - " + title
+              "合并请求 - " + title
             elsif current_action?(:members)
-              "Members - " + title
+              "成员 - " + title
             elsif current_action?(:edit)
-              "Settings - " + title
+              "设置 - " + title
             else
               title
             end

@@ -1,3 +1,4 @@
+#encoding: utf-8
 class ProjectsController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:show]
   before_filter :project, except: [:new, :create]
@@ -21,7 +22,7 @@ class ProjectsController < ApplicationController
     @project = ::Projects::CreateService.new(current_user, project_params).execute
 
     if @project.saved?
-      redirect_to project_path(@project), notice: 'Project was successfully created.'
+      redirect_to project_path(@project), notice: '创建项目成功。'
     else
       render 'new'
     end
@@ -32,8 +33,8 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if status
-        flash[:notice] = 'Project was successfully updated.'
-        format.html { redirect_to edit_project_path(@project), notice: 'Project was successfully updated.' }
+        flash[:notice] = '更新项目成功。'
+        format.html { redirect_to edit_project_path(@project), notice: '更新项目成功。' }
         format.js
       else
         format.html { render "edit", layout: "project_settings" }
@@ -87,7 +88,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        flash[:alert] = "Project deleted."
+        flash[:alert] = "项目已删除。"
 
         if request.referer.include?("/admin")
           redirect_to admin_projects_path
@@ -166,7 +167,7 @@ class ProjectsController < ApplicationController
   end
 
   def set_title
-    @title = 'New Project'
+    @title = '新项目'
   end
 
   def user_layout

@@ -1,14 +1,14 @@
-%h3.page-title Protected branches
-%p.light Keep stable branches secure and force developers to use Merge Requests
+%h3.page-title 保护的分支
+%p.light 此功能用于保护稳定分支被覆盖以及合并保护分支前必须强制代码评审。
 %hr
 
 .bs-callout.bs-callout-info
-  %p Protected branches are designed to
+  %p 保护的分支设计为：
   %ul
     %li prevent pushes from everybody except #{link_to "masters", help_page_path("permissions", "permissions"), class: "vlink"}
     %li prevent anyone from force pushing to the branch
     %li prevent anyone from deleting the branch
-  %p Read more about #{link_to "project permissions", help_page_path("permissions", "permissions"), class: "underlined-link"}
+  %p 关于项目权限点击 #{link_to "这里", help_page_path("permissions", "permissions"), class: "underlined-link"} 了解更多
 
 - if can? current_user, :admin_project, @project
   = form_for [@project, @protected_branch], html: { class: 'form-horizontal' } do |f|

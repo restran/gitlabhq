@@ -1,12 +1,12 @@
 - unless @allowed_to_merge
   - if @project.archived?
     %p
-      %strong Archived projects cannot be committed to!
+      %strong 已归档项目不能提交修改！
   - else
     .automerge_widget.cannot_be_merged.hide
-      %strong This can't be merged automatically, even if it could be merged you don't have the permission to do so.
+      %strong 无法自动合并，或者你没有权限处理。
     .automerge_widget.can_be_merged.hide
-      %strong This can be merged automatically but you don't have the permission to do so.
+      %strong 可以自动合并，但你没有权限处理。
 
 
 - if @show_merge_controls
@@ -32,36 +32,37 @@
 
         %hr
         .light
-          If you still want to merge this request manually - use
+          如果希望手工操作，请使用
           %strong
-            = link_to "command line", "#modal_merge_info", class: "how_to_merge_link vlink", title: "How To Merge", "data-toggle" => "modal"
+            = link_to "命令行", "#modal_merge_info", class: "how_to_merge_link vlink", title: "如何合并", "data-toggle" => "modal"
 
 
   .automerge_widget.no_satellite.hide
     %p
       %span
-        %strong This repository does not have satellite. Ask an administrator to fix this issue
+        %strong 此版本仓库没有附属（satellite）。请询问管理员修正此问题。
 
   .automerge_widget.cannot_be_merged.hide
     %h4
-      This request can't be merged with GitLab.
+      此请求无法直接在 GitLab 合并。
     %p
-      You should do it manually with
+      可以使用
       %strong
-        = link_to "command line", "#modal_merge_info", class: "how_to_merge_link", title: "How To Merge", "data-toggle" => "modal"
+        = link_to "命令行", "#modal_merge_info", class: "how_to_merge_link", title: "如何合并", "data-toggle" => "modal"
+      手工处理
 
   .automerge_widget.unchecked
     %p
       %strong
         %i.fa.fa-spinner.fa-spin
-        Checking for ability to automatically merge…
+        正在检查是否可以自动合并…
 
   .automerge_widget.already_cannot_be_merged.hide
     %p
-      %strong This merge request can not be merged. Try to reload the page.
+      %strong 此合并请求无法合并，请重新载入本页面重试。
 
   .merge-in-progress.hide
     %p
       %i.fa.fa-spinner.fa-spin
       &nbsp;
-      Merge is in progress. Please wait. Page will be automatically reloaded. &nbsp;
+      正在合并处理。请稍候。页面会自动重新载入。 &nbsp;

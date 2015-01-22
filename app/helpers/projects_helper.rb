@@ -1,6 +1,7 @@
+#encoding: utf-8
 module ProjectsHelper
   def remove_from_project_team_message(project, user)
-    "You are going to remove #{user.name} from #{project.name} project team. Are you sure?"
+    "将要从 #{project.name} 项目组删除 #{user.name} 。确定要继续么？"
   end
 
   def link_to_project(project)
@@ -20,7 +21,7 @@ module ProjectsHelper
     default_opts = { avatar: true, name: true, size: 16 }
     opts = default_opts.merge(opts)
 
-    return "(deleted)" unless author
+    return "(已删除)" unless author
 
     author_html =  ""
 
@@ -53,11 +54,11 @@ module ProjectsHelper
   end
 
   def remove_project_message(project)
-    "You are going to remove #{project.name_with_namespace}.\n Removed project CANNOT be restored!\n Are you ABSOLUTELY sure?"
+    "将要删除 #{project.name_with_namespace} 。\n 删除项目后无法恢复！\n 百分之百确定要继续么？"
   end
 
   def transfer_project_message(project)
-    "You are going to transfer #{project.name_with_namespace} to another owner. Are you ABSOLUTELY sure?"
+    "将要转移 #{project.name_with_namespace} 给其他人。百分之百确定要继续么？"
   end
 
   def project_nav_tabs
@@ -90,9 +91,9 @@ module ProjectsHelper
 
     toggle_html = content_tag('span', class: 'toggle') do
       toggle_text = if starred
-                      ' Unstar'
+                      ' 取消标记'
                     else
-                      ' Star'
+                      ' 标记'
                     end
 
       content_tag('i', ' ', class: 'fa fa-star') + toggle_text
@@ -120,7 +121,7 @@ module ProjectsHelper
 
   def link_to_toggle_fork
     out = content_tag(:i, '', class: 'fa fa-code-fork')
-    out << ' Fork'
+    out << ' 派生'
     out << content_tag(:span, class: 'count') do
       @project.forks_count.to_s
     end
@@ -172,36 +173,36 @@ module ProjectsHelper
     # In order to prevent 500 error
     # when application cannot allocate memory
     # to calculate repo size - just show 'Unknown'
-    'unknown'
+    '未知'
   end
 
   def project_head_title
     title = @project.name_with_namespace
 
     title = if current_controller?(:tree)
-              "#{@project.path}\/#{@path} at #{@ref} - " + title
+              "#{@project.path}\/#{@path} 在 #{@ref} - " + title
             elsif current_controller?(:issues)
               if current_action?(:show)
-                "Issue ##{@issue.iid} - #{@issue.title} - " + title
+                "问题 ##{@issue.iid} - #{@issue.title} - " + title
               else
-                "Issues - " + title
+                "问题 - " + title
               end
             elsif current_controller?(:blob)
-              "#{@project.path}\/#{@blob.path} at #{@ref} - " + title
+              "#{@project.path}\/#{@blob.path} 在 #{@ref} - " + title
             elsif current_controller?(:commits)
-              "Commits at #{@ref} - " + title
+              "提交到 #{@ref} - " + title
             elsif current_controller?(:merge_requests)
               if current_action?(:show)
-                "Merge request ##{@merge_request.iid} - " + title
+                "合并请求 ##{@merge_request.iid} - " + title
               else
-                "Merge requests - " + title
+                "合并请求 - " + title
               end
             elsif current_controller?(:wikis)
-              "Wiki - " + title
+              "维基 - " + title
             elsif current_controller?(:network)
-              "Network graph - " + title
+              "网络图 - " + title
             elsif current_controller?(:graphs)
-              "Graphs - " + title
+              "图表 - " + title
             else
               title
             end
@@ -222,7 +223,7 @@ module ProjectsHelper
     if project.last_activity_at
       time_ago_with_tooltip(project.last_activity_at, 'bottom', 'last_activity_time_ago')
     else
-      "Never"
+      "从未"
     end
   end
 

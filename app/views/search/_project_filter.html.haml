@@ -2,31 +2,31 @@
   %li{class: ("active" if @scope == 'blobs')}
     = link_to search_filter_path(scope: 'blobs') do
       %i.fa.fa-code
-      Code
+      代码
       .pull-right
         = @search_results.blobs_count
   %li{class: ("active" if @scope == 'issues')}
     = link_to search_filter_path(scope: 'issues') do
       %i.fa.fa-exclamation-circle
-      Issues
+      问题
       .pull-right
         = @search_results.issues_count
   %li{class: ("active" if @scope == 'merge_requests')}
     = link_to search_filter_path(scope: 'merge_requests') do
       %i.fa.fa-code-fork
-      Merge requests
+      合并请求
       .pull-right
         = @search_results.merge_requests_count
   %li{class: ("active" if @scope == 'notes')}
     = link_to search_filter_path(scope: 'notes') do
       %i.fa.fa-comments
-      Comments
+      评论
       .pull-right
         = @search_results.notes_count
   %li{class: ("active" if @scope == 'wiki_blobs')}
     = link_to search_filter_path(scope: 'wiki_blobs') do
       %i.fa.fa-book
-      Wiki
+      维基
       .pull-right
         = @search_results.wiki_blobs_count
 

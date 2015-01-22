@@ -54,6 +54,6 @@
               %i.fa.fa-paperclip
               = note.attachment_identifier
               = link_to delete_attachment_project_note_path(@project, note),
-                title: "Delete this attachment", method: :delete, remote: true, data: { confirm: 'Are you sure you want to remove the attachment?' }, class: "danger js-note-attachment-delete" do
+                title: "删除此附件", method: :delete, remote: true, data: { confirm: '确定要删除此附件么？' }, class: "danger js-note-attachment-delete" do
                 %i.fa.fa-trash-o.cred
       .clear

@@ -1,22 +1,22 @@
-%h3.page-title New file
+%h3.page-title 新文件
 %hr
 .file-editor
   = form_tag(project_new_tree_path(@project, @id), method: :put, class: 'form-horizontal form-new-file') do
     .form-group.commit_message-group
       = label_tag 'file_name', class: 'control-label' do
-        File name
+        文件名
       .col-sm-10
         .input-group
           %span.input-group-addon
             = @path[-1] == "/" ? @path : @path + "/"
           = text_field_tag 'file_name', params[:file_name], placeholder: "sample.rb", required: true, class: 'form-control'
           %span.input-group-addon
-            on
+            在
             %span= @ref
 
     .form-group.commit_message-group
       = label_tag :encoding, class: "control-label" do
-        Encoding
+        编码
       .col-sm-10
         = select_tag :encoding, options_for_select([ "base64", "text" ], "text"), class: 'form-control'
     .file-holder
@@ -26,7 +26,7 @@
         %pre#editor= params[:content]
 
     = render 'shared/commit_message_container', params: params,
-             placeholder: 'Add new file'
+             placeholder: '增加新文件'
     = hidden_field_tag 'content', '', id: 'file-content'
     = render 'projects/commit_button', ref: @ref,
               cancel_path: project_tree_path(@project, @id)

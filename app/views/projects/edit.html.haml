@@ -3,29 +3,29 @@
   .project-edit-content
     %div
       %h3.page-title
-        Project settings:
-      %p.light Some settings, such as "Transfer Project", are hidden inside the danger area below.
+        项目设置：
+      %p.light 部分设置，比如 "转移项目" 等危险操作在最下方
       %hr
       .panel-body
         = form_for @project, remote: true, html: { class: "edit_project form-horizontal" } do |f|
           %fieldset
             .form-group.project_name_holder
               = f.label :name, class: 'control-label' do
-                Project name
+                项目名称
               .col-sm-10
-                = f.text_field :name, placeholder: "Example Project", class: "form-control", id: "project_name_edit"
+                = f.text_field :name, placeholder: "示例项目", class: "form-control", id: "project_name_edit"
 
 
             .form-group
               = f.label :description, class: 'control-label' do
-                Project description
-                %span.light (optional)
+                项目描述
+                %span.light (可选)
               .col-sm-10
                 = f.text_area :description, placeholder: "Awesome project", class: "form-control", rows: 3, maxlength: 250
 
             - if @project.repository.exists? && @project.repository.branch_names.any?
               .form-group
-                = f.label :default_branch, "Default Branch", class: 'control-label'
+                = f.label :default_branch, "默认分支", class: 'control-label'
                 .col-sm-10= f.select(:default_branch, @repository.branch_names, {}, {class: 'select2 select-wide'})
 
 
@@ -33,56 +33,56 @@
 
           %fieldset.features
             %legend
-              Tags:
+              标签：
             .form-group
-              = f.label :tag_list, "Tags", class: 'control-label'
+              = f.label :tag_list, "标签", class: 'control-label'
               .col-sm-10
                 = f.text_field :tag_list, maxlength: 2000, class: "form-control"
-                %p.hint Separate tags with commas.
+                %p.hint 使用逗号分割。
 
           %fieldset.features
             %legend
-              Features:
+              特性：
             .form-group
-              = f.label :issues_enabled, "Issues", class: 'control-label'
+              = f.label :issues_enabled, "问题", class: 'control-label'
               .col-sm-10
                 .checkbox
                   = f.check_box :issues_enabled
-                  %span.descr Lightweight issue tracking system for this project
+                  %span.descr 轻量级问题跟踪系统
 
             - if Project.issues_tracker.values.count > 1
               .form-group
-                = f.label :issues_tracker, "Issues tracker", class: 'control-label'
+                = f.label :issues_tracker, "问题追踪", class: 'control-label'
                 .col-sm-10= f.select(:issues_tracker, project_issues_trackers(@project.issues_tracker), {}, { disabled: !@project.issues_enabled })
 
               .form-group
-                = f.label :issues_tracker_id, "Project name or id in issues tracker", class: 'control-label'
+                = f.label :issues_tracker_id, "项目名称或者问题跟踪 id", class: 'control-label'
                 .col-sm-10= f.text_field :issues_tracker_id, disabled: !@project.can_have_issues_tracker_id?, class: 'form-control'
 
             .form-group
-              = f.label :merge_requests_enabled, "Merge Requests", class: 'control-label'
+              = f.label :merge_requests_enabled, "合并请求", class: 'control-label'
               .col-sm-10
                 .checkbox
                   = f.check_box :merge_requests_enabled
-                  %span.descr Submit changes to be merged upstream.
+                  %span.descr 合并上游修改
 
             .form-group
-              = f.label :wiki_enabled, "Wiki", class: 'control-label'
+              = f.label :wiki_enabled, "维基", class: 'control-label'
               .col-sm-10
                 .checkbox
                   = f.check_box :wiki_enabled
-                  %span.descr Pages for project documentation
+                  %span.descr 项目文档页面
 
             .form-group
-              = f.label :snippets_enabled, "Snippets", class: 'control-label'
+              = f.label :snippets_enabled, "代码片段", class: 'control-label'
               .col-sm-10
                 .checkbox
                   = f.check_box :snippets_enabled
-                  %span.descr Share code pastes with others out of git repository
+                  %span.descr 共享 git 版本仓库外的代码
 
 
           .form-actions
-            = f.submit 'Save changes', class: "btn btn-save"
+            = f.submit '保存修改', class: "btn btn-save"
 
 
 

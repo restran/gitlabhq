@@ -1,39 +1,39 @@
 %h3.page-title
-  Account settings
+  账号设置
 %p.light
-  You can change your username and private token here.
+  修改用户名和私有授权。
   - if current_user.ldap_user?
-    Some options are unavailable for LDAP accounts
+    部分设置对于 LDAP 账号无效
 %hr
 
 
 .account-page
   %fieldset.update-token
     %legend
-      Private token
+      私有授权
     %div
       = form_for @user, url: reset_private_token_profile_path, method: :put do |f|
         .data
           %p
-            Your private token is used to access application resources without authentication.
+            私有授权可以免登录访问应用资源。
             %br
-            It can be used for atom feeds or the API.
+            通常在 RSS 和 API 中使用。
             %span.cred
-              Keep it secret!
+              注意保密！
 
           %p.cgray
             - if current_user.private_token
               = text_field_tag "token", current_user.private_token, class: "form-control"
               %div
-                = f.submit 'Reset', data: { confirm: "Are you sure?" }, class: "btn btn-primary btn-build-token"
+                = f.submit '重置', data: { confirm: "确定要继续么？" }, class: "btn btn-primary btn-build-token"
             - else
-              %span You don`t have one yet. Click generate to fix it.
-              = f.submit 'Generate', class: "btn success btn-build-token"
+              %span 没有私有授权，点生成按钮可修复。
+              = f.submit '生成', class: "btn success btn-build-token"
 
 
   - if show_profile_social_tab?
     %fieldset
-      %legend Social Accounts
+      %legend 社会化账号
       .oauth_select_holder.append-bottom-10
         %p Click on icon to activate signin with one of the following services
         - enabled_social_providers.each do |provider|

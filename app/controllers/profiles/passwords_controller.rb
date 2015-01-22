@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Profiles::PasswordsController < ApplicationController
   layout :determine_layout
 
@@ -46,7 +47,7 @@ class Profiles::PasswordsController < ApplicationController
     end
 
     if @user.update_attributes(password_attributes)
-      flash[:notice] = "Password was successfully updated. Please login with it"
+      flash[:notice] = "密码已成功更新。请使用新密码重新登录"
       redirect_to new_user_session_path
     else
       render 'edit'
