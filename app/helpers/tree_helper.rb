@@ -75,7 +75,7 @@ module TreeHelper
       end
 
     if blob && blob.text?
-      text = 'Edit'
+      text = '编辑'
       after = options[:after] || ''
       from_mr = options[:from_merge_request_id]
       link_opts = {}
