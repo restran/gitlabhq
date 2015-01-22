@@ -63,46 +63,46 @@
   %br
   .row
     .col-md-4
-      %h4 Stats
+      %h4 统计
       %hr
       %p
-        Forks
+        派生
         %span.light.pull-right
           = ForkedProjectLink.count
       %p
-        Issues
+        问题
         %span.light.pull-right
           = Issue.count
       %p
-        Merge Requests
+        合并请求
         %span.light.pull-right
           = MergeRequest.count
       %p
-        Notes
+        笔记
         %span.light.pull-right
           = Note.count
       %p
-        Snippets
+        代码片段
         %span.light.pull-right
           = Snippet.count
       %p
-        SSH Keys
+        SSH 密钥
         %span.light.pull-right
           = Key.count
       %p
-        Milestones
+        里程碑
         %span.light.pull-right
           = Milestone.count
       %p
-        Active users last 30 days
+        最近 30 天活跃用户
         %span.light.pull-right
           = User.where("current_sign_in_at > ?", 30.days.ago).count
     .col-md-4
       %h4
-        Features
+        功能
       %hr
       %p
-        Sign up
+        注册
         %span.light.pull-right
           = boolean_to_icon signup_enabled?
       %p
@@ -110,7 +110,7 @@
         %span.light.pull-right
           = boolean_to_icon Gitlab.config.ldap.enabled
       %p
-        Gravatar
+        头像
         %span.light.pull-right
           = boolean_to_icon gravatar_enabled?
       %p

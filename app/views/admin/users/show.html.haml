@@ -1,27 +1,27 @@
 %h3.page-title
-  User:
+  用户：
   = @user.name
   - if @user.blocked?
-    %span.cred (Blocked)
+    %span.cred (被禁用)
   - if @user.admin
-    %span.cred (Admin)
+    %span.cred (管理)
 
   .pull-right
     = link_to edit_admin_user_path(@user), class: "btn btn-grouped" do
       %i.fa.fa-pencil-square-o
-      Edit
+      编辑
 %hr
 %ul.nav.nav-tabs
   %li.active
-    %a{"data-toggle" => "tab", href: "#account"} Account
+    %a{"data-toggle" => "tab", href: "#account"} 账号
   %li
-    %a{"data-toggle" => "tab", href: "#profile"} Profile
+    %a{"data-toggle" => "tab", href: "#profile"} 个人资料
   %li
-    %a{"data-toggle" => "tab", href: "#groups"} Groups
+    %a{"data-toggle" => "tab", href: "#groups"} 群组
   %li
-    %a{"data-toggle" => "tab", href: "#projects"} Projects
+    %a{"data-toggle" => "tab", href: "#projects"} 项目
   %li
-    %a{"data-toggle" => "tab", href: "#ssh-keys"} SSH keys
+    %a{"data-toggle" => "tab", href: "#ssh-keys"} SSH 密钥
 
 .tab-content
   #account.tab-pane.active
