@@ -17,7 +17,7 @@ class Projects::BlobController < Projects::ApplicationController
     result = Files::DeleteService.new(@project, current_user, params, @ref, @path).execute
 
     if result[:status] == :success
-      flash[:notice] = "你的更改已成功提交"
+      flash[:notice] = "你的更改已提交成功"
       redirect_to project_tree_path(@project, @ref)
     else
       flash[:alert] = result[:message]

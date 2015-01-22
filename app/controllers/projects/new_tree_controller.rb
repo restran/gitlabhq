@@ -11,7 +11,7 @@ class Projects::NewTreeController < Projects::BaseTreeController
     result = Files::CreateService.new(@project, current_user, params, @ref, file_path).execute
 
     if result[:status] == :success
-      flash[:notice] = "你的更改已成功提交"
+      flash[:notice] = "你的更改已提交成功"
       redirect_to project_blob_path(@project, File.join(@ref, file_path))
     else
       flash[:alert] = result[:message]

@@ -250,7 +250,7 @@ class ApplicationController < ActionController::Base
 
   def require_email
     if current_user && current_user.temp_oauth_email?
-      redirect_to profile_path, notice: 'Please complete your profile with email address' and return
+      redirect_to profile_path, notice: '请在个人资料中填写电子邮箱地址' and return
     end
   end
 

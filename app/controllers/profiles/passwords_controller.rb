@@ -13,7 +13,7 @@ class Profiles::PasswordsController < ApplicationController
 
   def create
     unless @user.valid_password?(user_params[:current_password])
-      redirect_to new_profile_password_path, alert: 'You must provide a valid current password'
+      redirect_to new_profile_password_path, alert: '必须提供一个有效的当前密码'
       return
     end
 
@@ -27,7 +27,7 @@ class Profiles::PasswordsController < ApplicationController
 
     if result
       @user.update_attributes(password_expires_at: nil)
-      redirect_to root_path, notice: 'Password successfully changed'
+      redirect_to root_path, notice: '密码修改成功'
     else
       render :new
     end
@@ -42,7 +42,7 @@ class Profiles::PasswordsController < ApplicationController
     end
 
     unless @user.valid_password?(user_params[:current_password])
-      redirect_to edit_profile_password_path, alert: 'You must provide a valid current password'
+      redirect_to edit_profile_password_path, alert: '必须提供一个有效的当前密码'
       return
     end
 
@@ -56,7 +56,7 @@ class Profiles::PasswordsController < ApplicationController
 
   def reset
     current_user.send_reset_password_instructions
-    redirect_to edit_profile_password_path, notice: 'We sent you an email with reset password instructions'
+    redirect_to edit_profile_password_path, notice: '已发送重置密码操作的电子邮件'
   end
 
   private
@@ -66,7 +66,7 @@ class Profiles::PasswordsController < ApplicationController
   end
 
   def set_title
-    @title = "New password"
+    @title = "新密码"
   end
 
   def determine_layout

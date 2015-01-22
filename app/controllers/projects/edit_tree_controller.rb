@@ -15,7 +15,7 @@ class Projects::EditTreeController < Projects::BaseTreeController
       new(@project, current_user, params, @ref, @path).execute
 
     if result[:status] == :success
-      flash[:notice] = "你的更改已成功提交"
+      flash[:notice] = "你的更改已提交成功"
 
       if from_merge_request
         from_merge_request.reload_code

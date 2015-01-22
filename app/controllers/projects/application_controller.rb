@@ -26,7 +26,7 @@ class Projects::ApplicationController < ApplicationController
 
   def require_branch_head
     unless @repository.branch_names.include?(@ref)
-      redirect_to project_tree_path(@project, @ref), notice: "This action is not allowed unless you are on top of a branch"
+      redirect_to project_tree_path(@project, @ref), notice: "除在分支的顶层外不允许本操作"
     end
   end
 end
