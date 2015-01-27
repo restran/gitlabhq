@@ -1,11 +1,11 @@
 .panel.panel-default
   .panel-heading.clearfix
     .input-group
-      = search_field_tag :filter_group, nil, placeholder: 'Filter by name', class: 'dash-filter form-control'
+      = search_field_tag :filter_group, nil, placeholder: '名称过滤', class: 'dash-filter form-control'
       - if current_user.can_create_group?
         .input-group-addon
           = link_to new_group_path, class: "" do
-            %strong New group
+            %strong 新群组
   %ul.well-list.dash-list
     - groups.each do |group|
       %li.group-row

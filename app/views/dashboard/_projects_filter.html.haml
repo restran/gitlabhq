@@ -3,30 +3,30 @@
     %ul.nav.nav-pills.nav-compact
       = nav_tab :scope, nil do
         = link_to projects_dashboard_filter_path(scope: nil) do
-          All
+          所有
       = nav_tab :scope, 'personal' do
         = link_to projects_dashboard_filter_path(scope: 'personal') do
-          Personal
+          个人的
       = nav_tab :scope, 'joined' do
         = link_to projects_dashboard_filter_path(scope: 'joined') do
-          Joined
+          参与的
       = nav_tab :scope, 'owned' do
         = link_to projects_dashboard_filter_path(scope: 'owned') do
-          Owned
+          拥有的
 
   .dropdown.inline.append-right-10
     %a.dropdown-toggle.btn{href: '#', "data-toggle" => "dropdown"}
       %i.fa.fa-globe
-      %span.light Visibility:
+      %span.light 可见性：
       - if params[:visibility_level].present?
         = visibility_level_label(params[:visibility_level].to_i)
       - else
-        Any
+        任何
       %b.caret
     %ul.dropdown-menu
       %li
         = link_to projects_dashboard_filter_path(visibility_level: nil) do
-          Any
+          任何
       - Gitlab::VisibilityLevel.values.each do |level|
         %li{ class: (level.to_s == params[:visibility_level]) ? 'active' : 'light' }
           = link_to projects_dashboard_filter_path(visibility_level: level) do
@@ -37,16 +37,16 @@
     .dropdown.inline.append-right-10
       %a.dropdown-toggle.btn{href: '#', "data-toggle" => "dropdown"}
         %i.fa.fa-group
-        %span.light Group:
+        %span.light 群组：
         - if params[:group].present?
           = Group.find_by(name: params[:group]).name
         - else
-          Any
+          任何
         %b.caret
       %ul.dropdown-menu
         %li
           = link_to projects_dashboard_filter_path(group: nil) do
-            Any
+            任何
         - @groups.each do |group|
           %li{ class: (group.name == params[:group]) ? 'active' : 'light' }
             = link_to projects_dashboard_filter_path(group: group.name) do
@@ -60,16 +60,16 @@
     .dropdown.inline.append-right-10
       %a.dropdown-toggle.btn{href: '#', "data-toggle" => "dropdown"}
         %i.fa.fa-tags
-        %span.light Tags:
+        %span.light 标签：
         - if params[:tag].present?
           = params[:tag]
         - else
-          Any
+          任何
         %b.caret
       %ul.dropdown-menu
         %li
           = link_to projects_dashboard_filter_path(tag: nil) do
-            Any
+            任何
 
         - @tags.each do |tag|
           %li{ class: (tag.name == params[:tag]) ? 'active' : 'light' }
@@ -80,16 +80,22 @@
   .pull-right
     .dropdown.inline
       %a.dropdown-toggle.btn{href: '#', "data-toggle" => "dropdown"}
-        %span.light sort:
-        - if @sort.present?
-          = @sort.humanize
+        %span.light 排序：
+        - if params[:sort] == 'newest'
+          最近创建的
+        - elsif params[:sort] == 'oldest'
+          最旧创建的
+        - elsif params[:sort] == 'recently_updated'
+          最近更新的
+        - elsif params[:sort] == 'last_updated'
+          最旧更新的
         - else
-          Name
+          名称
         %b.caret
       %ul.dropdown-menu
         %li
           = link_to projects_dashboard_filter_path(sort: nil) do
-            Name
+            名称
           = link_to projects_dashboard_filter_path(sort: 'newest') do
             = sort_title_recently_created
           = link_to projects_dashboard_filter_path(sort: 'oldest') do
