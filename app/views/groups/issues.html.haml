@@ -1,12 +1,12 @@
 %h3.page-title
-  Issues
+  问题
 
 %p.light
-  Only issues from
+  仅
   %strong #{@group.name}
-  group are listed here.
+  群组的问题显示在此处。
   - if current_user
-    To see all issues you should visit #{link_to 'dashboard', issues_dashboard_path} page.
+    请到#{link_to '仪表盘', issues_dashboard_path}页面访问所有问题。
 %hr
 
 .append-bottom-20

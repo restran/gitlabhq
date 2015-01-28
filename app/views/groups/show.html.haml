@@ -16,7 +16,7 @@
       - if @events.any?
         .content_list
       - else
-        .nothing-here-block Project activity will be displayed here
+        .nothing-here-block 当前没有项目显示
       = spinner
     %aside.side.col-md-4
       = render "projects", projects: @projects
