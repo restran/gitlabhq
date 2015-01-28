@@ -1,7 +1,7 @@
 - providers = additional_providers
 - if providers.present?
   .login-box{:'data-no-turbolink' => 'data-no-turbolink'}
-    %span Sign in with &nbsp;
+    %span 使用第三方登入 &nbsp;
     - providers.each do |provider|
       %span
         - if default_providers.include?(provider)
