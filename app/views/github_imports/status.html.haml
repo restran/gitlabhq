@@ -1,19 +1,19 @@
 %h3.page-title
   %i.fa.fa-github
-  Import repositories from GitHub.com
+  从 GitHub.com 导入仓库
 
 %p.light
-  Select projects you want to import.
+  选择要导入的项目。
   %span.pull-right
-    Reload to see the progress.
+    重新载入查看进度。
 
 %hr
 %table.table.import-jobs
   %thead
     %tr
-      %th From GitHub
-      %th To GitLab
-      %th Status
+      %th 从 GitHub
+      %th 到 GitLab
+      %th 状态
   %tbody
     - @already_added_projects.each do |project|
       %tr{id: "repo_#{project.id}", class: "#{project_status_css_class(project.import_status)}"}
@@ -24,7 +24,7 @@
           - if project.import_status == 'finished'
             %span.cgreen
               %i.fa.fa-check
-              done
+              完成
           - else
             = project.human_import_status_name
 
@@ -34,7 +34,7 @@
         %td.import-target
           = repo.full_name
         %td.import-actions
-          = button_tag "Add", class: "btn btn-add-to-import"
+          = button_tag "增加", class: "btn btn-add-to-import"
 
 
 :coffeescript
