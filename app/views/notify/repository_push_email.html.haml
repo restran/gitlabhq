@@ -1,17 +1,17 @@
-%h3 #{@author.name} pushed to #{@branch} at #{link_to @project.name_with_namespace, project_url(@project)}
+%h3 #{@author.name} 推送到 #{link_to @project.name_with_namespace, project_url(@project)} 的 #{@branch} 分支
 
-%h4 Commits:
+%h4 提交：
 
 %ul
   - @commits.each do |commit|
     %li
       %strong #{link_to commit.short_id, project_commit_url(@project, commit)}
       %div
-        %span by #{commit.author_name}
-        %i at #{commit.committed_date.strftime("%Y-%m-%dT%H:%M:%SZ")}
+        %span 由 #{commit.author_name}
+        %i 在 #{commit.committed_date.strftime("%Y-%m-%dT%H:%M:%SZ")}
       %pre #{commit.safe_message}
 
-%h4 Changes:
+%h4 变更:
 - @diffs.each do |diff|
   %li
     %strong
