@@ -3,20 +3,20 @@
     = nav_link(controller: :issues) do
       = link_to project_issues_path(@project), class: "tab" do
         %i.fa.fa-exclamation-circle
-        Issues
+        问题
   - if project_nav_tab? :merge_requests
     = nav_link(controller: :merge_requests) do
       = link_to project_merge_requests_path(@project), class: "tab" do
         %i.fa.fa-tasks
-        Merge Requests
+        合并请求
   = nav_link(controller: :milestones) do
     = link_to project_milestones_path(@project), class: "tab" do
       %i.fa.fa-clock-o
-      Milestones
+      里程碑
   = nav_link(controller: :labels) do
     = link_to project_labels_path(@project), class: "tab" do
       %i.fa.fa-tags
-      Labels
+      标签
 
 
   - if current_controller?(:milestones)

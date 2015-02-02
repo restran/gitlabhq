@@ -22,11 +22,11 @@
           - unless params[:view] == 'parallel'
             %label
               = check_box_tag nil, 1, false, class: 'js-toggle-diff-line-wrap'
-              Wrap text
+              自动换行
           &nbsp;
           = link_to '#', class: 'js-toggle-diff-comments btn btn-small' do
             %i.fa.fa-chevron-down
-            Diff comments
+            差异注释
           &nbsp;
 
         - if @merge_request && @merge_request.source_project
