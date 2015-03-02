@@ -10,16 +10,16 @@
         .note-actions
           = link_to "##{dom_id(note)}", name: dom_id(note) do
             %i.fa.fa-link
-            Link here
+            链接
           &nbsp;
           - if can?(current_user, :admin_note, note) && note.editable?
-            = link_to "#", title: "Edit comment", class: "js-note-edit" do
+            = link_to "#", title: "编辑评论", class: "js-note-edit" do
               %i.fa.fa-pencil-square-o
-              Edit
+              编辑
             &nbsp;
-            = link_to project_note_path(@project, note), title: "Remove comment", method: :delete, data: { confirm: 'Are you sure you want to remove this comment?' }, remote: true, class: "danger js-note-delete" do
+            = link_to project_note_path(@project, note), title: "删除评论", method: :delete, data: { confirm: '确定要删除评论么？' }, remote: true, class: "danger js-note-delete" do
               %i.fa.fa-trash-o.cred
-              Remove
+              删除
         - if note.system
           = image_tag avatar_icon(note.author_email), class: "avatar s16"
         = link_to_member(@project, note.author, avatar: false)
@@ -64,6 +64,6 @@
               %i.fa.fa-paperclip
               = note.attachment_identifier
               = link_to delete_attachment_project_note_path(@project, note),
-                title: "Delete this attachment", method: :delete, remote: true, data: { confirm: 'Are you sure you want to remove the attachment?' }, class: "danger js-note-attachment-delete" do
+                title: "删除此附件", method: :delete, remote: true, data: { confirm: '确定要删除此附件么？' }, class: "danger js-note-attachment-delete" do
                 %i.fa.fa-trash-o.cred
       .clear

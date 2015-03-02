@@ -1,41 +1,41 @@
 %h3.page-title
-  Account settings
+  账号设置
 %p.light
-  You can change your username and private token here.
+  修改用户名和私有授权。
   - if current_user.ldap_user?
-    Some options are unavailable for LDAP accounts
+    部分设置对于 LDAP 账号无效
 %hr
 
 
 .account-page
   %fieldset.update-token
     %legend
-      Private token
+      私有授权
     %div
       = form_for @user, url: reset_private_token_profile_path, method: :put do |f|
         .data
           %p
-            Your private token is used to access application resources without authentication.
+            私有授权可以免登录访问应用资源。
             %br
-            It can be used for atom feeds or the API.
+            通常在 RSS 和 API 中使用。
             %span.cred
-              Keep it secret!
+              注意保密！
 
           %p.cgray
             - if current_user.private_token
               = text_field_tag "token", current_user.private_token, class: "form-control"
               %div
-                = f.submit 'Reset', data: { confirm: "Are you sure?" }, class: "btn btn-primary btn-build-token"
+                = f.submit '重置', data: { confirm: "确定要继续么？" }, class: "btn btn-primary btn-build-token"
             - else
-              %span You don`t have one yet. Click generate to fix it.
-              = f.submit 'Generate', class: "btn success btn-build-token"
+              %span 没有私有授权，点生成按钮可修复。
+              = f.submit '生成', class: "btn success btn-build-token"
 
 
   - if show_profile_social_tab?
     %fieldset
-      %legend Social Accounts
+      %legend 社会化账号
       .oauth_select_holder.append-bottom-10
-        %p Click on icon to activate signin with one of the following services
+        %p 点击下列服务的图标激活第三方登入
         - enabled_social_providers.each do |provider|
           %span{class: oauth_active_class(provider) }
             = link_to authbutton(provider, 32), omniauth_authorize_path(User, provider)
@@ -43,36 +43,36 @@
   - if show_profile_username_tab?
     %fieldset.update-username
       %legend
-        Username
+        用户名
       = form_for @user, url: update_username_profile_path,  method: :put, remote: true do |f|
         %p
-          Changing your username will change path to all personal projects!
+          修改用户名会同时修改所有个人项目的路径！
         %div
           = f.text_field :username, required: true, class: 'form-control'
           &nbsp;
         .loading-gif.hide
           %p
             %i.fa.fa-spinner.fa-spin
-            Saving new username
+            正在保存新的用户名
         %p.light
           = user_url(@user)
         %div
-          = f.submit 'Save username', class: "btn btn-save"
+          = f.submit '保存用户名', class: "btn btn-save"
 
   - if show_profile_remove_tab?
     %fieldset.remove-account
       %legend
-        Remove account
+        删除账号
       %div
-        %p Deleting an account has the following effects:
+        %p 删除账号会有如下影响：
         %ul
-          %li All user content like authored issues, snippets, comments will be removed
+          %li 所有用户内容，比如：问题、代码片段、注释将被删除
           - rp = current_user.personal_projects.count
           - unless rp.zero?
-            %li #{pluralize rp, 'personal project'} will be removed and cannot be restored
+            %li #{pluralize rp, '个个人项目', '个个人项目'}将被删除并无法恢复
           - if current_user.solo_owned_groups.present?
             %li
-              The following groups will be abandoned. You should transfer or remove them:
+              下列群组将被废弃。建议先转移或删除：
               %strong #{current_user.solo_owned_groups.map(&:name).join(', ')}
-        = link_to 'Delete account', user_registration_path, data: { confirm: "REMOVE #{current_user.name}? Are you sure?" }, method: :delete, class: "btn btn-remove"
+        = link_to '删除账号', user_registration_path, data: { confirm: "确定要删除 #{current_user.name} 么？" }, method: :delete, class: "btn btn-remove"
 

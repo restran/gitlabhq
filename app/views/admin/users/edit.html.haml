@@ -1,7 +1,7 @@
 %h3.page-title
-  Edit user: #{@user.name}
+  编辑用户：#{@user.name}
 .back-link
   = link_to admin_user_path(@user) do
-    &larr; Back to user page
+    &larr; 返回到用户页面
 %hr
 = render 'form'

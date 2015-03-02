@@ -1,3 +1,4 @@
+#encoding:utf-8
 class SnippetsController < ApplicationController
   before_filter :snippet, only: [:show, :edit, :destroy, :update, :raw]
 

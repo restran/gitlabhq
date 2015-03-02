@@ -1,3 +1,4 @@
+#encoding: utf-8
 module TreeHelper
   # Sorts a repository's tree so that folders are before files and renders
   # their corresponding partials

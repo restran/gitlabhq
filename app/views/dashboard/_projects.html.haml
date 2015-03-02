@@ -14,12 +14,12 @@
 
     - if projects.blank?
       %li
-        .nothing-here-block There are no projects here.
+        .nothing-here-block 没有项目。
     - if @projects_count > @projects_limit
       %li.bottom
         %span.light
-          #{@projects_limit} of #{pluralize(@projects_count, 'project')} displayed.
+          显示 #{@projects_limit} / #{pluralize(@projects_count, '个项目', '个项目')}。
         .pull-right
           = link_to projects_dashboard_path do
-            Show all
+            显示所有
             %i.fa.fa-angle-right

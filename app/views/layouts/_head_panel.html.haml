@@ -2,12 +2,12 @@
   .navbar-inner
     .container
       %div.app_logo
-        = link_to root_path, class: "home has_bottom_tooltip", title: "Dashboard" do
+        = link_to root_path, class: "home has_bottom_tooltip", title: "仪表盘" do
           %h1 GITLAB
       %h1.title= title
 
       %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
-        %span.sr-only Toggle navigation
+        %span.sr-only 切换导航栏
         %i.fa.fa-bars
 
       .navbar-collapse.collapse

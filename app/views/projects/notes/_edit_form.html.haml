@@ -5,18 +5,18 @@
         classes: 'note_text js-note-text'
 
       .comment-hints.clearfix
-        .pull-left Comments are parsed with #{link_to "GitLab Flavored Markdown", help_page_path("markdown", "markdown"),{ target: '_blank', tabindex: -1 }}
-        .pull-right Attach images (JPG, PNG, GIF) by dragging &amp; dropping or #{link_to "selecting them", '#', class: 'markdown-selector', tabindex: -1 }.
+        .pull-left 评论被解析为 #{link_to "GitLab 特色 Markdown", help_page_path("markdown", "markdown"),{ target: '_blank', tabindex: -1 }} 格式。
+        .pull-right 可以拖放或#{link_to "选择文件", '#', class: 'markdown-selector', tabindex: -1 }来附加图片(JPG, PNG, GIF)。
 
     .note-form-actions
       .buttons
-        = f.submit 'Save Comment', class: "btn btn-primary btn-save btn-grouped js-comment-button"
-        = link_to  'Cancel', "#", class: "btn btn-cancel note-edit-cancel"
+        = f.submit '保存评论', class: "btn btn-primary btn-save btn-grouped js-comment-button"
+        = link_to  '取消', "#", class: "btn btn-cancel note-edit-cancel"
 
       .note-form-option.hidden-xs
         %a.choose-btn.btn.js-choose-note-attachment-button
           %i.fa.fa-paperclip
-          %span Choose File ...
+          %span 选择文件...
         &nbsp;
         %span.file_name.js-attachment-filename
         = f.file_field :attachment, class: "js-note-attachment-input hidden"

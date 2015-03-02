@@ -1,3 +1,4 @@
+#encoding: utf-8
 module IssuesHelper
   def issue_css_classes(issue)
     classes = "issue"
@@ -58,13 +59,13 @@ module IssuesHelper
   end
 
   def bulk_update_milestone_options
-    options_for_select(['None (backlog)']) +
+    options_for_select(['无 (挤压)']) +
         options_from_collection_for_select(project_active_milestones, 'id',
                                            'title', params[:milestone_id])
   end
 
   def bulk_update_assignee_options(project = @project)
-    options_for_select(['None (unassigned)']) +
+    options_for_select(['无 (未指派)']) +
         options_from_collection_for_select(project.team.members, 'id',
                                            'name', params[:assignee_id])
   end

@@ -1,3 +1,4 @@
+#encoding: utf-8
 class ProjectsController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:show]
   before_filter :project, except: [:new, :create]
@@ -22,7 +23,7 @@ class ProjectsController < ApplicationController
     @project = ::Projects::CreateService.new(current_user, project_params).execute
 
     if @project.saved?
-      redirect_to project_path(@project), notice: 'Project was successfully created.'
+      redirect_to project_path(@project), notice: '创建项目成功。'
     else
       render 'new'
     end
@@ -171,7 +172,7 @@ class ProjectsController < ApplicationController
   end
 
   def set_title
-    @title = 'New Project'
+    @title = '新项目'
   end
 
   def user_layout

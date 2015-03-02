@@ -1,10 +1,11 @@
+#encoding: utf-8
 module GroupsHelper
   def remove_user_from_group_message(group, user)
-    "Are you sure you want to remove \"#{user.name}\" from \"#{group.name}\"?"
+    "确定要从 \"#{group.name}\" 删除 \"#{user.name}\"?"
   end
 
   def leave_group_message(group)
-    "Are you sure you want to leave \"#{group}\" group?"
+    "确定要离开 \"#{group}\" 群组么？"
   end
 
   def should_user_see_group_roles?(user, group)
@@ -19,13 +20,13 @@ module GroupsHelper
     title = @group.name
 
     title = if current_action?(:issues)
-              "Issues - " + title
+              "问题 - " + title
             elsif current_action?(:merge_requests)
-              "Merge requests - " + title
+              "合并请求 - " + title
             elsif current_action?(:members)
-              "Members - " + title
+              "成员 - " + title
             elsif current_action?(:edit)
-              "Settings - " + title
+              "设置 - " + title
             else
               title
             end

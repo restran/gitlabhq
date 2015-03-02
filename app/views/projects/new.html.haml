@@ -6,7 +6,7 @@
     = form_for @project, html: { class: 'new_project form-horizontal' } do |f|
       .form-group.project-name-holder
         = f.label :path, class: 'control-label' do
-          %strong Project path
+          %strong 项目路径
         .col-sm-10
           .input-group
             = f.text_field :path, placeholder: "my-awesome-project", class: "form-control", tabindex: 1, autofocus: true
@@ -16,7 +16,7 @@
       - if current_user.can_select_namespace?
         .form-group
           = f.label :namespace_id, class: 'control-label' do
-            %span Namespace
+            %span 命名空间
           .col-sm-10
             = f.select :namespace_id, namespaces_options(params[:namespace_id] || :current_user), {}, {class: 'select2', tabindex: 2}
 
@@ -27,18 +27,18 @@
           .col-sm-10
             = link_to "#", class: 'js-toggle-button' do
               %i.fa.fa-upload
-              %span Import existing repository by URL
+              %span 从链接导入已存在的版本库
         .js-toggle-content.hide
           .form-group.import-url-data
             = f.label :import_url, class: 'control-label' do
-              %span Import existing git repo
+              %span 导入已存在的 git 版本库
             .col-sm-10
               = f.text_field :import_url, class: 'form-control', placeholder: 'https://github.com/randx/six.git'
               .bs-callout.bs-callout-info
-                This URL must be publicly accessible or you can add a username and password like this: https://username:password@gitlab.com/company/project.git.
+                链接必须能公开访问或指定用户名和密码类似：https://username:password@gitlab.com/company/project.git.
                 %br
-                The import will time out after 4 minutes. For big repositories, use a clone/push combination.
-                For SVN repositories, check #{link_to "this migrating from SVN doc.", "http://doc.gitlab.com/ce/workflow/migrating_from_svn.html"}
+                导入超过 4 分钟将会超时。对于大仓库，请使用 clone/push 组合操作。
+                对于 SVN 仓库，请查看#{link_to "从 SVN 合并的文档。", "http://doc.gitlab.com/ce/workflow/migrating_from_svn.html"}
 
       .project-import.form-group
         .col-sm-2

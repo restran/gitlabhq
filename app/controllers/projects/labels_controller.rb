@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Projects::LabelsController < Projects::ApplicationController
   before_filter :module_enabled
   before_filter :label, only: [:edit, :update, :destroy]
@@ -51,7 +52,7 @@ class Projects::LabelsController < Projects::ApplicationController
     @label.destroy
 
     respond_to do |format|
-      format.html { redirect_to project_labels_path(@project), notice: 'Label was removed' }
+      format.html { redirect_to project_labels_path(@project), notice: '标签已删除' }
       format.js
     end
   end

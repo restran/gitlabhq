@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Profiles::GroupsController < ApplicationController
   layout "profile"
 
@@ -9,7 +10,7 @@ class Profiles::GroupsController < ApplicationController
     @users_group = group.group_members.where(user_id: current_user.id).first
     if can?(current_user, :destroy, @users_group)
       @users_group.destroy
-      redirect_to(profile_groups_path, info: "You left #{group.name} group.")
+      redirect_to(profile_groups_path, info: "已离开 #{group.name} 群组。")
     else
       return render_403
     end

@@ -4,33 +4,33 @@
       %li{class: ("active" if params[:state] == 'opened')}
         = link_to page_filter_path(state: 'opened') do
           %i.fa.fa-exclamation-circle
-          Open
+          未关闭
       %li{class: ("active" if params[:state] == 'closed')}
         = link_to page_filter_path(state: 'closed') do
           %i.fa.fa-check-circle
-          Closed
+          已关闭
       %li{class: ("active" if params[:state] == 'all')}
         = link_to page_filter_path(state: 'all') do
           %i.fa.fa-compass
-          All
+          所有
 
   .dropdown.inline.assignee-filter
     %a.dropdown-toggle.btn{href: '#', "data-toggle" => "dropdown"}
       %i.fa.fa-user
-      %span.light assignee:
+      %span.light 指派：
       - if @assignee.present?
         %strong= @assignee.name
       - elsif params[:assignee_id] == "0"
-        Unassigned
+        未指派
       - else
-        Any
+        任何
       %b.caret
     %ul.dropdown-menu
       %li
         = link_to page_filter_path(assignee_id: nil) do
-          Any
+          任何
         = link_to page_filter_path(assignee_id: 0) do
-          Unassigned
+          未指派
       - @assignees.sort_by(&:name).each do |user|
         %li
           = link_to page_filter_path(assignee_id: user.id) do
@@ -40,20 +40,20 @@
   .dropdown.inline.prepend-left-10.author-filter
     %a.dropdown-toggle.btn{href: '#', "data-toggle" => "dropdown"}
       %i.fa.fa-user
-      %span.light author:
+      %span.light 作者：
       - if @author.present?
         %strong= @author.name
       - elsif params[:author_id] == "0"
-        Unassigned
+        未指派
       - else
-        Any
+        任何
       %b.caret
     %ul.dropdown-menu
       %li
         = link_to page_filter_path(author_id: nil) do
-          Any
+          任何
         = link_to page_filter_path(author_id: 0) do
-          Unassigned
+          未指派
       - @authors.sort_by(&:name).each do |user|
         %li
           = link_to page_filter_path(author_id: user.id) do
@@ -63,20 +63,20 @@
   .dropdown.inline.prepend-left-10.milestone-filter
     %a.dropdown-toggle.btn{href: '#', "data-toggle" => "dropdown"}
       %i.fa.fa-clock-o
-      %span.light milestone:
+      %span.light 里程碑：
       - if @milestone.present?
         %strong= @milestone.title
       - elsif params[:milestone_id] == "0"
-        None (backlog)
+        无 (积压)
       - else
-        Any
+        任何
       %b.caret
     %ul.dropdown-menu
       %li
         = link_to page_filter_path(milestone_id: nil) do
-          Any
+          任何
         = link_to page_filter_path(milestone_id: 0) do
-          None (backlog)
+          无 (积压)
       - @milestones.each do |milestone|
         %li
           = link_to page_filter_path(milestone_id: milestone.id) do
@@ -106,7 +106,7 @@
           %li
             = link_to generate_project_labels_path(@project, redirect: request.original_url), method: :post do
               %i.fa.fa-plus-circle
-              Create default labels
+              创建默认标签
 
   .pull-right
     = render 'shared/sort_dropdown'

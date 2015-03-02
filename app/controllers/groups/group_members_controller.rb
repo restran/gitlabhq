@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Groups::GroupMembersController < ApplicationController
   before_filter :group
 
@@ -9,7 +10,7 @@ class Groups::GroupMembersController < ApplicationController
   def create
     @group.add_users(params[:user_ids].split(','), params[:access_level])
 
-    redirect_to members_group_path(@group), notice: 'Users were successfully added.'
+    redirect_to members_group_path(@group), notice: '用户增加成功。'
   end
 
   def update
@@ -23,7 +24,7 @@ class Groups::GroupMembersController < ApplicationController
     if can?(current_user, :destroy, @users_group)  # May fail if last owner.
       @users_group.destroy
       respond_to do |format|
-        format.html { redirect_to members_group_path(@group), notice: 'User was  successfully removed from group.' }
+        format.html { redirect_to members_group_path(@group), notice: '用户从群组删除成功。' }
         format.js { render nothing: true }
       end
     else
