@@ -107,7 +107,7 @@ class Admin::UsersController < Admin::ApplicationController
     user.save if user.notification_email_changed?
 
     respond_to do |format|
-      format.html { redirect_to :back, notice: "Successfully removed email." }
+      format.html { redirect_to :back, notice: "删除电子邮箱成功。" }
       format.js { render nothing: true }
     end
   end

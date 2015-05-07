@@ -29,7 +29,7 @@ module BlobHelper
       end
 
     if blob && blob.text?
-      text = 'Edit'
+      text = '编辑'
       after = options[:after] || ''
       from_mr = options[:from_merge_request_id]
       link_opts = {}
@@ -47,14 +47,14 @@ module BlobHelper
   end
 
   def leave_edit_message
-    "Leave edit mode?\nAll unsaved changes will be lost."
+    "要离开编辑模式么？\n所有未保存修改将会丢失。"
   end
 
   def editing_preview_title(filename)
     if Gitlab::MarkdownHelper.previewable?(filename)
-      'Preview'
+      '预览'
     else
-      'Preview changes'
+      '预览变更'
     end
   end
 end

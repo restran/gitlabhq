@@ -1,11 +1,11 @@
 .panel.panel-default
   .panel-heading.clearfix
     .input-group
-      = search_field_tag :filter_projects, nil, placeholder: 'Filter by name', class: 'dash-filter form-control'
+      = search_field_tag :filter_projects, nil, placeholder: '名称过滤', class: 'dash-filter form-control'
       - if current_user.can_create_project?
         .input-group-addon.dash-new-project
           = link_to new_project_path do
-            %strong New project
+            %strong 新项目
 
   %ul.well-list.dash-list
     - projects.each do |project|

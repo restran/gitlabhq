@@ -13,7 +13,7 @@ class Profiles::PasswordsController < ApplicationController
 
   def create
     unless @user.password_automatically_set || @user.valid_password?(user_params[:current_password])
-      redirect_to new_profile_password_path, alert: 'You must provide a valid current password'
+      redirect_to new_profile_password_path, alert: '必须提供一个有效的当前密码'
       return
     end
 
@@ -44,12 +44,12 @@ class Profiles::PasswordsController < ApplicationController
     password_attributes[:password_automatically_set] = false
 
     unless @user.password_automatically_set || @user.valid_password?(user_params[:current_password])
-      redirect_to edit_profile_password_path, alert: 'You must provide a valid current password'
+      redirect_to edit_profile_password_path, alert: '必须提供一个有效的当前密码'
       return
     end
 
     if @user.update_attributes(password_attributes)
-      flash[:notice] = "Password was successfully updated. Please login with it"
+      flash[:notice] = "密码已成功更新。请使用新密码重新登录"
       redirect_to new_user_session_path
     else
       render 'edit'

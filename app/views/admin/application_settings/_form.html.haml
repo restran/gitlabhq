@@ -6,43 +6,43 @@
           %p= msg
 
   %fieldset
-    %legend Features
+    %legend 功能
     .form-group
-      = f.label :signup_enabled, class: 'control-label'
+      = f.label :signup_enabled, "开启注册", class: 'control-label'
       .col-sm-10
         = f.check_box :signup_enabled, class: 'checkbox'
     .form-group
-      = f.label :signin_enabled, class: 'control-label'
+      = f.label :signin_enabled, "开启登入", class: 'control-label'
       .col-sm-10
         = f.check_box :signin_enabled, class: 'checkbox'
     .form-group
-      = f.label :gravatar_enabled, class: 'control-label'
+      = f.label :gravatar_enabled, "开启头像", class: 'control-label'
       .col-sm-10
         = f.check_box :gravatar_enabled, class: 'checkbox'
     .form-group
-      = f.label :twitter_sharing_enabled, "Twitter enabled", class: 'control-label'
+      = f.label :twitter_sharing_enabled, "开启推特", class: 'control-label'
       .col-sm-10
         = f.check_box :twitter_sharing_enabled, class: 'checkbox'
-        %span.help-block Show users button to share their newly created public or internal projects on twitter
+        %span.help-block 显示用户按钮去分享其最近创建的公开货内部项目到推特
   %fieldset
-    %legend Misc
+    %legend 杂项
     .form-group
-      = f.label :default_projects_limit, class: 'control-label'
+      = f.label :default_projects_limit, "默认项目限制", class: 'control-label'
       .col-sm-10
         = f.number_field :default_projects_limit, class: 'form-control'
     .form-group
-      = f.label :default_branch_protection, class: 'control-label'
+      = f.label :default_branch_protection, "默认分支保护", class: 'control-label'
       .col-sm-10
         = f.select :default_branch_protection, options_for_select(Gitlab::Access.protection_options, @application_setting.default_branch_protection), {}, class: 'form-control'
     .form-group
-      = f.label :home_page_url, class: 'control-label'
+      = f.label :home_page_url, "主页链接", class: 'control-label'
       .col-sm-10
         = f.text_field :home_page_url, class: 'form-control', placeholder: 'http://company.example.com'
-        %span.help-block We will redirect non-logged in users to this page
+        %span.help-block 未登录用户将会重定向到此页面
     .form-group
-      = f.label :sign_in_text, class: 'control-label'
+      = f.label :sign_in_text, "登入文字", class: 'control-label'
       .col-sm-10
         = f.text_area :sign_in_text, class: 'form-control', rows: 4
-        .help-block Markdown enabled
+        .help-block Markdown 启用
   .form-actions
-    = f.submit 'Save', class: 'btn btn-primary'
+    = f.submit '保存', class: 'btn btn-primary'

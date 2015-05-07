@@ -79,9 +79,9 @@ module ProjectsHelper
 
     toggle_html = content_tag('span', class: 'toggle') do
       toggle_text = if starred
-                      ' Unstar'
+                      ' 取消标记'
                     else
-                      ' Star'
+                      ' 标记'
                     end
 
       icon('star') + toggle_text
@@ -109,7 +109,7 @@ module ProjectsHelper
 
   def link_to_toggle_fork
     out = icon('code-fork')
-    out << ' Fork'
+    out << ' 派生'
     out << content_tag(:span, class: 'count') do
       @project.forks_count.to_s
     end
@@ -161,42 +161,42 @@ module ProjectsHelper
     # In order to prevent 500 error
     # when application cannot allocate memory
     # to calculate repo size - just show 'Unknown'
-    'unknown'
+    '未知'
   end
 
   def project_head_title
     title = @project.name_with_namespace
 
     title = if current_controller?(:tree)
-              "#{@project.path}\/#{@path} at #{@ref} - " + title
+              "#{@project.path}\/#{@path} 在 #{@ref} - " + title
             elsif current_controller?(:issues)
               if current_action?(:show)
-                "Issue ##{@issue.iid} - #{@issue.title} - " + title
+                "问题 ##{@issue.iid} - #{@issue.title} - " + title
               else
-                "Issues - " + title
+                "问题 - " + title
               end
             elsif current_controller?(:blob)
               if current_action?(:new) || current_action?(:create)
-                "New file at #{@ref}"
+                "新文件在 #{@ref}"
               elsif current_action?(:show)
-                "#{@blob.path} at #{@ref}"
+                "#{@blob.path} 在 #{@ref}"
               elsif @blob
-                "Edit file #{@blob.path} at #{@ref}"
+                "编辑文件 #{@blob.path} 在 #{@ref}"
               end
             elsif current_controller?(:commits)
-              "Commits at #{@ref} - " + title
+              "提交到 #{@ref} - " + title
             elsif current_controller?(:merge_requests)
               if current_action?(:show)
-                "Merge request ##{@merge_request.iid} - " + title
+                "合并请求 ##{@merge_request.iid} - " + title
               else
-                "Merge requests - " + title
+                "合并请求 - " + title
               end
             elsif current_controller?(:wikis)
-              "Wiki - " + title
+              "维基 - " + title
             elsif current_controller?(:network)
-              "Network graph - " + title
+              "网络图 - " + title
             elsif current_controller?(:graphs)
-              "Graphs - " + title
+              "图表 - " + title
             else
               title
             end
