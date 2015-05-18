@@ -15,17 +15,17 @@
       - @hook.errors.full_messages.each do |msg|
         %p= msg
   .form-group
-    = f.label :url, "URL:", class: 'control-label'
+    = f.label :url, "链接：", class: 'control-label'
     .col-sm-10
       = f.text_field :url, class: "form-control"
   .form-actions
-    = f.submit "Add System Hook", class: "btn btn-create"
+    = f.submit "增加系统钩子", class: "btn btn-create"
 %hr
 
 -if @hooks.any?
   .panel.panel-default
     .panel-heading
-      System hooks (#{@hooks.count})
+      系统钩子 (#{@hooks.count})
     %ul.well-list
       - @hooks.each do |hook|
         %li

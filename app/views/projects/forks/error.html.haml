@@ -3,11 +3,11 @@
   .alert.alert-danger.alert-block
     %h4
       %i.fa.fa-code-fork
-      Fork Error!
+      派生错误！
     %p
-      You tried to fork
+      试图派生
       = link_to_project @project
-      but it failed for the following reason:
+      出现错误，原因如下：
 
 
     - if @forked_project && @forked_project.errors.any?

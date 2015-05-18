@@ -48,7 +48,7 @@
         %span.light.pull-right
           = boolean_to_icon Gitlab.config.ldap.enabled
       %p
-        Gravatar
+        头像
         %span.light.pull-right
           = boolean_to_icon gravatar_enabled?
       %p
@@ -122,7 +122,7 @@
             #{time_ago_with_tooltip(project.created_at)}
 
     .col-md-4
-      %h4 Latest users
+      %h4 最近用户
       %hr
       - @users.each do |user|
         %p
@@ -132,7 +132,7 @@
             #{time_ago_with_tooltip(user.created_at)}
 
     .col-md-4
-      %h4 Latest groups
+      %h4 最近群组
       %hr
       - @groups.each do |group|
         %p

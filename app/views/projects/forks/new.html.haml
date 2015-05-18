@@ -11,7 +11,7 @@
         .col-md-2.col-sm-3
           - if fork = namespace.find_fork_of(@project)
             .thumbnail.fork-exists-thumbnail
-              = link_to project_path(fork), title: "Visit project fork", class: 'has_tooltip' do
+              = link_to project_path(fork), title: "查看项目派生", class: 'has_tooltip' do
                 = image_tag namespace_icon(namespace, 200)
                 .caption
                   %h4=namespace.human_name
@@ -27,14 +27,14 @@
                     = namespace.path
 
   %p.light
-    Fork is a copy of a project repository.
+    派生是创建项目仓库的副本。
     %br
-    Forking a repository allows you to do changes without affecting the original project.
+    派生的仓库允许你在不影响原有项目的情况下修改新内容。
 
 .save-project-loader.hide
   .center
     %h2
       %i.fa.fa-spinner.fa-spin
-      Forking repository
-    %p Please wait a moment, this page will automatically refresh when ready.
+      正在派生仓库
+    %p 请稍后，本页面将在准备好后自动刷新。
 

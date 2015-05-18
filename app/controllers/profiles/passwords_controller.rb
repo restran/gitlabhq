@@ -26,7 +26,7 @@ class Profiles::PasswordsController < Profiles::ApplicationController
 
     if result
       @user.update_attributes(password_expires_at: nil)
-      redirect_to root_path, notice: 'Password successfully changed'
+      redirect_to root_path, notice: '密码修改成功'
     else
       render :new
     end
@@ -56,7 +56,7 @@ class Profiles::PasswordsController < Profiles::ApplicationController
 
   def reset
     current_user.send_reset_password_instructions
-    redirect_to edit_profile_password_path, notice: 'We sent you an email with reset password instructions'
+    redirect_to edit_profile_password_path, notice: '已发送重置密码操作的电子邮件'
   end
 
   private

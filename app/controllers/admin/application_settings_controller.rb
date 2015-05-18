@@ -7,7 +7,7 @@ class Admin::ApplicationSettingsController < Admin::ApplicationController
   def update
     if @application_setting.update_attributes(application_setting_params)
       redirect_to admin_application_settings_path,
-        notice: 'Application settings saved successfully'
+        notice: '应用设置保存成功'
     else
       render :show
     end

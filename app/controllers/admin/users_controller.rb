@@ -52,7 +52,7 @@ class Admin::UsersController < Admin::ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to [:admin, @user], notice: 'User was successfully created.' }
+        format.html { redirect_to [:admin, @user], notice: '用户创建成功。' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render "new" }

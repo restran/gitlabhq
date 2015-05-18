@@ -102,7 +102,7 @@
 
             - if @user.created_by
               %li
-                %span.light Created by:
+                %span.light 创建者：
                 %strong
                   = link_to @user.created_by.name, [:admin, @user.created_by]
 
@@ -163,7 +163,7 @@
             %li
               = image_tag avatar_icon(@user.email, 60), class: "avatar s60"
             %li
-              %span.light Profile page:
+              %span.light 个人资料页面：
               %strong
                 = link_to user_path(@user) do
                   = @user.username

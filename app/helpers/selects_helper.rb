@@ -1,3 +1,4 @@
+#encoding: utf-8
 module SelectsHelper
   def users_select_tag(id, opts = {})
     css_class = "ajax-users-select "

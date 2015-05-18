@@ -9,7 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
     current_user.destroy
 
     respond_to do |format|
-      format.html { redirect_to new_user_session_path, notice: "Account successfully removed." }
+      format.html { redirect_to new_user_session_path, notice: "账号删除成功。" }
     end
   end
 
