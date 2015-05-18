@@ -58,7 +58,7 @@ class @Milestone
             $(li).find('.assignee-icon').html('')
           $(li).effect 'highlight'
         else
-          new Flash("Issue update failed", 'alert')
+          new Flash("更新问题失败", 'alert')
       dataType: "json"
 
   constructor: ->
