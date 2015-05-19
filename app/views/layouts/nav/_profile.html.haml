@@ -1,50 +1,50 @@
 %ul.nav.nav-sidebar
   = nav_link(path: 'profiles#show', html_options: {class: 'home'}) do
-    = link_to profile_path, title: 'Profile', data: {placement: 'right'} do
+    = link_to profile_path, title: '个人资料', data: {placement: 'right'} do
       = icon('user fw')
       %span
-        Profile
+        个人资料
   = nav_link(controller: [:accounts, :two_factor_auths]) do
-    = link_to profile_account_path, title: 'Account', data: {placement: 'right'} do
+    = link_to profile_account_path, title: '账号', data: {placement: 'right'} do
       = icon('gear fw')
       %span
-        Account
+        账号
   = nav_link(path: ['profiles#applications', 'applications#edit', 'applications#show', 'applications#new']) do
-    = link_to applications_profile_path, title: 'Applications', data: {placement: 'right'} do
+    = link_to applications_profile_path, title: '应用', data: {placement: 'right'} do
       = icon('cloud fw')
       %span
-        Applications
+        应用
   = nav_link(controller: :emails) do
-    = link_to profile_emails_path, title: 'Emails', data: {placement: 'right'} do
+    = link_to profile_emails_path, title: '电子邮箱', data: {placement: 'right'} do
       = icon('envelope-o fw')
       %span
-        Emails
+        电子邮箱
         %span.count= current_user.emails.count + 1
   - unless current_user.ldap_user?
     = nav_link(controller: :passwords) do
-      = link_to edit_profile_password_path, title: 'Password', data: {placement: 'right'} do
+      = link_to edit_profile_password_path, title: '密码', data: {placement: 'right'} do
         = icon('lock fw')
         %span
-          Password
+          密码
   = nav_link(controller: :notifications) do
-    = link_to profile_notifications_path, title: 'Notifications', data: {placement: 'right'} do
+    = link_to profile_notifications_path, title: '通知', data: {placement: 'right'} do
       = icon('inbox fw')
       %span
-        Notifications
+        通知
 
   = nav_link(controller: :keys) do
-    = link_to profile_keys_path, title: 'SSH Keys', data: {placement: 'right'} do
+    = link_to profile_keys_path, title: 'SSH 密钥', data: {placement: 'right'} do
       = icon('key fw')
       %span
-        SSH Keys
+        SSH 密钥
         %span.count= current_user.keys.count
   = nav_link(path: 'profiles#design') do
-    = link_to design_profile_path, title: 'Design', data: {placement: 'right'} do
+    = link_to design_profile_path, title: '风格', data: {placement: 'right'} do
       = icon('image fw')
       %span
-        Design
+        风格
   = nav_link(path: 'profiles#history') do
-    = link_to history_profile_path, title: 'History', data: {placement: 'right'} do
+    = link_to history_profile_path, title: '历史', data: {placement: 'right'} do
       = icon('history fw')
       %span
-        History
+        历史

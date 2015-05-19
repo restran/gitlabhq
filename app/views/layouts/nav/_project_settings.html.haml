@@ -1,41 +1,41 @@
 %ul.project-navigation.nav.nav-sidebar
   = nav_link do
-    = link_to project_path(@project), title: 'Back to project', data: {placement: 'right'} do
+    = link_to project_path(@project), title: '返回到项目', data: {placement: 'right'} do
       = icon('caret-square-o-left fw')
       %span
-        Back to project
+        返回到项目
 
   %li.separate-item
 
   %ul.project-settings-nav.sidebar-subnav
     = nav_link(path: 'projects#edit') do
-      = link_to edit_project_path(@project), title: 'Project', class: 'stat-tab tab', data: {placement: 'right'} do
+      = link_to edit_project_path(@project), title: '项目', class: 'stat-tab tab', data: {placement: 'right'} do
         = icon('pencil-square-o')
         %span
-          Project
+          项目
     = nav_link(controller: [:project_members, :teams]) do
-      = link_to namespace_project_project_members_path(@project.namespace, @project), title: 'Members', class: 'team-tab tab', data: {placement: 'right'} do
+      = link_to namespace_project_project_members_path(@project.namespace, @project), title: '成员', class: 'team-tab tab', data: {placement: 'right'} do
         = icon('users')
         %span
-          Members
+          成员
     = nav_link(controller: :deploy_keys) do
-      = link_to namespace_project_deploy_keys_path(@project.namespace, @project), title: 'Deploy Keys', data: {placement: 'right'} do
+      = link_to namespace_project_deploy_keys_path(@project.namespace, @project), title: '部署密钥', data: {placement: 'right'} do
         = icon('key')
         %span
-          Deploy Keys
+          部署密钥
     = nav_link(controller: :hooks) do
-      = link_to namespace_project_hooks_path(@project.namespace, @project), title: 'Web Hooks', data: {placement: 'right'} do
+      = link_to namespace_project_hooks_path(@project.namespace, @project), title: 'Web 钩子', data: {placement: 'right'} do
         = icon('link')
         %span
-          Web Hooks
+          Web 钩子
     = nav_link(controller: :services) do
-      = link_to namespace_project_services_path(@project.namespace, @project), title: 'Services', data: {placement: 'right'} do
+      = link_to namespace_project_services_path(@project.namespace, @project), title: '服务', data: {placement: 'right'} do
         = icon('cogs')
         %span
-          Services
+          服务
     = nav_link(controller: :protected_branches) do
-      = link_to namespace_project_protected_branches_path(@project.namespace, @project), title: 'Protected Branches', data: {placement: 'right'} do
+      = link_to namespace_project_protected_branches_path(@project.namespace, @project), title: '保护分支', data: {placement: 'right'} do
         = icon('lock')
         %span
-          Protected branches
+          保护分支
 
