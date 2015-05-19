@@ -39,10 +39,10 @@
         SSH 密钥
         %span.count= current_user.keys.count
   = nav_link(path: 'profiles#design') do
-    = link_to design_profile_path, title: '风格', data: {placement: 'right'} do
+    = link_to design_profile_path, title: '界面', data: {placement: 'right'} do
       = icon('image fw')
       %span
-        风格
+        界面
   = nav_link(path: 'profiles#history') do
     = link_to history_profile_path, title: '历史', data: {placement: 'right'} do
       = icon('history fw')

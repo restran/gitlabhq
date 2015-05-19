@@ -1,50 +1,50 @@
-- page_title "Design"
+- page_title "界面"
 %h3.page-title
-  Design Settings
+  界面设置
 %p.light
-  Appearance settings will be saved to your profile and made available across all devices.
+  界面设置会保存在个人资料中并在所有设备上生效
 %hr
 
 = form_for @user, url: profile_path, remote: true, method: :put do |f|
   %fieldset.application-theme
     %legend
-      Application theme
+      程序主题
     .themes_opts
       = label_tag do
         .prev.default
         = f.radio_button :theme_id, 1
-        Graphite
+        石墨色
 
       = label_tag do
         .prev.classic
         = f.radio_button :theme_id, 2
-        Charcoal
+        炭黑色
 
       = label_tag do
         .prev.modern
         = f.radio_button :theme_id, 3
-        Green
+        绿色
 
       = label_tag do
         .prev.gray
         = f.radio_button :theme_id, 4
-        Gray
+        灰色
 
       = label_tag do
         .prev.violet
         = f.radio_button :theme_id, 5
-        Violet
+        紫色
 
       = label_tag do
         .prev.blue
         = f.radio_button :theme_id, 6
-        Blue
+        蓝色
     %br
     .clearfix
 
   %fieldset.code-preview-theme
     %legend
-      Code preview theme
+      代码预览主题
     .code_highlight_opts
       - color_schemes.each do |color_scheme_id, color_scheme|
         = label_tag do
