@@ -45,13 +45,11 @@ module VisibilityLevelHelper
       haml_tag :span do
         case level
         when Gitlab::VisibilityLevel::PRIVATE
-          haml_concat "The snippet is visible only for me."
+          haml_concat "该代码片段只有自己能看到。"
         when Gitlab::VisibilityLevel::INTERNAL
-          haml_concat "The snippet is visible for any logged in user."
+          haml_concat "该代码片段任何已登录用户都可以看到。"
         when Gitlab::VisibilityLevel::PUBLIC
-          haml_concat "The snippet can be accessed"
-          haml_concat "without any"
-          haml_concat "authentication."
+          haml_concat "该代码片段可以被任何授权的用户访问。"
         end
       end
     end

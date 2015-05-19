@@ -1,9 +1,10 @@
+#encoding: utf-8
 module ProjectsHelper
   def remove_from_project_team_message(project, member)
     if member.user
-      "You are going to remove #{member.user.name} from #{project.name} project team. Are you sure?"
+      "将要从 #{project.name} 项目组删除 #{member.user.name}。确定要继续么？"
     else
-      "You are going to revoke the invitation for #{member.invite_email} to join #{project.name} project team. Are you sure?"
+      "将要收回邀请 #{member.invite_email} 加入到 #{project.name} 项目组。确定要继续么？"
     end
   end
 
@@ -89,9 +90,9 @@ module ProjectsHelper
 
     toggle_text =
       if starred
-        ' Unstar'
+        ' 取消标记'
       else
-        ' Star'
+        ' 标记'
       end
 
     toggle_html = content_tag('span', class: 'toggle') do
@@ -121,7 +122,7 @@ module ProjectsHelper
 
   def link_to_toggle_fork
     html = content_tag('span') do
-      icon('code-fork') + ' Fork'
+      icon('code-fork') + ' 派生'
     end
 
     count_html = content_tag(:span, class: 'count') do
@@ -189,7 +190,7 @@ module ProjectsHelper
     # In order to prevent 500 error
     # when application cannot allocate memory
     # to calculate repo size - just show 'Unknown'
-    'unknown'
+    '未知'
   end
 
   def default_url_to_repo(project = nil)

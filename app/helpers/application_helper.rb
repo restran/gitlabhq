@@ -110,24 +110,24 @@ module ApplicationHelper
     if project.repo_exists?
       time_ago_with_tooltip(project.repository.commit.committed_date)
     else
-      'Never'
+      '从未'
     end
   rescue
-    'Never'
+    '从未'
   end
 
   def grouped_options_refs
     repository = @project.repository
 
     options = [
-      ['Branches', repository.branch_names],
-      ['Tags', VersionSorter.rsort(repository.tag_names)]
+      ['分支', repository.branch_names],
+      ['标签', VersionSorter.rsort(repository.tag_names)]
     ]
 
     # If reference is commit id - we should add it to branch/tag selectbox
     if(@ref && !options.flatten.include?(@ref) &&
        @ref =~ /\A[0-9a-zA-Z]{6,52}\z/)
-      options << ['Commit', [@ref]]
+      options << ['提交', [@ref]]
     end
 
     grouped_options_for_select(options, @ref || @project.default_branch)
@@ -198,13 +198,13 @@ module ApplicationHelper
 
   def search_placeholder
     if @project && @project.persisted?
-      'Search in this project'
+      '在项目中搜索'
     elsif @snippet || @snippets || @show_snippets
-      'Search snippets'
+      '搜索代码片段'
     elsif @group && @group.persisted?
-      'Search in this group'
+      '在群组中搜索'
     else
-      'Search'
+      '搜索'
     end
   end
 
@@ -215,7 +215,7 @@ module ApplicationHelper
   def time_ago_with_tooltip(date, placement = 'top', html_class = 'time_ago')
     capture_haml do
       haml_tag :time, date.to_s,
-        class: html_class, datetime: date.getutc.iso8601, title: date.in_time_zone.stamp('Aug 21, 2011 9:23pm'),
+        class: html_class, datetime: date.getutc.iso8601, title: date.in_time_zone.stamp('2011-12-31 14:23'),
         data: { toggle: 'tooltip', placement: placement }
 
       haml_tag :script, "$('." + html_class + "').timeago().tooltip()"

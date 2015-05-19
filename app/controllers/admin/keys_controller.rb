@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Admin::KeysController < Admin::ApplicationController
   before_action :user, only: [:show, :destroy]
 

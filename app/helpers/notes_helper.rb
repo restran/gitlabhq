@@ -1,3 +1,4 @@
+#encoding: utf-8
 module NotesHelper
   # Helps to distinguish e.g. commit notes in mr notes list
   def note_for_main_target?(note)
@@ -30,7 +31,7 @@ module NotesHelper
       ts << capture_haml do
         haml_tag :span do
           haml_concat '&middot;'
-          haml_concat icon('edit', title: 'edited')
+          haml_concat icon('edit', title: '编辑时间')
           haml_concat time_ago_with_tooltip(note.updated_at, 'bottom', 'note_edited_ago')
         end
       end
@@ -64,7 +65,7 @@ module NotesHelper
 
     button_tag(class: 'btn add-diff-note js-add-diff-note-button',
                data: data,
-               title: 'Add a comment to this line') do
+               title: '在此行增加注释') do
       icon('comment-o')
     end
   end
@@ -81,9 +82,9 @@ module NotesHelper
     }
 
     button_tag class: 'btn reply-btn js-discussion-reply-button',
-               data: data, title: 'Add a reply' do
+               data: data, title: '增加回复' do
       link_text = icon('comment')
-      link_text << ' Reply'
+      link_text << ' 回复'
     end
   end
 end

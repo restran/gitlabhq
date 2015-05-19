@@ -1,4 +1,3 @@
-#encoding: utf-8
 require 'gitlab/satellite/satellite'
 
 class Projects::MergeRequestsController < Projects::ApplicationController

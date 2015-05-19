@@ -21,10 +21,10 @@ class ProfilesController < Profiles::ApplicationController
     user_params.except!(:email) if @user.ldap_user?
 
     if @user.update_attributes(user_params)
-      flash[:notice] = "Profile was successfully updated"
+      flash[:notice] = "个人资料已成功更新"
     else
       messages = @user.errors.full_messages.uniq.join('. ')
-      flash[:alert] = "Failed to update profile. #{messages}"
+      flash[:alert] = "更新个人资料失败。 #{messages}"
     end
 
     respond_to do |format|

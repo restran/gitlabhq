@@ -32,7 +32,7 @@ class Projects::BlobController < Projects::ApplicationController
     ).execute
 
     if result[:status] == :success
-      flash[:notice] = "Your changes have been successfully committed"
+      flash[:notice] = "你的更改已提交成功"
       ref = sanitized_new_branch_name.presence || @ref
       redirect_to namespace_project_blob_path(@project.namespace, @project, File.join(ref, file_path))
     else

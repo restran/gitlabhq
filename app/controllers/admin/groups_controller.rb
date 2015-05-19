@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Admin::GroupsController < Admin::ApplicationController
   before_action :group, only: [:edit, :show, :update, :destroy, :project_update, :members_update]
 
@@ -43,13 +44,13 @@ class Admin::GroupsController < Admin::ApplicationController
   def members_update
     @group.add_users(params[:user_ids].split(','), params[:access_level], current_user)
 
-    redirect_to [:admin, @group], notice: 'Users were successfully added.'
+    redirect_to [:admin, @group], notice: '用户增加成功。'
   end
 
   def destroy
     @group.destroy
 
-    redirect_to admin_groups_path, notice: 'Group was successfully deleted.'
+    redirect_to admin_groups_path, notice: '群组删除成功。'
   end
 
   private
