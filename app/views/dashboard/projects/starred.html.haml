@@ -1,4 +1,4 @@
-- page_title "Starred Projects"
+- page_title "标记的项目"
 - if @projects.any?
   = render 'shared/show_aside'
 
@@ -9,15 +9,15 @@
       .panel.panel-default
         .panel-heading.clearfix
           .input-group
-            = search_field_tag :filter_projects, nil, placeholder: 'Filter by name', class: 'projects-list-filter form-control'
+            = search_field_tag :filter_projects, nil, placeholder: '名称过滤', class: 'projects-list-filter form-control'
             - if current_user.can_create_project?
               %span.input-group-btn
                 = link_to new_project_path, class: 'btn btn-success' do
-                  New project
+                  新项目
 
         = render 'shared/projects_list', projects: @projects,
           projects_limit: 20, stars: true, avatar: false
 
 - else
-  %h3 You don't have starred projects yet
-  %p.slead Visit project page and press on star icon and it will appear on this page.
+  %h3 没有标记任何项目
+  %p.slead 访问项目页面然后按下标记图标即可将项目显示在此页面。

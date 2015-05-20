@@ -321,7 +321,14 @@ module ApplicationHelper
   end
 
   def state_filters_text_for(entity, project)
-    entity_title = entity.to_s.humanize
+    entity_title =
+      if entity == :opened
+        '未关闭'
+      elsif entity == :closed
+        '已关闭'
+      elsif entity == :all
+        '所有'
+      end
 
     count =
       if project.nil?

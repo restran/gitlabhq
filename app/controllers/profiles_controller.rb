@@ -1,3 +1,4 @@
+#encoding: utf-8
 class ProfilesController < Profiles::ApplicationController
   include ActionView::Helpers::SanitizeHelper
 

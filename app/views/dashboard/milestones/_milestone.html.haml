@@ -4,12 +4,12 @@
   .row
     .col-sm-6
       = link_to dashboard_milestone_path(milestone.safe_title, title: milestone.title) do
-        = pluralize milestone.issue_count, 'Issue'
+        = pluralize milestone.issue_count, '个问题', '个问题'
       &nbsp;
       = link_to dashboard_milestone_path(milestone.safe_title, title: milestone.title) do
-        = pluralize milestone.merge_requests_count, 'Merge Request'
+        = pluralize milestone.merge_requests_count, '个合并请求', '个合并请求'
       &nbsp;
-      %span.light #{milestone.percent_complete}% complete
+      %span.light #{milestone.percent_complete}% 完成
 
     .col-sm-6
       = milestone_progress_bar(milestone)
