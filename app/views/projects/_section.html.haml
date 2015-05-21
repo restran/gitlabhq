@@ -2,7 +2,7 @@
   %li.active
     = link_to '#tab-activity', 'data-toggle' => 'tab' do
       = icon("tachometer")
-      Activity
+      活动
   - if @repository.readme
     %li
       = link_to '#tab-readme', 'data-toggle' => 'tab' do
@@ -16,9 +16,9 @@
       - if current_user
         %ul.nav.nav-pills.event_filter.pull-right
           %li
-            = link_to namespace_project_path(@project.namespace, @project, format: :atom, private_token: current_user.private_token), title: "Feed", class: 'rss-btn' do
+            = link_to namespace_project_path(@project.namespace, @project, format: :atom, private_token: current_user.private_token), title: "动态", class: 'rss-btn' do
               %i.fa.fa-rss
-              Activity Feed
+              活动动态
 
       = render 'shared/event_filter'
       %hr

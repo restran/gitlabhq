@@ -1,14 +1,14 @@
-- page_title "New File", @ref
-%h3.page-title New file
+- page_title "新文件", @ref
+%h3.page-title 新文件
 .file-editor
   = form_tag(namespace_project_create_blob_path(@project.namespace, @project, @id), method: :post, class: 'form-horizontal form-new-file') do
     = render 'projects/blob/editor', ref: @ref
     = render 'shared/commit_message_container', params: params,
-             placeholder: 'Add new file'
+             placeholder: '增加新文件'
 
     .form-group.branch
       = label_tag 'branch', class: 'control-label' do
-        Branch
+        分支
       .col-sm-10
         = text_field_tag 'new_branch', @ref, class: "form-control"
 

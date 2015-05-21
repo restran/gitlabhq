@@ -1,12 +1,12 @@
-- page_title @page.title, "Wiki"
+- page_title @page.title, "维基"
 = render 'nav'
 %h3.page-title
   = @page.title
   = render 'main_links'
 - if @page.historical?
   .warning_message
-    This is an old version of this page.
-    You can view the #{link_to "most recent version", namespace_project_wiki_path(@project.namespace, @project, @page)} or browse the #{link_to "history", history_namespace_project_wiki_path(@project.namespace, @project, @page)}.
+    这是本页面的旧版本。
+    可以查看#{link_to "最近修改版本", namespace_project_wiki_path(@project.namespace, @project, @page)}或浏览#{link_to "历史版本", history_namespace_project_wiki_path(@project.namespace, @project, @page)}。
 
 %hr
 

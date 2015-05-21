@@ -4,24 +4,24 @@
     = link_to namespace_project_tree_path(@project.namespace, @project, branch.name) do
       %strong.str-truncated= branch.name
       - if branch.name == @repository.root_ref
-        %span.label.label-info default
+        %span.label.label-info 默认
       - if @project.protected_branch? branch.name
         %span.label.label-success
           %i.fa.fa-lock
-          protected
+          保护的
     .pull-right
       - if create_mr_button?(@repository.root_ref, branch.name)
         = link_to create_mr_path(@repository.root_ref, branch.name), class: 'btn btn-grouped btn-xs' do
           = icon('plus')
-          Merge Request
+          合并请求
 
       - if branch.name != @repository.root_ref
-        = link_to namespace_project_compare_index_path(@project.namespace, @project, from: @repository.root_ref, to: branch.name), class: 'btn btn-grouped btn-xs', method: :post, title: "Compare" do
+        = link_to namespace_project_compare_index_path(@project.namespace, @project, from: @repository.root_ref, to: branch.name), class: 'btn btn-grouped btn-xs', method: :post, title: "比较" do
           = icon("exchange")
-          Compare
+          比较
 
       - if can_remove_branch?(@project, branch.name)
-        = link_to namespace_project_branch_path(@project.namespace, @project, branch.name), class: 'btn btn-grouped btn-xs btn-remove remove-row', method: :delete, data: { confirm: 'Removed branch cannot be restored. Are you sure?'}, remote: true do
+        = link_to namespace_project_branch_path(@project.namespace, @project, branch.name), class: 'btn btn-grouped btn-xs btn-remove remove-row', method: :delete, data: { confirm: '删除分支无法恢复。确定要继续么？'}, remote: true do
           = icon("trash-o")
 
   - if commit
