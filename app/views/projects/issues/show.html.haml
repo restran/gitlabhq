@@ -1,30 +1,30 @@
-- page_title "#{@issue.title} (##{@issue.iid})", "Issues"
+- page_title "#{@issue.title} (##{@issue.iid})", "问题"
 .issue
   .issue-details
     %h4.page-title
       .issue-box{ class: issue_box_class(@issue) }
         - if @issue.closed?
-          Closed
+          已关闭
         - else
-          Open
-      Issue ##{@issue.iid}
+          未关闭
+      问题 ##{@issue.iid}
       %small.creator
-        &middot; created by #{link_to_member(@project, @issue.author)} #{issue_timestamp(@issue)}
+        &middot; 创建时间 #{link_to_member(@project, @issue.author)} #{issue_timestamp(@issue)}
 
       .pull-right
         - if can?(current_user, :write_issue, @project)
-          = link_to new_namespace_project_issue_path(@project.namespace, @project), class: 'btn btn-grouped new-issue-link', title: 'New Issue', id: 'new_issue_link' do
+          = link_to new_namespace_project_issue_path(@project.namespace, @project), class: 'btn btn-grouped new-issue-link', title: '新问题', id: 'new_issue_link' do
             = icon('plus')
-            New Issue
+            新问题
         - if can?(current_user, :modify_issue, @issue)
           - if @issue.closed?
-            = link_to 'Reopen', issue_path(@issue, issue: {state_event: :reopen}, status_only: true), method: :put, class: 'btn btn-grouped btn-reopen'
+            = link_to '重新打开', issue_path(@issue, issue: {state_event: :reopen}, status_only: true), method: :put, class: 'btn btn-grouped btn-reopen'
           - else
-            = link_to 'Close', issue_path(@issue, issue: {state_event: :close}, status_only: true), method: :put, class: 'btn btn-grouped btn-close', title: 'Close Issue'
+            = link_to '关闭', issue_path(@issue, issue: {state_event: :close}, status_only: true), method: :put, class: 'btn btn-grouped btn-close', title: '关闭问题'
 
           = link_to edit_namespace_project_issue_path(@project.namespace, @project, @issue), class: 'btn btn-grouped issuable-edit' do
             = icon('pencil-square-o')
-            Edit
+            编辑
 
     %hr
     %h2.issue-title

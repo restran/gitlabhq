@@ -1,14 +1,14 @@
 - unless @allowed_to_merge
   - if @project.archived?
     %p
-      %strong Archived projects cannot be committed to!
+      %strong 已归档项目不能提交修改！
   - else
     .automerge_widget.cannot_be_merged.hide
-      %strong This request can't be merged automatically. Even if it could be merged, you don't have permission to do so.
+      %strong 无法自动合并，或者其可以合并但你没有权限处理。
     .automerge_widget.work_in_progress.hide
-      %strong This request can't be merged automatically because it is marked a Work In Progress. Even if it could be merged, you don't have permission to do so.
+      %strong 此请求无法自动合并是因为其被标记为正在工作中 (WIP)。或者其可以合并但你没有权限处理。
     .automerge_widget.can_be_merged.hide
-      %strong This request can be merged automatically, but you don't have permission to do so.
+      %strong 可以自动合并，但你没有权限处理。
 
 
 - if @show_merge_controls
@@ -17,16 +17,16 @@
       = form_for [:automerge, @project.namespace.becomes(Namespace), @project, @merge_request], remote: true, method: :post do |f|
         .accept-merge-holder.clearfix.js-toggle-container
           .accept-action
-            = f.submit "Accept Merge Request", class: "btn btn-create accept_merge_request"
+            = f.submit "接受合并请求", class: "btn btn-create accept_merge_request"
           - if can_remove_branch?(@merge_request.source_project, @merge_request.source_branch) && !@merge_request.for_fork?
             .accept-control.checkbox
               = label_tag :should_remove_source_branch, class: "remove_source_checkbox" do
                 = check_box_tag :should_remove_source_branch
-                Remove source-branch
+                删除来源分支
           .accept-control
-            = link_to "#", class: "modify-merge-commit-link js-toggle-button", title: "Modify merge commit message" do
+            = link_to "#", class: "modify-merge-commit-link js-toggle-button", title: "修改合并提交信息" do
               %i.fa.fa-edit
-              Modify commit message
+              修改提交信息
           .js-toggle-content.hide.prepend-top-20
             = render 'shared/commit_message_container', params: params,
                 text: @merge_request.merge_commit_message,
@@ -34,55 +34,56 @@
 
         %br
         .light
-          If you still want to merge this request manually - use
+          如果希望手工操作，请使用
           %strong
-            = link_to "command line", "#modal_merge_info", class: "how_to_merge_link vlink", title: "How To Merge", "data-toggle" => "modal"
+            = link_to "命令行", "#modal_merge_info", class: "how_to_merge_link vlink", title: "如何合并", "data-toggle" => "modal"
 
 
   .automerge_widget.no_satellite.hide
     %p
       %span
-        %strong This repository does not have satellite. Ask an administrator to fix this issue
+        %strong 此版本仓库没有附属（satellite）。请询问管理员修正此问题。
 
   .automerge_widget.cannot_be_merged.hide
     %h4
-      This request can't be merged with GitLab.
-      You should do it manually with
+      此请求无法直接在 GitLab 合并。
+      可以使用
       %strong
-        = link_to "#modal_merge_info", class: "underlined-link how_to_merge_link", title: "How To Merge", "data-toggle" => "modal" do
-          command line
+        = link_to "#modal_merge_info", class: "underlined-link how_to_merge_link", title: "如何合并", "data-toggle" => "modal" do
+          命令行
+      手工处理
 
     %p
       %button.btn.disabled{:type => 'button'}
         %i.fa.fa-warning
-        Accept Merge Request
+        接受合并请求
       &nbsp;
-      This usually happens when git can not resolve conflicts between branches automatically.
+      这通常发生在 git 无法在分支合并中自动解决冲突。
 
   .automerge_widget.work_in_progress.hide
     %h4
-      This request can't be merged because it is marked a <strong>Work In Progress</strong>.
+      此请求无法被合并是因为其被标记为<strong>正在工作中 (WIP)</strong>。
 
     %p
       %button.btn.disabled{:type => 'button'}
         %i.fa.fa-warning
-        Accept Merge Request
+        接受合并请求
       &nbsp;
 
-      When the merge request is ready, remove the "WIP" prefix from the title to allow it to be merged.
+      当合并请求已准备，请从标题中删除 "WIP" 正在工作中前缀，允许其可以被合并。
 
   .automerge_widget.unchecked
     %p
       %strong
         %i.fa.fa-spinner.fa-spin
-        Checking for ability to automatically merge…
+        正在检查是否可以自动合并…
 
   .automerge_widget.already_cannot_be_merged.hide
     %p
-      %strong This merge request can not be merged. Try to reload the page.
+      %strong 此合并请求无法合并，请重新载入本页面重试。
 
   .merge-in-progress.hide
     %p
       %i.fa.fa-spinner.fa-spin
       &nbsp;
-      Merge is in progress. Please wait. Page will be automatically reloaded. &nbsp;
+      正在合并处理。请稍候。页面会自动重新载入。 &nbsp;

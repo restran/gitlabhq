@@ -11,40 +11,41 @@
 
     - if @merge_request.closed?
       %h4
-        Closed
+        已关闭
         - if @merge_request.closed_event
-          by #{link_to_member(@project, @merge_request.closed_event.author, avatar: false)}
+          由 #{link_to_member(@project, @merge_request.closed_event.author, avatar: false)}
           #{time_ago_with_tooltip(@merge_request.closed_event.created_at)}
-      %p Changes were not merged into target branch
+      %p 变更没有合并到目标分支
 
     - if @merge_request.merged?
       %h4
-        Merged
+        已合并
         - if @merge_request.merge_event
-          by #{link_to_member(@project, @merge_request.merge_event.author, avatar: false)}
+          由 #{link_to_member(@project, @merge_request.merge_event.author, avatar: false)}
           #{time_ago_with_tooltip(@merge_request.merge_event.created_at)}
       = render "projects/merge_requests/show/remove_source_branch"
 
     - if @merge_request.locked?
       %h4
-        Merge in progress...
+        正在合并
       %p
-        Merging is in progress. While merging this request is locked and cannot be closed.
+        Merging 正在尝试合并。此期间合并请求会被锁定无法被关闭。
 
     - unless @commits.any?
-      %h4 Nothing to merge
+      %h4 无需合并
       %p
-        Nothing to merge from
+        从
         %span.label-branch #{@merge_request.source_branch}
-        to
+        到
         %span.label-branch #{@merge_request.target_branch}
+        没有合并内容
         %br
-        Try to use different branches or push new code.
+        使用不同分支或推送新代码后重试。
 
   - if @closes_issues.present? && @merge_request.open?
     .mr-widget-footer
       %span
         %i.fa.fa-check
-        Accepting this merge request will close #{@closes_issues.size == 1 ? 'issue' : 'issues'}
-        = succeed '.' do
+        接受此合并请求将关闭相关#{@closes_issues.size == 1 ? '问题' : '问题'}
+        = succeed '。' do
           != gfm(issues_sentence(@closes_issues))

@@ -2,19 +2,19 @@
   %div.prepend-top-20
     .issuable-context-title
       %label
-        Assignee:
+        指派：
       - if @merge_request.assignee
         %strong= link_to_member(@project, @merge_request.assignee, size: 24)
       - else
-        none
+        无
     .issuable-context-selectbox
       - if can?(current_user, :modify_merge_request, @merge_request)
-        = users_select_tag('merge_request[assignee_id]', placeholder: 'Select assignee', class: 'custom-form-control js-select2 js-assignee', selected: @merge_request.assignee_id, null_user: true)
+        = users_select_tag('merge_request[assignee_id]', placeholder: '选择指派', class: 'custom-form-control js-select2 js-assignee', selected: @merge_request.assignee_id, null_user: true)
 
   %div.prepend-top-20.clearfix
     .issuable-context-title
       %label
-        Milestone:
+        里程碑：
       - if @merge_request.milestone
         %span.back-to-milestone
           = link_to namespace_project_milestone_path(@project.namespace, @project, @merge_request.milestone) do
@@ -22,10 +22,10 @@
               = icon('clock-o')
               = @merge_request.milestone.title
       - else
-        none
+        无
     .issuable-context-selectbox
       - if can?(current_user, :modify_merge_request, @merge_request)
-        = f.select(:milestone_id, milestone_options(@merge_request), { include_blank: 'Select milestone' }, {class: 'select2 select2-compact js-select2 js-milestone'})
+        = f.select(:milestone_id, milestone_options(@merge_request), { include_blank: '选择里程碑' }, {class: 'select2 select2-compact js-select2 js-milestone'})
         = hidden_field_tag :merge_request_context
         = f.submit class: 'btn'
 
@@ -33,16 +33,16 @@
     %div.prepend-top-20.clearfix
       .issuable-context-title
         %label
-          Subscription:
+          订阅：
       %button.btn.btn-block.subscribe-button{:type => 'button'}
         = icon('eye')
-        %span= @merge_request.subscribed?(current_user) ? 'Unsubscribe' : 'Subscribe'
+        %span= @merge_request.subscribed?(current_user) ? '不订阅' : '订阅'
       - subscribtion_status = @merge_request.subscribed?(current_user) ? 'subscribed' : 'unsubscribed'
       .subscription-status{data: {status: subscribtion_status}}
         .description-block.unsubscribed{class: ( 'hidden' if @merge_request.subscribed?(current_user) )}
-          You're not receiving notifications from this thread.
+          不会再接收此主题的通知。
         .description-block.subscribed{class: ( 'hidden' unless @merge_request.subscribed?(current_user) )}
-          You're receiving notifications because you're subscribed to this thread.
+          订阅此主题将会接收到通知。
 
 :coffeescript
   new Subscription("#{toggle_subscription_namespace_project_merge_request_path(@merge_request.project.namespace, @project, @merge_request)}")

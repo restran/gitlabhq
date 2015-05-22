@@ -2,18 +2,18 @@
   %div.prepend-top-20
     .issuable-context-title
       %label
-        Assignee:
+        指派：
       - if issue.assignee
         %strong= link_to_member(@project, @issue.assignee, size: 24)
       - else
-        none
+        无
     - if can?(current_user, :modify_issue, @issue)
-      = users_select_tag('issue[assignee_id]', placeholder: 'Select assignee', class: 'custom-form-control js-select2 js-assignee', selected: @issue.assignee_id, null_user: true, first_user: true)
+      = users_select_tag('issue[assignee_id]', placeholder: '选择指派', class: 'custom-form-control js-select2 js-assignee', selected: @issue.assignee_id, null_user: true, first_user: true)
 
   %div.prepend-top-20.clearfix
     .issuable-context-title
       %label
-        Milestone:
+        里程碑：
       - if issue.milestone
         %span.back-to-milestone
           = link_to namespace_project_milestone_path(@project.namespace, @project, @issue.milestone) do
@@ -21,9 +21,9 @@
               %i.fa.fa-clock-o
               = @issue.milestone.title
       - else
-        none
+        无
     - if can?(current_user, :modify_issue, @issue)
-      = f.select(:milestone_id, milestone_options(@issue), { include_blank: "Select milestone" }, {class: 'select2 select2-compact js-select2 js-milestone'})
+      = f.select(:milestone_id, milestone_options(@issue), { include_blank: "选择里程碑" }, {class: 'select2 select2-compact js-select2 js-milestone'})
       = hidden_field_tag :issue_context
       = f.submit class: 'btn'
 
@@ -31,16 +31,16 @@
     %div.prepend-top-20.clearfix
       .issuable-context-title
         %label
-          Subscription:
+          订阅：
       %button.btn.btn-block.subscribe-button{:type => 'button'}
         %i.fa.fa-eye
-        %span= @issue.subscribed?(current_user) ? "Unsubscribe" : "Subscribe"
+        %span= @issue.subscribed?(current_user) ? "不订阅" : "订阅"
       - subscribtion_status = @issue.subscribed?(current_user) ? "subscribed" : "unsubscribed"
       .subscription-status{"data-status" => subscribtion_status}
         .description-block.unsubscribed{class: ( "hidden" if @issue.subscribed?(current_user) )}
-          You're not receiving notifications from this thread.
+          不会再接收此主题的通知。
         .description-block.subscribed{class: ( "hidden" unless @issue.subscribed?(current_user) )}
-          You're receiving notifications because you're subscribed to this thread.
+          订阅此主题将会接收到通知。
 
 :coffeescript
   new Subscription("#{toggle_subscription_namespace_project_issue_path(@issue.project.namespace, @project, @issue)}")
