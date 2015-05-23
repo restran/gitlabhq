@@ -34,7 +34,7 @@
         - if email.email === current_user.notification_email
           %span.label.label-info 通知电子邮箱
         %span.cgray
-          added #{time_ago_with_tooltip(email.created_at)}
+          增加时间 #{time_ago_with_tooltip(email.created_at)}
         = link_to '删除', profile_email_path(email), data: { confirm: '确定要继续么？'}, method: :delete, class: 'btn btn-sm btn-remove pull-right'
 
 %h4 增加电子邮箱地址
