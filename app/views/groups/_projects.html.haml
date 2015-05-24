@@ -5,6 +5,6 @@
       - if can? current_user, :create_projects, @group
         %span.input-group-btn
           = link_to new_project_path(namespace_id: @group.id), class: 'btn btn-success' do
-            New project
+            新项目
 
   = render 'shared/projects_list', projects: @projects, projects_limit: 20
