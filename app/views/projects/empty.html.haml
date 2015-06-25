@@ -6,27 +6,27 @@
 
 .center.well
   %h3
-    The repository for this project is empty
+    此项目的版本仓库是空的
   %h4
-    You can
+    可以
     = link_to namespace_project_new_blob_path(@project.namespace, @project, 'master'), class: 'btn btn-new btn-lg' do
-      add a file
-    &nbsp;or do a push via the command line.
+      增加一个文件
+    &nbsp;或者在命令行推送
 
 .well
   = render "shared/clone_panel"
 %h4
-  %strong Command line instructions
+  %strong 命令行指令
 %div.git-empty
   %fieldset
-    %legend Git global setup
+    %legend Git 全局设置
     %pre.dark
       :preserve
         git config --global user.name "#{git_user_name}"
         git config --global user.email "#{git_user_email}"
 
   %fieldset
-    %legend Create a new repository
+    %legend 创建新版本库
     %pre.dark
       :preserve
         git clone #{ content_tag(:span, default_url_to_repo, class: 'clone')}
@@ -37,7 +37,7 @@
         git push -u origin master
 
   %fieldset
-    %legend Existing folder or Git repository
+    %legend 已存在的文件夹或 Git 仓库
     %pre.dark
       :preserve
         cd existing_folder
@@ -47,4 +47,4 @@
 
 - if can? current_user, :remove_project, @project
   .prepend-top-20
-    = link_to 'Remove project', [@project.namespace.becomes(Namespace), @project], data: { confirm: remove_project_message(@project)}, method: :delete, class: "btn btn-remove pull-right"
+    = link_to '删除项目', [@project.namespace.becomes(Namespace), @project], data: { confirm: remove_project_message(@project)}, method: :delete, class: "btn btn-remove pull-right"

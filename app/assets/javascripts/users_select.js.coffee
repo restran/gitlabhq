@@ -12,7 +12,7 @@ class @UsersSelect
       firstUser = $(select).data('first-user')
 
       $(select).select2
-        placeholder: "Search for a user"
+        placeholder: "搜索一个用户"
         multiple: $(select).hasClass('multiselect')
         minimumInputLength: 0
         query: (query) =>
@@ -30,7 +30,7 @@ class @UsersSelect
 
               if showNullUser
                 nullUser = {
-                  name: 'Unassigned',
+                  name: '未指派',
                   avatar: null,
                   username: 'none',
                   id: 0
@@ -39,7 +39,7 @@ class @UsersSelect
 
               if showAnyUser
                 anyUser = {
-                  name: 'Any',
+                  name: '任何',
                   avatar: null,
                   username: 'none',
                   id: null
@@ -48,7 +48,7 @@ class @UsersSelect
 
             if showEmailUser && data.results.length == 0 && query.term.match(/^[^@]+@[^@]+$/)
               emailUser = {
-                name: "Invite \"#{query.term}\"",
+                name: "邀请 \"#{query.term}\"",
                 avatar: null,
                 username: query.term,
                 id: query.term

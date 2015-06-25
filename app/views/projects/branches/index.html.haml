@@ -1,25 +1,27 @@
-- page_title "Branches"
+- page_title "分支"
 = render "projects/commits/head"
 %h3.page-title
-  Branches
+  分支
   .pull-right
     - if can? current_user, :push_code, @project
       = link_to new_namespace_project_branch_path(@project.namespace, @project), class: 'btn btn-create' do
         %i.fa.fa-add-sign
-        New branch
+        新分支
       &nbsp;
     .dropdown.inline
       %button.dropdown-toggle.btn{type: 'button', 'data-toggle' => 'dropdown'}
-        %span.light sort:
-        - if @sort.present?
-          = @sort.humanize
+        %span.light 排序：
+        - if params[:sort] == 'recently_updated'
+          最近更新的
+        - elsif params[:sort] == 'last_updated'
+          最旧更新的
         - else
-          Name
+          名称
         %b.caret
       %ul.dropdown-menu
         %li
           = link_to namespace_project_branches_path(sort: nil) do
-            Name
+            名称
           = link_to namespace_project_branches_path(sort: 'recently_updated') do
             = sort_title_recently_updated
           = link_to namespace_project_branches_path(sort: 'last_updated') do

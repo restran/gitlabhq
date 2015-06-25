@@ -1,3 +1,4 @@
+#encoding: utf-8
 class ProjectsController < ApplicationController
   prepend_before_filter :render_go_import, only: [:show]
   skip_before_action :authenticate_user!, only: [:show]
@@ -24,7 +25,7 @@ class ProjectsController < ApplicationController
     if @project.saved?
       redirect_to(
         project_path(@project),
-        notice: 'Project was successfully created.'
+        notice: '创建项目成功。'
       )
     else
       render 'new'
@@ -36,11 +37,11 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if status
-        flash[:notice] = 'Project was successfully updated.'
+        flash[:notice] = '更新项目成功。'
         format.html do
           redirect_to(
             edit_project_path(@project),
-            notice: 'Project was successfully updated.'
+            notice: '更新项目成功。'
           )
         end
         format.js

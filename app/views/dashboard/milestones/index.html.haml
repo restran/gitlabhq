@@ -1,10 +1,10 @@
-- page_title "Milestones"
+- page_title "里程碑"
 %h3.page-title
-  Milestones
-  %span.pull-right #{@dashboard_milestones.count} milestones
+  里程碑
+  %span.pull-right #{@dashboard_milestones.count} 里程碑
 
 %p.light
-  List all milestones from all projects you have access to.
+  所有可以访问的项目的所有里程碑列表。
 
 %hr
 
@@ -14,7 +14,7 @@
     %ul.well-list
       - if @dashboard_milestones.blank?
         %li
-          .nothing-here-block No milestones to show
+          .nothing-here-block 没有里程碑显示
       - else
         - @dashboard_milestones.each do |milestone|
           = render 'milestone', milestone: milestone

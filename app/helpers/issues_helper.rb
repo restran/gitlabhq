@@ -1,3 +1,4 @@
+#encoding: utf-8
 module IssuesHelper
   def issue_css_classes(issue)
     classes = "issue"
@@ -10,7 +11,7 @@ module IssuesHelper
   # to allow filtering issues by an unassigned User or Milestone
   def unassigned_filter
     # Milestone uses :title, Issue uses :name
-    OpenStruct.new(id: 0, title: 'None (backlog)', name: 'Unassigned')
+    OpenStruct.new(id: 0, title: '无 (挤压)', name: '未指派')
   end
 
   def url_for_project_issues(project = @project, options = {})
@@ -50,7 +51,7 @@ module IssuesHelper
       ts << capture_haml do
         haml_tag :span do
           haml_concat '&middot;'
-          haml_concat icon('edit', title: 'edited')
+          haml_concat icon('edit', title: '编辑时间')
           haml_concat time_ago_with_tooltip(issue.updated_at, 'bottom', 'issue_edited_ago')
         end
       end
@@ -59,7 +60,7 @@ module IssuesHelper
   end
 
   def bulk_update_milestone_options
-    options_for_select([['None (backlog)', -1]]) +
+    options_for_select([['无 (挤压)', -1]]) +
         options_from_collection_for_select(project_active_milestones, 'id',
                                            'title', params[:milestone_id])
   end

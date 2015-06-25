@@ -1,11 +1,11 @@
-- page_title "Broadcast Messages"
+- page_title "广播信息"
 %h3.page-title
-  Broadcast Messages
+  广播信息
 %p.light
-  Broadcast messages are displayed for every user and can be used to notify users about scheduled maintenance, recent upgrades and more.
+  广播信息会显示给所有用户，可以用于通知用户系统定期维护、近期计划升级等信息。
 .broadcast-message-preview
   %i.fa.fa-bullhorn
-  %span Your message here
+  %span 信息预览
 
 = form_for [:admin, @broadcast_message], html: { class: 'broadcast-message-form form-horizontal'} do |f|
   -if @broadcast_message.errors.any?

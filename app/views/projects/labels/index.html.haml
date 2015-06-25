@@ -1,9 +1,9 @@
-- page_title "Labels"
+- page_title "标签"
 - if can? current_user, :admin_label, @project
   = link_to new_namespace_project_label_path(@project.namespace, @project), class: "pull-right btn btn-new" do
-    New label
+    新标签
 %h3.page-title
-  Labels
+  标签
 %hr
 
 .labels

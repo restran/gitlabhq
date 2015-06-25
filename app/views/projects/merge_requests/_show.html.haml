@@ -1,4 +1,4 @@
-- page_title "#{@merge_request.title} (##{@merge_request.iid})", "Merge Requests"
+- page_title "#{@merge_request.title} (##{@merge_request.iid})", "合并请求"
 .merge-request{'data-url' => merge_request_path(@merge_request)}
   .merge-request-details
     = render "projects/merge_requests/show/mr_title"
@@ -7,7 +7,7 @@
     %hr
     .append-bottom-20
       .slead
-        %span From
+        %span 从
         - if @merge_request.for_fork?
           %strong.label-branch<
             - if @merge_request.source_project

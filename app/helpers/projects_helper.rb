@@ -1,9 +1,10 @@
+#encoding: utf-8
 module ProjectsHelper
   def remove_from_project_team_message(project, member)
     if member.user
-      "You are going to remove #{member.user.name} from #{project.name} project team. Are you sure?"
+      "将要从 #{project.name} 项目组删除 #{member.user.name}。确定要继续么？"
     else
-      "You are going to revoke the invitation for #{member.invite_email} to join #{project.name} project team. Are you sure?"
+      "将要收回邀请 #{member.invite_email} 加入到 #{project.name} 项目组。确定要继续么？"
     end
   end
 
@@ -24,7 +25,7 @@ module ProjectsHelper
     default_opts = { avatar: true, name: true, size: 16 }
     opts = default_opts.merge(opts)
 
-    return "(deleted)" unless author
+    return "(已删除)" unless author
 
     author_html =  ""
 
@@ -65,11 +66,11 @@ module ProjectsHelper
   end
 
   def remove_project_message(project)
-    "You are going to remove #{project.name_with_namespace}.\n Removed project CANNOT be restored!\n Are you ABSOLUTELY sure?"
+    "将要删除 #{project.name_with_namespace} 。\n 删除项目后无法恢复！\n 百分之百确定要继续么？"
   end
 
   def transfer_project_message(project)
-    "You are going to transfer #{project.name_with_namespace} to another owner. Are you ABSOLUTELY sure?"
+    "将要转移 #{project.name_with_namespace} 给其他人。百分之百确定要继续么？"
   end
 
   def project_nav_tabs
@@ -89,9 +90,9 @@ module ProjectsHelper
 
     toggle_text =
       if starred
-        ' Unstar'
+        ' 取消标记'
       else
-        ' Star'
+        ' 标记'
       end
 
     toggle_html = content_tag('span', class: 'toggle') do
@@ -121,7 +122,7 @@ module ProjectsHelper
 
   def link_to_toggle_fork
     html = content_tag('span') do
-      icon('code-fork') + ' Fork'
+      icon('code-fork') + ' 派生'
     end
 
     count_html = content_tag(:span, class: 'count') do
@@ -197,7 +198,7 @@ module ProjectsHelper
     # In order to prevent 500 error
     # when application cannot allocate memory
     # to calculate repo size - just show 'Unknown'
-    'unknown'
+    '未知'
   end
 
   def default_url_to_repo(project = nil)
@@ -213,7 +214,7 @@ module ProjectsHelper
     if project.last_activity_at
       time_ago_with_tooltip(project.last_activity_at, 'bottom', 'last_activity_time_ago')
     else
-      "Never"
+      "从未"
     end
   end
 

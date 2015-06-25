@@ -1,25 +1,25 @@
-- page_title @dashboard_milestone.title, "Milestones"
+- page_title @dashboard_milestone.title, "里程碑"
 %h4.page-title
   .issue-box{ class: "issue-box-#{@dashboard_milestone.closed? ? 'closed' : 'open'}" }
     - if @dashboard_milestone.closed?
-      Closed
+      已关闭
     - else
-      Open
-  Milestone #{@dashboard_milestone.title}
+      未关闭
+  里程碑 #{@dashboard_milestone.title}
 
 %hr
 - if (@dashboard_milestone.total_items_count == @dashboard_milestone.closed_items_count) && @dashboard_milestone.active?
   .alert.alert-success
-    %span All issues for this milestone are closed. You may close the milestone now.
+    %span 该里程碑的所有问题都已关闭。可以关闭此里程碑。
 
 .description
 %table.table
   %thead
     %tr
-      %th Project
-      %th Open issues
-      %th State
-      %th Due date
+      %th 项目
+      %th 未关闭问题
+      %th 状态
+      %th 到期日
   - @dashboard_milestone.milestones.each do |milestone|
     %tr
       %td
