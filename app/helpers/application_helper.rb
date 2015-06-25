@@ -328,7 +328,9 @@ module ApplicationHelper
 
   def state_filters_text_for(entity, project)
     titles = {
-      opened: "Open"
+      opened: "未关闭",
+      closed: "已关闭",
+      all: "所有",
     }
 
     entity_title = titles[entity] || entity.to_s.humanize

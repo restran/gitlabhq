@@ -1,3 +1,4 @@
+#encoding: utf-8
 class GroupsController < Groups::ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :issues, :merge_requests]
   respond_to :html
@@ -84,7 +85,7 @@ class GroupsController < Groups::ApplicationController
   def destroy
     DestroyGroupService.new(@group, current_user).execute
 
-    redirect_to root_path, notice: 'Group was removed.'
+    redirect_to root_path, notice: '群组被删除。'
   end
 
   protected

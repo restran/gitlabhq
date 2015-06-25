@@ -44,13 +44,13 @@ class Admin::GroupsController < Admin::ApplicationController
   def members_update
     @group.add_users(params[:user_ids].split(','), params[:access_level], current_user)
 
-    redirect_to [:admin, @group], notice: 'Users were successfully added.'
+    redirect_to [:admin, @group], notice: '用户增加成功。'
   end
 
   def destroy
     DestroyGroupService.new(@group, current_user).execute
 
-    redirect_to admin_groups_path, notice: 'Group was successfully deleted.'
+    redirect_to admin_groups_path, notice: '群组删除成功。'
   end
 
   private

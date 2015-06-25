@@ -305,6 +305,6 @@ module ProjectsHelper
   end
 
   def leave_project_message(project)
-    "Are you sure you want to leave \"#{project.name}\" project?"
+    "确认要要离开 \"#{project.name}\" 项目么？"
   end
 end

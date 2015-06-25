@@ -98,7 +98,7 @@ class ProjectsController < ApplicationController
     return access_denied! unless can?(current_user, :remove_project, @project)
 
     ::Projects::DestroyService.new(@project, current_user, {}).execute
-    flash[:alert] = 'Project deleted.'
+    flash[:alert] = '项目已删除。'
 
     if request.referer.include?('/admin')
       redirect_to admin_namespaces_projects_path

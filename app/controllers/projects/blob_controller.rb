@@ -26,7 +26,7 @@ class Projects::BlobController < Projects::ApplicationController
     result = Files::CreateService.new(@project, current_user, @commit_params).execute
 
     if result[:status] == :success
-      flash[:notice] = "Your changes have been successfully committed"
+      flash[:notice] = "你的更改已提交成功"
       redirect_to namespace_project_blob_path(@project.namespace, @project, File.join(@target_branch, @file_path))
     else
       flash[:alert] = result[:message]
@@ -45,7 +45,7 @@ class Projects::BlobController < Projects::ApplicationController
     result = Files::UpdateService.new(@project, current_user, @commit_params).execute
 
     if result[:status] == :success
-      flash[:notice] = "Your changes have been successfully committed"
+      flash[:notice] = "你的更改已提交成功"
       redirect_to after_edit_path
     else
       flash[:alert] = result[:message]
@@ -65,7 +65,7 @@ class Projects::BlobController < Projects::ApplicationController
     result = Files::DeleteService.new(@project, current_user, @commit_params).execute
 
     if result[:status] == :success
-      flash[:notice] = "Your changes have been successfully committed"
+      flash[:notice] = "你的更改已提交成功"
       redirect_to namespace_project_tree_path(@project.namespace, @project, @target_branch)
     else
       flash[:alert] = result[:message]

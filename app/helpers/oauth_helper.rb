@@ -1,3 +1,4 @@
+#encoding: utf-8
 module OauthHelper
   def ldap_enabled?
     Gitlab.config.ldap.enabled
@@ -23,7 +24,7 @@ module OauthHelper
 
   def oauth_image_tag(provider, size = 64)
     file_name = "#{provider.to_s.split('_').first}_#{size}.png"
-    image_tag(image_path("authbuttons/#{file_name}"), alt: "Sign in with #{provider.to_s.titleize}")
+    image_tag(image_path("authbuttons/#{file_name}"), alt: "使用 #{provider.to_s.titleize} 登入")
   end
 
   def oauth_active?(provider)
