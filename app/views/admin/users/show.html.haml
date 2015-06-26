@@ -111,51 +111,51 @@
           - if @user.blocked?
             .panel.panel-info
               .panel-heading
-                This user is blocked
+                该用户被禁用
               .panel-body
-                %p Blocking user has the following effects:
+                %p 禁用用户有如下效果：
                 %ul
-                  %li User will not be able to login
-                  %li User will not be able to access git repositories
-                  %li Personal projects will be left
-                  %li Owned groups will be left
+                  %li 用户无法登录
+                  %li 用户无法访问 git 版本仓库
+                  %li 个人项目将被移除
+                  %li 拥有的群组将被移除
                 %br
-                = link_to 'Unblock user', unblock_admin_user_path(@user), method: :put, class: "btn btn-info", data: { confirm: 'Are you sure?' }
+                = link_to '启用用户', unblock_admin_user_path(@user), method: :put, class: "btn btn-info", data: { confirm: '确认要继续么？' }
           - else
             .panel.panel-warning
               .panel-heading
-                Block this user
+                禁用用户
               .panel-body
-                %p Blocking user has the following effects:
+                %p 禁用用户有如下效果：
                 %ul
-                  %li User will not be able to login
-                  %li User will not be able to access git repositories
-                  %li User will be removed from joined projects and groups
-                  %li Personal projects will be left
-                  %li Owned groups will be left
+                  %li 用户无法登录
+                  %li 用户无法访问 git 版本仓库
+                  %li 用户将从加入的项目和群组中删除
+                  %li 个人项目将被移除
+                  %li 拥有的群组将被移除
                 %br
-                = link_to 'Block user', block_admin_user_path(@user), data: { confirm: 'USER WILL BE BLOCKED! Are you sure?' }, method: :put, class: "btn btn-warning"
+                = link_to '禁用用户', block_admin_user_path(@user), data: { confirm: '用户将被禁用！确定要继续么？' }, method: :put, class: "btn btn-warning"
 
           .panel.panel-danger
             .panel-heading
-              Remove user
+              删除用户
             .panel-body
               - if @user.can_be_removed?
-                %p Deleting a user has the following effects:
+                %p 删除用户有如下效果：
                 %ul
-                  %li All user content like authored issues, snippets, comments will be removed
+                  %li 所有用户内容，比如：问题、代码片段、注释都将被删除
                   - rp = @user.personal_projects.count
                   - unless rp.zero?
-                    %li #{pluralize rp, 'personal project'} will be removed and cannot be restored
+                    %li #{pluralize rp, '个个人项目', '个个人项目'}将被删除并无法恢复
                 %br
-                = link_to 'Remove user', [:admin, @user], data: { confirm: "USER #{@user.name} WILL BE REMOVED! Are you sure?" }, method: :delete, class: "btn btn-remove"
+                = link_to '删除用户', [:admin, @user], data: { confirm: "用户 #{@user.name} 将被删除！确定要继续么？" }, method: :delete, class: "btn btn-remove"
               - else
                 - if @user.solo_owned_groups.present?
                   %p
-                    This user is currently an owner in these groups:
+                    下列群组以及其内容也将被删除：
                     %strong #{@user.solo_owned_groups.map(&:name).join(', ')}
                   %p
-                    You must transfer ownership or delete these groups before you can delete this user.
+                    在删除此用户前，请转移这些群组的所有权或删除之。
 
   #profile.tab-pane
     .row
