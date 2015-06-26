@@ -330,6 +330,7 @@ module ApplicationHelper
     titles = {
       opened: "未关闭",
       closed: "已关闭",
+      merged: "已合并",
       all: "所有",
     }
 
