@@ -1,8 +1,8 @@
-- page_title "Notifications"
+- page_title "通知"
 %h3.page-title
   = page_title
 %p.light
-  These are your global notification settings.
+  这里是全局通知设置。
 %hr
 
 = form_for @user, url: profile_notifications_path, method: :put, html: { class: 'update-notifications form-horizontal global-notifications-form' } do |f|

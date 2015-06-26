@@ -7,7 +7,7 @@
       %strong= user.created_at.stamp("2011-12-31")
     - unless user.public_email.blank?
       %li
-        %span.light E-mail:
+        %span.light 电子邮箱：
         %strong= link_to user.public_email, "mailto:#{user.public_email}"
     - unless user.skype.blank?
       %li

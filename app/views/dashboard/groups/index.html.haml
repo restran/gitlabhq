@@ -1,17 +1,17 @@
-- page_title "Groups"
+- page_title "群组"
 %h3.page-title
-  Group Membership
+  群组成员关系
   - if current_user.can_create_group?
     %span.pull-right.hidden-xs
       = link_to new_group_path, class: "btn btn-new" do
         %i.fa.fa-plus
-        New Group
+        新群组
 %p.light
-  Group members have access to all group projects.
+  群组成员可以访问群组的所有项目。
 %hr
 .panel.panel-default
   .panel-heading
-    %strong Groups
+    %strong 群组
     (#{@group_members.count})
   %ul.well-list
     - @group_members.each do |group_member|
@@ -21,20 +21,20 @@
           - if can?(current_user, :admin_group, group)
             = link_to edit_group_path(group), class: "btn-sm btn btn-grouped" do
               %i.fa.fa-cogs
-              Settings
+              设置
 
-          = link_to leave_group_group_members_path(group), data: { confirm: leave_group_message(group.name) }, method: :delete, class: "btn-sm btn btn-grouped", title: 'Leave this group' do
+          = link_to leave_group_group_members_path(group), data: { confirm: leave_group_message(group.name) }, method: :delete, class: "btn-sm btn btn-grouped", title: '离开此群组' do
             %i.fa.fa-sign-out
-            Leave
+            离开
 
         = image_tag group_icon(group), class: "avatar s40 avatar-tile hidden-xs"
         = link_to group, class: 'group-name' do
           %strong= group.name
 
-        as
+        身份
         %strong #{group_member.human_access}
 
         %div.light
-          #{pluralize(group.projects.count, "project")}, #{pluralize(group.users.count, "user")}
+          #{pluralize(group.projects.count, "个项目", "个项目")}, #{pluralize(group.users.count, "个用户", "个用户")}
 
 = paginate @group_members
