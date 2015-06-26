@@ -8,7 +8,7 @@
         = markdown(@project.description, pipeline: :description)
       - if can?(current_user, :admin_project, @project)
         &ndash;
-        = link_to 'Edit', edit_namespace_project_path
+        = link_to '编辑', edit_namespace_project_path
       - elsif !empty_repo && @repository.readme
         - readme = @repository.readme
         &ndash;

@@ -1,9 +1,10 @@
 - if @merge_request.can_be_merged_by?(current_user)
   %h4
-    This merge request contains merge conflicts that must be resolved.
-    You can try it manually on the
+    此合并请求包含有必须解决的合并冲突。
+    必须手工使用
     %strong
-      = link_to "command line", "#modal_merge_info", class: "how_to_merge_link vlink", title: "How To Merge", "data-toggle" => "modal"
+      = link_to "命令行", "#modal_merge_info", class: "how_to_merge_link vlink", title: "如何合并", "data-toggle" => "modal"
+    解决
 - else
-  %strong This merge request contains merge conflicts that must be resolved.
-  Only those with write access to this repository can merge merge requests.
+  %strong 此合并请求包含有必须解决的合并冲突。
+  只有拥有此仓库写权限的才能合并合并请求。

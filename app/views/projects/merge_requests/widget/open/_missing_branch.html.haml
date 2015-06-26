@@ -1,14 +1,16 @@
 %h4
-  Can't be merged
+  无法合并
 %p
-  This merge request can not be accepted because branch
+  此合并请求无法接受是因为分支
   - unless @merge_request.source_branch_exists?
     %span.label.label-inverse= @merge_request.source_branch
-    does not exist in
+    在
     %span.label.label-info= @merge_request.source_project_path
+    中不存在
   - else
     %span.label.label-inverse= @merge_request.target_branch
-    does not exist in
+    在
     %span.label.label-info= @merge_request.target_project_path
+    中不存在
   %br
-  %strong Please close this merge request or change branches with existing one
+  %strong 请关闭此合并请求或者选择一个存在的分支

@@ -3,7 +3,7 @@
     .panel.panel-default
       .panel-heading
         = visibility_level_icon(@project.visibility_level)
-        = "#{visibility_level_label(@project.visibility_level).capitalize} project"
+        = "#{visibility_level_label(@project.visibility_level).capitalize}项目"
 
       .panel-body
         - if @repository.changelog || @repository.license || @repository.contribution_guide
@@ -11,31 +11,31 @@
             - if @repository.changelog
               %li.hidden-xs
                 = link_to changelog_url(@project) do
-                  Changelog
+                  变更记录
             - if @repository.license
               %li
                 = link_to license_url(@project) do
-                  License
+                  许可证
             - if @repository.contribution_guide
               %li
                 = link_to contribution_guide_url(@project) do
-                  Contribution guide
+                  贡献指南
 
         .actions
           - if can? current_user, :write_issue, @project
-            = link_to url_for_new_issue(@project, only_path: true), title: "New Issue", class: 'btn btn-sm append-right-10' do
+            = link_to url_for_new_issue(@project, only_path: true), title: "新问题", class: 'btn btn-sm append-right-10' do
               = icon("exclamation-circle fw")
-              New Issue
+              新问题
 
           - if can? current_user, :write_merge_request, @project
-            = link_to new_namespace_project_merge_request_path(@project.namespace, @project), class: "btn btn-sm", title: "New Merge Request" do
+            = link_to new_namespace_project_merge_request_path(@project.namespace, @project), class: "btn btn-sm", title: "新合并请求" do
               = icon("plus fw")
-              New Merge Request
+              新合并请求
 
       - if forked_from_project = @project.forked_from_project
         .panel-footer
           = icon("code-fork fw")
-          Forked from
+          派生自
           .pull-right
             = link_to forked_from_project.namespace.try(:name), project_path(forked_from_project)
 
@@ -48,39 +48,39 @@
             .pull-right
               - if ci_service.respond_to?(:status_img_path)
                 = link_to ci_service.builds_path, :'data-no-turbolink' => 'data-no-turbolink' do
-                  = image_tag ci_service.status_img_path, alt: "build status", class: 'ci-status-image'
+                  = image_tag ci_service.status_img_path, alt: "构建状态", class: 'ci-status-image'
               - else
-                = link_to 'view builds', ci_service.builds_path, :'data-no-turbolink' => 'data-no-turbolink'
+                = link_to '查看构建', ci_service.builds_path, :'data-no-turbolink' => 'data-no-turbolink'
 
 
   - unless @project.empty_repo?
     .panel.panel-default
       .panel-heading
         = icon("folder-o fw")
-        Repository
+        版本仓库
       .panel-body
         %ul.nav.nav-pills
           %li
             = link_to namespace_project_commits_path(@project.namespace, @project, @ref || @repository.root_ref) do
-              = pluralize(number_with_delimiter(@repository.commit_count), 'commit')
+              = pluralize(number_with_delimiter(@repository.commit_count), '次提交', '次提交')
           %li
             = link_to namespace_project_branches_path(@project.namespace, @project) do
-              = pluralize(number_with_delimiter(@repository.branch_names.count), 'branch')
+              = pluralize(number_with_delimiter(@repository.branch_names.count), '个分支', '个分支')
           %li
             = link_to namespace_project_tags_path(@project.namespace, @project) do
-              = pluralize(number_with_delimiter(@repository.tag_names.count), 'tag')
+              = pluralize(number_with_delimiter(@repository.tag_names.count), '个标签', '个标签')
 
         .actions
           = link_to namespace_project_compare_index_path(@project.namespace, @project, from: @repository.root_ref, to: @ref || @repository.root_ref), class: 'btn btn-sm append-right-10' do
             %i.fa.fa-exchange
-            Compare code
+            比较代码
 
           - if can?(current_user, :download_code, @project)
             = render 'projects/repositories/download_archive', split_button: true, btn_class: 'btn-group-sm'
       - if version = @repository.version
         .panel-footer
           = icon("clock-o fw")
-          Version
+          版本
           .pull-right
             = link_to version_url(@project) do
               = @repository.blob_by_oid(version.id).data
@@ -92,17 +92,17 @@
     .alert.alert-warning
       %h4
         = icon("exclamation-triangle fw")
-        Archived project!
-      %p Repository is read-only
+        已归档项目！
+      %p 版本库只读
 
   - if current_user
     - access = user_max_access_in_project(current_user, @project)
     - if access
       .light-well.light.prepend-top-20
         %small
-          You have #{access} access to this project.
+          你拥有此项目的#{access}权限。
           - if @project.project_member_by_id(current_user)
             %br
             = link_to leave_namespace_project_project_members_path(@project.namespace, @project),
-              data: { confirm: leave_project_message(@project) }, method: :delete, title: 'Leave project' do
-              Leave this project
+              data: { confirm: leave_project_message(@project) }, method: :delete, title: '离开此项目' do
+              离开此项目

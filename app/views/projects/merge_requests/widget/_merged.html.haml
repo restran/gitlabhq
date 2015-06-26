@@ -2,28 +2,28 @@
   = render 'projects/merge_requests/widget/heading'
   .mr-widget-body
     %h4
-      Merged
+      已合并
       - if @merge_request.merge_event
-        by #{link_to_member(@project, @merge_request.merge_event.author, avatar: true)}
+        由 #{link_to_member(@project, @merge_request.merge_event.author, avatar: true)}
         #{time_ago_with_tooltip(@merge_request.merge_event.created_at)}
     %div
       - if @source_branch.blank?
-        Source branch has been removed
+        来源分支已被删除
 
       - elsif can_remove_branch?(@merge_request.source_project, @merge_request.source_branch) && @merge_request.merged?
         .remove_source_branch_widget
-          %p Changes merged into #{@merge_request.target_branch}. You can remove source branch now
+          %p 变更已合并到 #{@merge_request.target_branch}。现在可以删除来源分支
           = link_to namespace_project_branch_path(@merge_request.source_project.namespace, @merge_request.source_project, @source_branch), remote: true, method: :delete, class: "btn btn-primary btn-sm remove_source_branch" do
             %i.fa.fa-times
-            Remove Source Branch
+            删除来源分支
 
         .remove_source_branch_widget.failed.hide
-          Failed to remove source branch '#{@merge_request.source_branch}'
+          删除来源分支 '#{@merge_request.source_branch}' 失败
 
         .remove_source_branch_in_progress.hide
           %i.fa.fa-spinner.fa-spin
           &nbsp;
-          Removing source branch '#{@merge_request.source_branch}'. Please wait. Page will be automatically reloaded. &nbsp;
+          正在删除来源分支 '#{@merge_request.source_branch}'。请稍候。页面将会被自动重载。&nbsp;
 
         :coffeescript
           $('.remove_source_branch').on 'click', ->

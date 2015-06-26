@@ -2,19 +2,19 @@
   %div.prepend-top-20
     .issuable-context-title
       %label
-        Assignee:
+        指派：
       - if @merge_request.assignee
         %strong= link_to_member(@project, @merge_request.assignee, size: 24)
       - else
-        none
+        无
     .issuable-context-selectbox
       - if can?(current_user, :modify_merge_request, @merge_request)
-        = users_select_tag('merge_request[assignee_id]', placeholder: 'Select assignee', class: 'custom-form-control js-select2 js-assignee', selected: @merge_request.assignee_id, project: @target_project, null_user: true)
+        = users_select_tag('merge_request[assignee_id]', placeholder: '选择指派', class: 'custom-form-control js-select2 js-assignee', selected: @merge_request.assignee_id, project: @target_project, null_user: true)
 
   %div.prepend-top-20.clearfix
     .issuable-context-title
       %label
-        Milestone:
+        里程碑：
       - if @merge_request.milestone
         %span.back-to-milestone
           = link_to namespace_project_milestone_path(@project.namespace, @project, @merge_request.milestone) do
