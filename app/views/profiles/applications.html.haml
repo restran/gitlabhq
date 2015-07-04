@@ -56,5 +56,14 @@
             %td= token.created_at
             %td= token.scopes
             %td= render 'doorkeeper/authorized_applications/delete_form', application: app
+        - @authorized_anonymous_tokens.each do |token|
+          %tr
+            %td
+              匿名
+              %div.help-block
+                %em 获准在此应用程序中输入您的用户名和密码的授权。
+            %td= token.created_at
+            %td= token.scopes
+            %td= render 'doorkeeper/authorized_applications/delete_form', token: token
   - else
     %p.light 没有认证任何应用
