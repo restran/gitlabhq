@@ -54,7 +54,7 @@ module BlobHelper
   end
 
   def leave_edit_message
-    "离开编辑模式？\nn所有未保存的修改都会丢失。"
+    "离开编辑模式？\n所有未保存的修改都会丢失。"
   end
 
   def editing_preview_title(filename)
