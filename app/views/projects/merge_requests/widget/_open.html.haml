@@ -24,6 +24,6 @@
     .mr-widget-footer
       %span
         %i.fa.fa-check
-        Accepting this merge request will close #{@closes_issues.size == 1 ? 'issue' : 'issues'}
-        = succeed '.' do
+        正在接受此合并请求并将关闭 #{@closes_issues.size == 1 ? '个问题' : '个问题'}
+        = succeed '。' do
           != gfm(issues_sentence(@closes_issues))

@@ -16,7 +16,7 @@
   %aside.col-md-3
     .issuable-affix
       .clearfix
-        %span.slead.has_tooltip{:"data-original-title" => 'Cross-project reference'}
+        %span.slead.has_tooltip{:"data-original-title" => '交叉项目参考'}
           = cross_project_reference(@project, @merge_request)
       %hr
       .context
@@ -24,7 +24,7 @@
 
       - if @merge_request.labels.any?
         .issuable-context-title
-          %label Labels
+          %label 标签
         .merge-request-show-labels
           - @merge_request.labels.each do |label|
             = link_to_label(label)

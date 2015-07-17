@@ -1,32 +1,32 @@
-- page_title "Your Snippets"
+- page_title "代码片段"
 %h3.page-title
-  Your Snippets
+  代码片段
   .pull-right
-    = link_to new_snippet_path, class: "btn btn-new btn-grouped", title: "New Snippet" do
-      Add new snippet
+    = link_to new_snippet_path, class: "btn btn-new btn-grouped", title: "新代码片段" do
+      增加新的代码片段
 
 %p.light
-  Share code pastes with others out of git repository
+  在 git 版本仓库外共享代码
 
 %ul.nav.nav-tabs
   = nav_tab :scope, nil do
     = link_to user_snippets_path(@user) do
-      All
+      所有
       %span.badge
         = @user.snippets.count
   = nav_tab :scope, 'are_private' do
     = link_to user_snippets_path(@user, scope: 'are_private') do
-      Private
+      私有
       %span.badge
         = @user.snippets.are_private.count
   = nav_tab :scope, 'are_internal' do
     = link_to user_snippets_path(@user, scope: 'are_internal') do
-      Internal
+      内部
       %span.badge
         = @user.snippets.are_internal.count
   = nav_tab :scope, 'are_public' do
     = link_to user_snippets_path(@user, scope: 'are_public') do
-      Public
+      公开
       %span.badge
         = @user.snippets.are_public.count
 

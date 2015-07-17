@@ -1,3 +1,4 @@
+#encoding: utf-8
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   protect_from_forgery except: [:kerberos, :saml]
@@ -72,10 +73,10 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       end
     end
   rescue Gitlab::OAuth::SignupDisabledError => e
-    message = "Signing in using your #{oauth['provider']} account without a pre-existing GitLab account is not allowed."
+    message = "没有已存在的 GitLab 账号是不能使用 #{oauth['provider']} 账号登陆系统。"
 
     if current_application_settings.signup_enabled?
-      message << " Create a GitLab account first, and then connect it to your #{oauth['provider']} account."
+      message << "请先创建一个 GitLab 账号，然后再绑定 #{oauth['provider']} 账号。"
     end
 
     flash[:notice] = message

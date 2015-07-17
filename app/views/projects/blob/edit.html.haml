@@ -1,10 +1,10 @@
-- page_title "Edit", @blob.path, @ref
+- page_title "编辑", @blob.path, @ref
 .file-editor
   %ul.nav.nav-tabs.js-edit-mode
     %li.active
       = link_to '#editor' do
         %i.fa.fa-edit
-        Edit file
+        编辑文件
 
     %li
       = link_to '#preview', 'data-preview-url' => namespace_project_preview_blob_path(@project.namespace, @project, @id) do
