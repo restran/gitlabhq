@@ -177,7 +177,7 @@ module ProjectsHelper
     if project.last_activity_at
       time_ago_with_tooltip(project.last_activity_at, placement: 'bottom', html_class: 'last_activity_time_ago')
     else
-      "Never"
+      "从未"
     end
   end
 
@@ -258,7 +258,7 @@ module ProjectsHelper
   end
 
   def leave_project_message(project)
-    "Are you sure you want to leave \"#{project.name}\" project?"
+    "确认要要离开 \"#{project.name}\" 项目么？"
   end
 
   def new_readme_path

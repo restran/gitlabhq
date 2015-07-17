@@ -31,7 +31,7 @@ module NotesHelper
       ts << capture_haml do
         haml_tag :span do
           haml_concat '&middot;'
-          haml_concat icon('edit', title: 'edited')
+          haml_concat icon('edit', title: '编辑时间')
           haml_concat time_ago_with_tooltip(note.updated_at, placement: 'bottom', html_class: 'note_edited_ago')
         end
       end

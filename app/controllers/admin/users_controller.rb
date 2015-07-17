@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Admin::UsersController < Admin::ApplicationController
   before_action :user, except: [:index, :new, :create]
 

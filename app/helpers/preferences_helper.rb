@@ -1,3 +1,4 @@
+#encoding: utf-8
 # Helper methods for per-User preferences
 module PreferencesHelper
   COLOR_SCHEMES = {
@@ -22,8 +23,8 @@ module PreferencesHelper
 
   # Maps `dashboard` values to more user-friendly option text
   DASHBOARD_CHOICES = {
-    projects: 'Your Projects (default)',
-    stars:    'Starred Projects'
+    projects: '你的项目 (默认)',
+    stars:    '标记的项目'
   }.with_indifferent_access.freeze
 
   # Returns an Array usable by a select field for more user-friendly option text
