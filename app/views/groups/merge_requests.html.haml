@@ -1,13 +1,13 @@
-- page_title "Merge Requests"
+- page_title "合并请求"
 %h3.page-title
-  Merge Requests
+  合并请求
 
 %p.light
-  Only merge requests from
+  仅
   %strong #{@group.name}
-  group are listed here.
+  群组的合并请求显示在此处。
   - if current_user
-    To see all merge requests you should visit #{link_to 'dashboard', merge_requests_dashboard_path} page.
+    请到#{link_to '仪表盘', merge_requests_dashboard_path}页面访问所有合并请求。
 %hr
 .append-bottom-20
   = render 'shared/issuable/filter', type: :merge_requests

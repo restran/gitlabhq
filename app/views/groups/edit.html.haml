@@ -1,7 +1,7 @@
 .panel.panel-default
   .panel-heading
     %strong= @group.name
-    group settings:
+    群组设置：
   .panel-body
     = form_for @group, html: { multipart: true, class: "form-horizontal" }, authenticity_token: true do |f|
       - if @group.errors.any?
