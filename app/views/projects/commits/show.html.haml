@@ -12,10 +12,10 @@
   - if create_mr_button?(@repository.root_ref, @ref)
     = link_to create_mr_path(@repository.root_ref, @ref), class: 'btn btn-success' do
       = icon('plus')
-      Create Merge Request
+      创建合并请求
 
   - if current_user && current_user.private_token
-    = link_to namespace_project_commits_path(@project.namespace, @project, @ref, {format: :atom, private_token: current_user.private_token}), title: "Commits Feed", class: 'prepend-left-10 btn' do
+    = link_to namespace_project_commits_path(@project.namespace, @project, @ref, {format: :atom, private_token: current_user.private_token}), title: "提交动态", class: 'prepend-left-10 btn' do
       = icon("rss")
 
 

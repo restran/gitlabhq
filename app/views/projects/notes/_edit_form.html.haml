@@ -6,9 +6,9 @@
 
       .comment-hints.clearfix
         .pull-left #{link_to 'Markdown ', help_page_path('markdown', 'markdown'),{ target: '_blank', tabindex: -1 }}
-        .pull-right #{link_to 'Attach a file', '#', class: 'markdown-selector', tabindex: -1 }
+        .pull-right #{link_to '附加文件', '#', class: 'markdown-selector', tabindex: -1 }
 
     .note-form-actions
       .buttons
-        = f.submit 'Save Comment', class: 'btn btn-primary btn-save btn-grouped js-comment-button'
-        = link_to  'Cancel', '#', class: 'btn btn-cancel note-edit-cancel'
+        = f.submit '保存评论', class: 'btn btn-primary btn-save btn-grouped js-comment-button'
+        = link_to  '取消', '#', class: 'btn btn-cancel note-edit-cancel'
