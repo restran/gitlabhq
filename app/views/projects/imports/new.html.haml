@@ -9,10 +9,10 @@
 
 = form_for @project, url: namespace_project_import_path(@project.namespace, @project), method: :post, html: { class: 'form-horizontal' } do |f|
   .form-group.import-url-data
-    = f.label :import_url, class: 'control-label' do
+    = f.label :import_url, "导入链接", class: 'control-label' do
       %span 导入已存在的 git 仓库
     .col-sm-10
-      = f.text_field :import_url, "导入链接", class: 'form-control', placeholder: 'https://github.com/randx/six.git'
+      = f.text_field :import_url, class: 'form-control', placeholder: 'https://github.com/randx/six.git'
       .well.prepend-top-20
         链接必须能公开访问或指定用户名和密码类似：https://username:password@gitlab.com/company/project.git.
         %br
