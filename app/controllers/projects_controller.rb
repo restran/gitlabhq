@@ -1,7 +1,7 @@
 #encoding: utf-8
 class ProjectsController < ApplicationController
   prepend_before_filter :render_go_import, only: [:show]
-  skip_before_action :authenticate_user!, only: [:show]
+  skip_before_action :authenticate_user!, only: [:show, :activity]
   before_action :project, except: [:new, :create]
   before_action :repository, except: [:new, :create]
 

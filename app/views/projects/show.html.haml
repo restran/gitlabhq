@@ -6,14 +6,16 @@
   = render 'shared/no_ssh'
   = render 'shared/no_password'
 
-= render 'projects/last_push'
+- if prefer_readme?
+  = render 'projects/last_push'
+
 = render "home_panel"
 
 .project-stats
   %ul.nav.nav-pills
     %li
       = link_to namespace_project_commits_path(@project.namespace, @project, @ref || @repository.root_ref) do
-        = pluralize(number_with_delimiter(@repository.commit_count), '次提交', '次提交')
+        = pluralize(number_with_delimiter(@project.commit_count), '次提交', '次提交')
     %li
       = link_to namespace_project_branches_path(@project.namespace, @project) do
         = pluralize(number_with_delimiter(@repository.branch_names.count), '个分支', '个分支')
