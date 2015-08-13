@@ -57,6 +57,13 @@
       %span
         服务模板
 
+  = nav_link(controller: :abuse_reports) do
+    = link_to admin_abuse_reports_path, title: "滥用举报" do
+      = icon('exclamation-circle fw')
+      %span
+        滥用举报
+        %span.count= AbuseReport.count(:all)
+
   = nav_link(controller: :application_settings, html_options: { class: 'separate-item'}) do
     = link_to admin_application_settings_path, title: '设置', data: {placement: 'right'} do
       = icon('cogs fw')

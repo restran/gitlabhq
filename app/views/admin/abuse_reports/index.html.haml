@@ -1,0 +1,17 @@
+- page_title "滥用举报"
+%h3.page-title 滥用举报
+%hr
+- if @abuse_reports.present?
+  %table.table
+    %thead
+      %tr
+        %th 举报人
+        %th 举报时间
+        %th 信息
+        %th 被举报用户
+        %th
+        %th
+    = render @abuse_reports
+  = paginate @abuse_reports
+- else
+  %h4 没有滥用举报。
