@@ -1,3 +1,4 @@
+#encoding: utf-8
 module MergeRequests
   class BuildService < MergeRequests::BaseService
     def execute
@@ -61,7 +62,7 @@ module MergeRequests
       merge_request
 
     rescue Gitlab::Satellite::BranchesWithoutParent
-      return build_failed(merge_request, "Selected branches have no common commit so they cannot be merged.")
+      return build_failed(merge_request, "选择的分支没有共同提交，所以不能合并。")
     end
 
     def build_failed(merge_request, message)

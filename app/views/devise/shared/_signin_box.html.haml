@@ -13,7 +13,7 @@
             = link_to server['label'], "#tab-#{server['provider_name']}", 'data-toggle' => 'tab'
         - if signin_enabled?
           %li
-            = link_to 'Standard', '#tab-signin', 'data-toggle' => 'tab'
+            = link_to '基本', '#tab-signin', 'data-toggle' => 'tab'
       .tab-content
         - @ldap_servers.each_with_index do |server, i|
           %div.tab-pane{id: "tab-#{server['provider_name']}", class: (:active if i.zero?)}

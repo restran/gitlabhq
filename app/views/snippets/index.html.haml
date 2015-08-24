@@ -1,16 +1,16 @@
-- page_title "Public Snippets"
+- page_title "公开的代码片段"
 %h3.page-title
-  Public snippets
+  公开的代码片段
 
   .pull-right
     - if current_user
-      = link_to new_snippet_path, class: "btn btn-new btn-grouped", title: "New Snippet" do
-        Add new snippet
+      = link_to new_snippet_path, class: "btn btn-new btn-grouped", title: "新代码片段" do
+        增加新的代码片段
       = link_to user_snippets_path(current_user), class: "btn btn-grouped"  do
-        Your snippets
+        您的代码片段
 
 %p.light
-  Public snippets created by you and other users are listed here
+  您和其他用户创建的公共代码片段列表
 
 %hr
 = render 'snippets'

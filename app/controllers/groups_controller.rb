@@ -1,3 +1,4 @@
+#encoding: utf-8
 class GroupsController < Groups::ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :issues, :merge_requests]
   respond_to :html

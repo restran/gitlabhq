@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Projects::ForksController < Projects::ApplicationController
   # Authorize
   before_action :require_non_empty_project
@@ -15,7 +16,7 @@ class Projects::ForksController < Projects::ApplicationController
     if @forked_project.saved? && @forked_project.forked?
       redirect_to(
         namespace_project_path(@forked_project.namespace, @forked_project),
-        notice: 'Project was successfully forked.'
+        notice: '派生项目成功。'
       )
     else
       render :error

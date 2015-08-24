@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Projects::ServicesController < Projects::ApplicationController
   ALLOWED_PARAMS = [:title, :token, :type, :active, :api_key, :api_version, :subdomain,
                     :room, :recipients, :project_url, :webhook,
@@ -30,7 +31,7 @@ class Projects::ServicesController < Projects::ApplicationController
       redirect_to(
         edit_namespace_project_service_path(@project.namespace, @project,
                                             @service.to_param, notice:
-                                            'Successfully updated.')
+                                            '已更新成功。')
       )
     else
       render 'edit'

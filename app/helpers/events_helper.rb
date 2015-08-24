@@ -1,3 +1,4 @@
+#encoding: utf-8
 module EventsHelper
   def link_to_author(event)
     author = event.author
@@ -29,7 +30,7 @@ module EventsHelper
     link_opts = {
       class: 'event_filter_link',
       id:    "#{key}_event_filter",
-      title: "Filter by #{tooltip.downcase}",
+      title: "#{tooltip.downcase}过滤",
       data:  { toggle: 'tooltip', placement: 'top' }
     }
 
@@ -163,7 +164,7 @@ module EventsHelper
       end
     else
       content_tag :strong do
-        "(deleted)"
+        "(已删除)"
       end
     end
   end

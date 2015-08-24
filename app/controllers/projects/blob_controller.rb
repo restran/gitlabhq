@@ -1,3 +1,4 @@
+#encoding: utf-8
 # Controller for viewing a file's blame
 class Projects::BlobController < Projects::ApplicationController
   include ExtractsPath
@@ -31,7 +32,7 @@ class Projects::BlobController < Projects::ApplicationController
     ).execute
 
     if result[:status] == :success
-      flash[:notice] = "Your changes have been successfully committed"
+      flash[:notice] = "你的更改已提交成功"
       ref = sanitized_new_branch_name.presence || @ref
       redirect_to namespace_project_blob_path(@project.namespace, @project, File.join(ref, file_path))
     else
@@ -58,7 +59,7 @@ class Projects::BlobController < Projects::ApplicationController
       ).execute
 
     if result[:status] == :success
-      flash[:notice] = "Your changes have been successfully committed"
+      flash[:notice] = "你的更改已提交成功"
 
       if from_merge_request
         from_merge_request.reload_code
@@ -83,7 +84,7 @@ class Projects::BlobController < Projects::ApplicationController
     result = Files::DeleteService.new(@project, current_user, params, @ref, @path).execute
 
     if result[:status] == :success
-      flash[:notice] = "Your changes have been successfully committed"
+      flash[:notice] = "你的更改已提交成功"
       redirect_to namespace_project_tree_path(@project.namespace, @project,
                                               @ref)
     else

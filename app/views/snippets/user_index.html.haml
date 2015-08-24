@@ -1,13 +1,13 @@
-- page_title "Snippets", @user.name
+- page_title "代码片段", @user.name
 %h3.page-title
   = image_tag avatar_icon(@user.email), class: "avatar s24"
   = @user.name
   %span
     \/
-    Snippets
+    代码片段
   - if current_user
-    = link_to new_snippet_path, class: "btn btn-sm add_new pull-right", title: "New Snippet" do
-      Add new snippet
+    = link_to new_snippet_path, class: "btn btn-sm add_new pull-right", title: "新代码片段" do
+      增加新的代码片段
 
 %hr
 

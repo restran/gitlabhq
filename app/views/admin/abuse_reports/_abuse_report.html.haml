@@ -5,7 +5,7 @@
     - if reporter
       = link_to reporter.name, [:admin, reporter]
     - else
-      (removed)
+      (已删除)
   %td
     = abuse_report.created_at.to_s(:short)
   %td
@@ -14,10 +14,10 @@
     - if user
       = link_to user.name, [:admin, user]
     - else
-      (removed)
+      (已删除)
   %td
     - if user
-      = link_to 'Block', block_admin_user_path(user), data: {confirm: 'USER WILL BE BLOCKED! Are you sure?'}, method: :put, class: "btn btn-xs btn-warning"
-      = link_to 'Remove user', [:admin, user], data: { confirm: "USER #{user.name} WILL BE REMOVED! Are you sure?" }, method: :delete, class: "btn btn-xs btn-remove"
+      = link_to '禁用', block_admin_user_path(user), data: {confirm: '确定要禁用该用户么？'}, method: :put, class: "btn btn-xs btn-warning"
+      = link_to '删除用户', [:admin, user], data: { confirm: "确定要删除 #{user.name} 用户么？" }, method: :delete, class: "btn btn-xs btn-remove"
   %td
-    = link_to 'Remove report', [:admin, abuse_report], method: :delete, class: "btn btn-xs btn-close"
+    = link_to '删除举报', [:admin, abuse_report], method: :delete, class: "btn btn-xs btn-close"

@@ -7,11 +7,11 @@
       = render "shared/project", project: project, avatar: avatar, stars: stars
   - if projects.blank?
     %li
-      .nothing-here-block There are no projects here.
+      .nothing-here-block 没有项目。
   - if projects.count > projects_limit
     %li.bottom
       %span.light
-        #{projects_limit} of #{pluralize(projects.count, 'project')} displayed.
+        #{projects_limit} of #{pluralize(projects.count, '个项目', '个项目')} displayed.
       %span
         = link_to '#', class: 'js-expand' do
-          Show all
+          显示所有
