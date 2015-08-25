@@ -79,35 +79,35 @@
           .profile-avatar-form-option
             %p.light
               - if @user.avatar?
-                You can change your avatar here
+                在这里修改头像
                 - if Gitlab.config.gravatar.enabled
                   %br
-                  or remove the current avatar to revert to #{link_to Gitlab.config.gravatar.host, "http://" + Gitlab.config.gravatar.host}
+                  或者删除当前头像使用 #{link_to Gitlab.config.gravatar.host, "http://" + Gitlab.config.gravatar.host} 头像
               - else
-                You can upload an avatar here
+                在这里上传头像
                 - if Gitlab.config.gravatar.enabled
                   %br
-                  or change it at #{link_to Gitlab.config.gravatar.host, "http://" + Gitlab.config.gravatar.host}
+                  或者在 #{link_to Gitlab.config.gravatar.host, "http://" + Gitlab.config.gravatar.host} 修改头像
             %hr
             %a.choose-btn.btn.btn-sm.js-choose-user-avatar-button
               %i.fa.fa-paperclip
-              %span Choose File ...
+              %span 选择文件...
             &nbsp;
-            %span.file_name.js-avatar-filename File name...
+            %span.file_name.js-avatar-filename 文件名...
             = f.file_field :avatar, class: "js-user-avatar-input hidden"
-            .light The maximum file size allowed is 200KB.
+            .light 允许的最大文件大小 200KB。
             - if @user.avatar?
               %hr
-              = link_to 'Remove avatar', profile_avatar_path, data: { confirm: "Avatar will be removed. Are you sure?"}, method: :delete, class: "btn btn-remove btn-sm remove-avatar"
+              = link_to '删除头像', profile_avatar_path, data: { confirm: "确定要删除头像么？"}, method: :delete, class: "btn btn-remove btn-sm remove-avatar"
 
       - if @user.public_profile?
         .alert.alert-info
-          %h4 Public profile
-          %p Your profile is publicly visible because you joined public project(s)
+          %h4 公开个人资料
+          %p 加入公开项目会公开你的个人资料
 
 
   .row
     .col-md-7
       .form-group
         .col-sm-offset-2.col-sm-10
-          = f.submit 'Save changes', class: "btn btn-success"
+          = f.submit '保存修改', class: "btn btn-success"

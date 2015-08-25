@@ -430,4 +430,8 @@ class MergeRequest < ActiveRecord::Base
       "未关闭"
     end
   end
+
+  def zh_name
+    '合并请求'
+  end
 end

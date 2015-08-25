@@ -25,7 +25,7 @@ module ProjectsHelper
     default_opts = { avatar: true, name: true, size: 16, author_class: 'author' }
     opts = default_opts.merge(opts)
 
-    return "(deleted)" unless author
+    return "(已删除)" unless author
 
     author_html =  ""
 
