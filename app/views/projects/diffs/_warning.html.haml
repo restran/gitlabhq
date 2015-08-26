@@ -3,7 +3,7 @@
     要显示太多修改。
     .pull-right
       - unless diff_hard_limit_enabled?
-        = link_to "重新载入完整差异", url_for(params.merge(force_show_diff: true, format: :html)), class: "btn btn-sm btn-warning"
+        = link_to "重新载入完整差异", url_for(params.merge(force_show_diff: true, format: nil)), class: "btn btn-sm btn-warning"
 
       - if current_controller?(:commit) or current_controller?(:merge_requests)
         - if current_controller?(:commit)
