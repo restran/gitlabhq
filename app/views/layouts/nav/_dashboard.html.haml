@@ -25,12 +25,12 @@
       %span
         问题
         %span.count= current_user.assigned_issues.opened.count
-    = nav_link(path: 'dashboard#merge_requests') do
-      = link_to assigned_mrs_dashboard_path, title: '合并请求', class: 'shortcuts-merge_requests', data: {placement: 'right'} do
-        = icon('tasks fw')
-        %span
-          合并请求
-          %span.count= current_user.assigned_merge_requests.opened.count
+  = nav_link(path: 'dashboard#merge_requests') do
+    = link_to assigned_mrs_dashboard_path, title: '合并请求', class: 'shortcuts-merge_requests', data: {placement: 'right'} do
+      = icon('tasks fw')
+      %span
+        合并请求
+        %span.count= current_user.assigned_merge_requests.opened.count
   = nav_link(controller: :snippets) do
     = link_to dashboard_snippets_path, title: '你的代码片段', data: {placement: 'right'} do
       = icon('clipboard fw')
