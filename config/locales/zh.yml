@@ -84,19 +84,19 @@ zh:
         other: 不到 %{count} 秒
       over_x_years:
         one: 一年多
-        other: ! '%{count} 年多'
+        other: ! ' %{count} 年多'
       x_days:
         one: 一天
-        other: ! '%{count} 天'
+        other: ! ' %{count} 天'
       x_minutes:
         one: 一分钟
-        other: ! '%{count} 分钟'
+        other: ! ' %{count} 分钟'
       x_months:
         one: 一个月
-        other: ! '%{count} 个月'
+        other: ! ' %{count} 个月'
       x_seconds:
         one: 一秒
-        other: ! '%{count} 秒'
+        other: ! ' %{count} 秒'
     prompts:
       day: 日
       hour: 时
