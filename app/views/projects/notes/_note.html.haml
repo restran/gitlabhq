@@ -33,7 +33,7 @@
               = icon('edit', title: '编辑时间')
               = time_ago_with_tooltip(note.updated_at, placement: 'bottom', html_class: 'note_edited_ago')
               - if note.updated_by && note.updated_by != note.author
-                by #{link_to_member(note.project, note.updated_by, avatar: false, author_class: nil)}
+                由 #{link_to_member(note.project, note.updated_by, avatar: false, author_class: nil)}
 
       .note-body{class: note_editable?(note) ? 'js-task-list-container' : ''}
         .note-text
