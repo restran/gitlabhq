@@ -162,7 +162,7 @@
 
       - if @builds.present?
         .build-widget
-          %h4.title #{pluralize(@builds.count(:id), "次其他构建", "次其他构建")} for
+          %h4.title 此提交还有 #{pluralize(@builds.count(:id), "次其他构建", "次其他构建")}
           = succeed ":" do
             = link_to @build.commit.short_sha, ci_status_path(@build.commit), class: "monospace"
           %table.table.builds
@@ -177,7 +177,7 @@
                     - else
                       %span ##{build.id}
 
-                %td.status= build.status
+                %td.status= ci_status_zh(build.status)
 
 
   :javascript
