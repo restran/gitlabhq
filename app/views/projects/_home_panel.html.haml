@@ -29,7 +29,7 @@
             = link_to_toggle_star('标记这个项目。', false, true)
             = link_to_toggle_star('取消标记这个项目。', true, true)
           - else
-            = link_to_toggle_star('必须登入后才能标记项目。', false, false)
+            = link_to_toggle_star('必须登录后才能标记项目。', false, false)
 
   .project-home-row
     - if current_user && !empty_repo

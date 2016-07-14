@@ -15,7 +15,7 @@
             - @user.errors.full_messages.each do |msg|
               %li= msg
       .form-group
-        = f.label :current_password, '当前密码', class: 'control-label'
+        = f.label :current_password, class: 'control-label'
         .col-sm-10
           = f.password_field :current_password, required: true, class: 'form-control'
           %div

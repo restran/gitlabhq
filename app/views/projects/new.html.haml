@@ -13,7 +13,7 @@
       - if current_user.can_select_namespace?
         .form-group
           = f.label :namespace_id, class: 'control-label' do
-            %span 名字空间
+            %span 命名空间
           .col-sm-10
             = f.select :namespace_id, namespaces_options(params[:namespace_id] || :current_user), {}, {class: 'select2', tabindex: 2}
 

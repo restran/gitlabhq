@@ -7,7 +7,7 @@
           = text_field_tag :name, params[:name], class: "form-control"
 
         .form-group
-          = label_tag :namespace_id, "名字空间"
+          = label_tag :namespace_id, "命名空间"
           = namespace_select_tag :namespace_id, selected: params[:namespace_id], class: 'input-large'
 
         .form-group

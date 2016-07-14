@@ -5,7 +5,7 @@ module AppearancesHelper
   end
 
   def brand_title
-    'GitLab 社区版'
+    'Gitlab Center'
   end
 
   def brand_image

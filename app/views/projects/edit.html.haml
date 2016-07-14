@@ -152,13 +152,13 @@
             = form_for(@project, url: transfer_project_path(@project), method: :put, remote: true, html: { class: 'transfer-project form-horizontal' }) do |f|
               .form-group
                 = f.label :namespace_id, class: 'control-label' do
-                  %span 名字空间
+                  %span 命名空间
                 .col-sm-10
                   .form-group
-                    = f.select :namespace_id, namespaces_options(@project.namespace_id), { prompt: '选择项目名字空间' }, { class: 'select2' }
+                    = f.select :namespace_id, namespaces_options(@project.namespace_id), { prompt: '选择项目命名空间' }, { class: 'select2' }
                   %ul
                     %li 请注意：更改项目的命名空间可能有意想不到的副作用。
-                    %li 只能将项目转移到能管理到的名字空间。
+                    %li 只能将项目转移到能管理到的命名空间。
                     %li 需要更新本地版本仓库指向新位置。
               .form-actions
                 = f.submit '转移', class: "btn btn-remove js-confirm-danger", data: { "confirm-danger-message" => transfer_project_message(@project) }

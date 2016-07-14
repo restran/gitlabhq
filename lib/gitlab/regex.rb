@@ -1,3 +1,4 @@
+# encoding: utf-8
 module Gitlab
   module Regex
     extend self
@@ -15,8 +16,8 @@ module Gitlab
     end
 
     def project_regex_message
-      "can contain only letters, digits, '_', '-' and '.' and space. " \
-      "It must start with letter, digit or '_'."
+      " 只能包含字母、数字、'_'、'-'、'.' 和空格。" \
+      "必须以字母、数字或'_' 开头"
     end
 
     def name_regex
@@ -24,7 +25,7 @@ module Gitlab
     end
 
     def name_regex_message
-      "can contain only letters, digits, '_', '-' and '.' and space."
+      " 只能包含字母、数字、'_'、'-'、'.' 和空格。"
     end
 
     def path_regex
@@ -66,8 +67,8 @@ module Gitlab
     protected
 
     def default_regex_message
-      "can contain only letters, digits, '_', '-' and '.'. " \
-      "Cannot start with '-' or end in '.git'" \
+      " 只能包含字母、数字、'_'、'-' 和 '.'" \
+      "不能以 '-' 开头，或者以 '.git' 结尾" \
     end
 
     def default_regex
